@@ -26,7 +26,7 @@ npm run dev
 
 Then open the port shown above (or set `PORT=xxxx`). `npm run kill` frees the port if a previous run is still holding it.
 
-Several packages depend on a sibling checkout of `me-platform-core` (`../me-platform-core/`), which provides the shared caching, queue, scheduler, logging and file storage. That repository must sit next to this one for `npm install` to resolve.
+Several packages depend on a sibling checkout of `nooblyjs-core` (`../nooblyjs-core/` from this repo root, i.e. `/workspaces/codespaces-blank/nooblyjs-core`), which provides the shared caching, queue, scheduler, logging and file storage. That repository must sit next to this one for `npm install` to resolve.
 
 `learning` is started with `npm run electron:dev`.
 

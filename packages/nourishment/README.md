@@ -11,7 +11,7 @@ npm run dev
 
 Then open http://localhost:9301 (or `PORT=xxxx npm run dev` to pick a different port). `npm run kill` force-frees the port if a previous run is still holding it.
 
-`me-platform-core` is a local sibling dependency (`../me-platform-core/`), so that repo must be checked out next to this one for `npm install` to resolve.
+`nooblyjs-core` is a local sibling dependency (`../../../nooblyjs-core/`), so that repo must be checked out next to this one for `npm install` to resolve.
 
 ## Screens
 
@@ -23,7 +23,7 @@ Then open http://localhost:9301 (or `PORT=xxxx npm run dev` to pick a different 
 ## Structure
 
 - `index.js` — process entry point, starts the Express app on `PORT` (default 9301)
-- `backend/` — Express app, routes, and services; JSON-file storage via `me-platform-core` (`../me-platform-core`), with caching, a queue-backed activity log, and a scheduled daily streak-snapshot job wired through the same platform
+- `backend/` — Express app, routes, and services; JSON-file storage via `nooblyjs-core` (`../../../nooblyjs-core`), with caching, a queue-backed activity log, and a scheduled daily streak-snapshot job wired through the same platform
 - `public/` — the mobile web frontend: plain HTML/CSS/JS (ES modules), no build step, no framework
 - `.docs/design/` — the visual design handoff this app's frontend was built against
 

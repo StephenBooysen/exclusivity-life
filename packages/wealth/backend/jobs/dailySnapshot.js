@@ -11,7 +11,7 @@
 
 'use strict';
 
-const Dataservicefiles = require('digital-technologies-core/src/dataservice/providers/dataservicefiles');
+const Dataservicefiles = require('nooblyjs-core/src/dataservice/providers/dataservicefiles');
 const { computeBreakdown } = require('../services/dashboardService');
 
 const NETWORTH_SNAPSHOT_CONTAINER = 'networth_snapshots';

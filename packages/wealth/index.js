@@ -1,7 +1,7 @@
 /**
  * @fileoverview Me Money Manager — entry point.
  * Boots the Express app assembled in backend/app.js (native JS backend,
- * JSON-file storage via digital-technologies-core, static frontend in
+ * JSON-file storage via nooblyjs-core, static frontend in
  * ./public — no React, no build step).
  */
 

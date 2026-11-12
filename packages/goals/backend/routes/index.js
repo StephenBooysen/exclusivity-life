@@ -479,14 +479,31 @@ module.exports = (app, database) => {
     app.put("/api/wisdom/:id", async (req, res) => {
         try {
             const { id } = req.params;
-            const { is_favorite } = req.body;
+            // Only the fields present in the body are changed, so the favourite
+            // toggle can send { is_favorite } alone while the edit form sends the full record.
+            const editable = ["content", "author", "source", "tags", "category", "personal_notes", "is_favorite"];
+            const fields = editable.filter((key) => req.body[key] !== undefined);
+
+            if (fields.length === 0) {
+                return res.status(400).json({ error: "Nothing to update" });
+            }
+            if (fields.includes("content") && !String(req.body.content || "").trim()) {
+                return res.status(400).json({ error: "Content is required" });
+            }
+
+            const values = fields.map((key) => {
+                if (key === "is_favorite") return req.body[key] ? 1 : 0;
+                if (key === "content") return req.body[key].trim();
+                return req.body[key] || null;
+            });
 
             await database.run(
-                "UPDATE wisdom SET is_favorite = ? WHERE id = ?",
-                [is_favorite ? 1 : 0, id]
+                `UPDATE wisdom SET ${fields.map((key) => `${key} = ?`).join(", ")} WHERE id = ?`,
+                [...values, id]
             );
 
-            res.json({ success: true, id, is_favorite });
+            const saved = Object.fromEntries(fields.map((key, i) => [key, values[i]]));
+            res.json({ success: true, id, ...saved });
         } catch (error) {
             res.status(500).json({ error: error.message });
         }

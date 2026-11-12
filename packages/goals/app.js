@@ -75,7 +75,7 @@ const EventEmitter = require('events');
 const eventEmitter = new EventEmitter()
 
 // Initiate the service Registry
-const serviceRegistry = require('digital-technologies-core');
+const serviceRegistry = require('nooblyjs-core');
 serviceRegistry.initialize(app, eventEmitter, {
   // The /services dashboards are gated behind an admin login by default. This
   // is a local, single-user desktop app with no auth service, so leave them open.

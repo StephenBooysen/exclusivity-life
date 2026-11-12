@@ -24,7 +24,7 @@
     "body-parser": "^1.20.2",
     "compression": "^1.8.1",
     "cors": "^2.8.5",
-    "me-platform-core": "../me-platform-core/",
+    "nooblyjs-core": "../../../nooblyjs-core/",
     "dotenv": "^17.4.2",
     "express": "^4.22.2",
     "express-rate-limit": "^7.1.5",

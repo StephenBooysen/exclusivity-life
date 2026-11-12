@@ -5,7 +5,7 @@
  * layout, same routes and page handlers — but against a throwaway SQLite file
  * in the OS temp directory. The real data/web-database.db is never opened.
  *
- * The service registry (digital-technologies-core) is deliberately left out:
+ * The service registry (nooblyjs-core) is deliberately left out:
  * it mounts the /services admin dashboards, which are not part of this app's
  * surface and would slow every suite down.
  */

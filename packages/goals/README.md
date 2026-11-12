@@ -108,7 +108,7 @@ npm run kill  # Kill processes on port 3100
 - **Flat Icons**: Beautiful icon library
 - **Chart.js**: Data visualization and progress charts
 - **Date-fns**: Date manipulation utilities
-- **Digital Technologies Core**: Application framework and service registry (local package at `../me-platform-core`)
+- **Digital Technologies Core**: Application framework and service registry (local package at `../../../nooblyjs-core`)
 
 ### Project Structure
 ```

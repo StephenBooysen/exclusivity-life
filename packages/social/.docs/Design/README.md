@@ -16,7 +16,7 @@ The product rules that drive nearly every UI decision:
 
 The files in `design/` are **design references created in HTML** — prototypes that show intended look, copy and behaviour. They are **not production code to copy directly**. `Cachet Mockups.dc.html` is a static, non-interactive artboard: 14 phone-sized panels laid out side by side on one canvas, so the whole flow can be read at once. There are no click handlers, no routing and no state in it.
 
-The task is to **recreate these screens in the target codebase's own environment** using its established patterns. The PRD (`reference/Product Requirements.md`) specifies a mobile-first PWA on a native-JS Express stack with no build step (`me-platform-core`); if you are implementing against that, build these as server-rendered views + progressive enhancement rather than importing a framework. If no environment exists yet, choose the framework that fits the PRD's constraints and implement there.
+The task is to **recreate these screens in the target codebase's own environment** using its established patterns. The PRD (`reference/Product Requirements.md`) specifies a mobile-first PWA on a native-JS Express stack with no build step (`nooblyjs-core`); if you are implementing against that, build these as server-rendered views + progressive enhancement rather than importing a framework. If no environment exists yet, choose the framework that fits the PRD's constraints and implement there.
 
 ## Fidelity
 

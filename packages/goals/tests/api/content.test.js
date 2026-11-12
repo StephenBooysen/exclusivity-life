@@ -33,7 +33,7 @@ describe('focus areas', () => {
     const areaId = await createFocusArea(database);
     await request(app)
       .post('/api/monthly-focus')
-      .send({ year: thisYear, month: thisMonth, focus_area_ids: [areaId] })
+      .send({ year: thisYear, month: thisMonth, focus_area_id: areaId })
       .expect(200);
 
     const res = await request(app)
@@ -122,7 +122,7 @@ describe('moods', () => {
     const date = isoDate();
     await request(app).post('/api/moods').send({ date, rating: 8 }).expect(200);
 
-    const res = await request(app).get('/api/moods').expect(200);
+    const res = await request(app).get(`/api/moods?month=${date.slice(0, 7)}`).expect(200);
     expect(res.body.length).toBeGreaterThan(0);
     expect(res.body.find((m) => m.date === date).rating).toBe(8);
   });

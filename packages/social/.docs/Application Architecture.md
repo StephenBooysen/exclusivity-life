@@ -42,7 +42,7 @@
 
 ## 1. Purpose and Scope
 
-This document describes how Exclusivity is built: the process topology, the layering, the data model, and the mechanisms behind each product capability in the PRD. It is written against the **prototype-scale target** agreed for v1 — a single Node process, JSON-file persistence through `me-platform-core`, in-memory cache and queue, local filesystem media. §25 documents the migration path to MongoDB, Redis and object storage, which is a provider swap in one file rather than a rewrite.
+This document describes how Exclusivity is built: the process topology, the layering, the data model, and the mechanisms behind each product capability in the PRD. It is written against the **prototype-scale target** agreed for v1 — a single Node process, JSON-file persistence through `nooblyjs-core`, in-memory cache and queue, local filesystem media. §25 documents the migration path to MongoDB, Redis and object storage, which is a provider swap in one file rather than a rewrite.
 
 It follows the conventions already established in this suite (`me-intermittent-fast`, `me-money-manager`): native JavaScript, CommonJS on the server, ES modules in the browser, no build step, no framework on the frontend.
 
@@ -50,7 +50,7 @@ It follows the conventions already established in this suite (`me-intermittent-f
 
 ## 2. Architectural Overview
 
-Exclusivity is a **modular monolith**. One Express process serves the API, the static PWA, the realtime socket, the admin console and the scheduled jobs. Domain logic lives in factory-constructed services with injected dependencies; infrastructure lives entirely in `me-platform-core` behind provider abstractions.
+Exclusivity is a **modular monolith**. One Express process serves the API, the static PWA, the realtime socket, the admin console and the scheduled jobs. Domain logic lives in factory-constructed services with injected dependencies; infrastructure lives entirely in `nooblyjs-core` behind provider abstractions.
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────┐
@@ -82,7 +82,7 @@ Exclusivity is a **modular monolith**. One Express process serves the API, the s
 │  └──────────────────┬─────────────────────────────────────────────┘    │
 └─────────────────────┼───────────────────────────────────────────────────┘
 ┌─────────────────────▼───────────────────────────────────────────────────┐
-│  me-platform-core — ServiceRegistry (singleton, DI, event bus)          │
+│  nooblyjs-core — ServiceRegistry (singleton, DI, event bus)          │
 │                                                                          │
 │  logging(file) · caching(memory) · dataService(file) · queueing(memory) │
 │  scheduling(memory) · filing(local) · searching(memory) · notifying     │
@@ -99,7 +99,7 @@ Exclusivity is a **modular monolith**. One Express process serves the API, the s
 | # | Decision | Rationale |
 |---|---|---|
 | AD-1 | Modular monolith, not services | One developer, prototype scale. Module boundaries are enforced by dependency rules (§6), so the seams for later extraction exist without the operational cost now. |
-| AD-2 | All infrastructure through `me-platform-core` | Provider abstraction is the migration path (§25). No direct `fs`, `redis` or `mongodb` calls in application code. |
+| AD-2 | All infrastructure through `nooblyjs-core` | Provider abstraction is the migration path (§25). No direct `fs`, `redis` or `mongodb` calls in application code. |
 | AD-3 | Domain services are factories with injected dependencies | Matches the suite convention; makes every service unit-testable with fakes and no module mocking. |
 | AD-4 | Routes are thin | No business rule may live in a route handler. Rules are tested at the service layer, where they are not coupled to HTTP. |
 | AD-5 | Server-side authorisation on every request | The client is untrusted. Entitlements, match membership and block state are re-derived server-side each time (PRD F5.1, F6.4). |
@@ -207,7 +207,7 @@ me-dating-app/
 
 ## 5. Platform-Core Integration
 
-`me-platform-core` exports an **already-constructed** `ServiceRegistry` instance — there is no `.serviceRegistry` property to reach for and no class to instantiate. `backend/services/platform.js` initialises it exactly once per process and hands back only the services the app uses.
+`nooblyjs-core` exports an **already-constructed** `ServiceRegistry` instance — there is no `.serviceRegistry` property to reach for and no class to instantiate. `backend/services/platform.js` initialises it exactly once per process and hands back only the services the app uses.
 
 ```js
 'use strict';
@@ -218,7 +218,7 @@ const config = require('../config');
 let platform = null;
 
 /**
- * Initializes the me-platform-core service registry once per process. The
+ * Initializes the nooblyjs-core service registry once per process. The
  * registry resolves cross-service dependencies (scheduling → working,
  * dataservice → filing, authservice → dataservice) automatically, so callers
  * only ask for the top-level services they use.
@@ -227,7 +227,7 @@ let platform = null;
 function initPlatform(app) {
   if (platform) return platform;
 
-  const serviceRegistry = require('me-platform-core');
+  const serviceRegistry = require('nooblyjs-core');
   const EventEmitter = require('node:events');
   const eventEmitter = new EventEmitter();
 
@@ -278,7 +278,7 @@ module.exports = { initPlatform, getPlatform };
 
 ### 5.1 Platform API surface actually used
 
-Verified against `me-platform-core@1.0.10`. Note the method names — several differ from the framework README.
+Verified against `nooblyjs-core@1.0.10`. Note the method names — several differ from the framework README.
 
 | Service | Methods used | Notes |
 |---|---|---|
@@ -310,7 +310,7 @@ Verified against `me-platform-core@1.0.10`. Note the method names — several di
 ## 6. Layering and Dependency Rules
 
 ```
-routes/  ──▶  services/  ──▶  store.js / cacheVersion.js  ──▶  platform.js  ──▶  me-platform-core
+routes/  ──▶  services/  ──▶  store.js / cacheVersion.js  ──▶  platform.js  ──▶  nooblyjs-core
    │              │
    └──▶ middleware/ (auth, entitlements, csrf, rate limits)
 ```
@@ -319,7 +319,7 @@ Enforced rules — violations are review-blocking:
 
 1. **Routes never touch `store` or `dataService` directly.** They call a domain service.
 2. **Domain services never import Express** and never see `req`/`res`. They take plain arguments and return plain data or throw typed errors.
-3. **Only `platform.js` requires `me-platform-core`.** Every other module receives services by injection.
+3. **Only `platform.js` requires `nooblyjs-core`.** Every other module receives services by injection.
 4. **Only `store.js` calls `dataService`.** Container names and the id-patching quirk are contained there.
 5. **`scoring.js` is pure** — no I/O, no clock reads except an injected `now`. It is the most heavily unit-tested file in the codebase.
 6. **Cross-service calls flow one way.** `matchingService` may call `entitlementService`; `entitlementService` may not call `matchingService`. Cycles are resolved by moving shared logic down, not by lazy requires.
@@ -937,7 +937,7 @@ Additions for this app:
 | Secrets | Environment only, via `dotenv`; nothing in the repository; `.application/` git-ignored |
 | Platform dashboards | `/platform-core` requires login in production (`servicesAuth.requireLogin`) and is bound to admin roles |
 | Enumeration | Sign-in, password reset and application status return uniform responses regardless of account existence |
-| Dependencies | `npm audit` in CI; `me-platform-core` pinned as a local sibling path |
+| Dependencies | `npm audit` in CI; `nooblyjs-core` pinned as a local sibling path |
 
 **Threat model — the three that matter most for this product:**
 

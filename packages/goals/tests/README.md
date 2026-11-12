@@ -36,7 +36,7 @@ stub `fetch`. Nothing here needs an API key or reaches api.anthropic.com.
 
 ## The service registry is not loaded
 
-`app.js` initialises `digital-technologies-core`, which mounts the `/services`
+`app.js` initialises `nooblyjs-core`, which mounts the `/services`
 admin dashboards. That is not part of this app's surface and would slow every
 suite, so the harness omits it. If those dashboards ever become load-bearing,
 they need their own suite.

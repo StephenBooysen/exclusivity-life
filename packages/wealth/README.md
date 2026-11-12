@@ -15,7 +15,7 @@ On first boot the app seeds itself with example starter data (accounts, debit or
 ## Structure
 
 - `index.js` — process entry point, starts the Express app on `PORT` (default 11001)
-- `backend/` — Express app, routes, and services; JSON-file storage via `digital-technologies-core` (`../me-platform-core`), with caching, a queue-backed activity log, and a scheduled daily net-worth snapshot job wired through the same platform
+- `backend/` — Express app, routes, and services; JSON-file storage via `nooblyjs-core` (`../../../nooblyjs-core`), with caching, a queue-backed activity log, and a scheduled daily net-worth snapshot job wired through the same platform
 - `public/` — the mobile web frontend: plain HTML/CSS/JS (ES modules), no build step, no framework
 - `.docs/PRD.md` — product requirements
 - `.docs/Design/` — the visual design handoff this app's frontend was built against

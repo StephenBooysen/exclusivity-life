@@ -16,7 +16,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - **Charts**: Chart.js for data visualization
 - **Date handling**: date-fns
 - **AI Integration**: Anthropic Claude API (claude-3-5-sonnet-20241022)
-- **Framework**: Digital Technologies Core application registry (local package at `../me-platform-core`)
+- **Framework**: Digital Technologies Core application registry (local package at `../../../nooblyjs-core`)
 - **Development**: Nodemon, ESLint, Prettier
 
 ## Development Commands

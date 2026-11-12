@@ -18,13 +18,13 @@ npm run kill    # scripts/kill-port.js — force-kills whatever is listening on 
 
 There is no test suite (`npm test` is a stub that exits 1) and no lint/build step — the frontend is plain ES modules served as-is, no bundler.
 
-`me-platform-core` is a **local sibling dependency** (`"../me-platform-core/"` in package.json) — that repo must be checked out next to this one for `npm install` to resolve. Note its own package.json still declares the older name `digital-technologies-core`; require it by the dependency key (`me-platform-core`). Its entry point exports an already-constructed `ServiceRegistry` **instance**, so `require('me-platform-core')` *is* the registry — don't reach for a `.serviceRegistry` property.
+`nooblyjs-core` is a **local sibling dependency** (`"../../../nooblyjs-core/"` in package.json) — that repo must be checked out next to this one for `npm install` to resolve. Its package.json is named `nooblyjs-core`; require it by the dependency key (`nooblyjs-core`). Its entry point exports an already-constructed `ServiceRegistry` **instance**, so `require('nooblyjs-core')` *is* the registry — don't reach for a `.serviceRegistry` property.
 
 ## Architecture
 
 ### Backend shape
 `index.js` → `backend/app.js#createApp()` wires everything:
-- `backend/services/platform.js` initializes the `me-platform-core` service registry once per process, exposing `logger`, `cache`, `dataService` (file-backed), `queue`, and `scheduler`.
+- `backend/services/platform.js` initializes the `nooblyjs-core` service registry once per process, exposing `logger`, `cache`, `dataService` (file-backed), `queue`, and `scheduler`.
 - `backend/services/store.js` is a thin CRUD wrapper (`list/get/create/update/remove`) over the raw `dataService` — every domain service takes this `store` rather than talking to `dataService` directly.
 - `backend/services/cacheVersion.js` implements a generation-counter cache: any write calls `versionedCache.bump()`, and expensive computations call `versionedCache.remember(key, compute)` which keys itself off the current version — no pattern-delete needed, a bump just orphans the previous generation.
 - Each domain has a paired `backend/services/<x>Service.js` (business logic) + `backend/routes/<x>.js` (thin Express handlers), instantiated in `app.js` and wired together in `backend/routes/index.js`.

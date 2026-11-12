@@ -6,7 +6,7 @@ const config = require('../config');
 let platform = null;
 
 /**
- * Initializes the digital-technologies-core service registry once per
+ * Initializes the nooblyjs-core service registry once per
  * process and returns the handful of services this app depends on. The
  * registry resolves cross-service dependencies (e.g. scheduling -> working)
  * automatically, so callers only need the top-level services they use.
@@ -15,7 +15,7 @@ let platform = null;
 function initPlatform(app) {
   if (platform) return platform;
 
-  const serviceRegistry = require('digital-technologies-core');
+  const serviceRegistry = require('nooblyjs-core');
   const EventEmitter = require('node:events');
   const eventEmitter = new EventEmitter();
 

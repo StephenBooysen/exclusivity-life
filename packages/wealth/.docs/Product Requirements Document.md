@@ -183,7 +183,7 @@ Moving money between your own accounts, or making a payment toward a credit card
 ### 5.11 Data Entry, Import & Security
 - All balances are manually entered or CSV-imported (v1 has no live bank feed — see §4.2).
 - CSV import for bank/credit-card statement exports to bulk-load discretionary expenses.
-- Local-first data storage (this repo already scaffolds an Express app on `nooblyjs-core`/`me-platform-core` with a data directory and a basic auth/roles system in `.application/data`) — single-user auth is sufficient for v1; no data leaves the user's own deployment.
+- Local-first data storage (this repo already scaffolds an Express app on `nooblyjs-core` with a data directory and a basic auth/roles system in `.application/data`) — single-user auth is sufficient for v1; no data leaves the user's own deployment.
 - Regular export (CSV/JSON) of all data for backup, independent of any future migration.
 
 ## 6. High-Level Data Model
@@ -244,7 +244,7 @@ Category (shared by discretionary spend and category-based projections):
 
 ## 8. Platform Decision
 
-Delivered as a **mobile web application** (responsive, PWA-installable) rather than a native app, consistent with the existing Express/`me-platform-core` scaffold in this repo. This gives Stephen a single codebase, home-screen install on his phone, and full desktop access for the heavier projection/scenario work — at the cost of push notifications being best-effort (web push) rather than native.
+Delivered as a **mobile web application** (responsive, PWA-installable) rather than a native app, consistent with the existing Express/`nooblyjs-core` scaffold in this repo. This gives Stephen a single codebase, home-screen install on his phone, and full desktop access for the heavier projection/scenario work — at the cost of push notifications being best-effort (web push) rather than native.
 
 ## 9. Assumptions & Open Questions
 

@@ -1,7 +1,7 @@
 /**
  * @fileoverview Exclusivity — entry point.
  * Boots the Express app assembled in backend/app.js (native JS backend,
- * JSON-file storage via me-platform-core, static PWA frontend in ./public —
+ * JSON-file storage via nooblyjs-core, static PWA frontend in ./public —
  * no React, no build step), attaches the realtime socket to the same server,
  * seeds the console account, and starts the background jobs.
  */

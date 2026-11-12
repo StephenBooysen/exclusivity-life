@@ -33,7 +33,7 @@
   <div class="am-tabbar-inner">
     <% tabs.forEach(function (tab) { %>
       <a class="am-tab <%= currentPage === tab.key ? 'active' : '' %>" href="<%= tab.href %>"
-         <%= currentPage === tab.key ? 'aria-current="page"' : '' %>>
+         <%- currentPage === tab.key ? 'aria-current="page"' : '' %>>
         <%- svg(tab.icon) %>
         <span class="am-tab-label"><%= tab.label %></span>
       </a>
@@ -57,7 +57,7 @@
   <div class="am-sheet-body" style="gap:2px">
     <% overflow.forEach(function (item) { %>
       <a class="am-navrow <%= currentPage === item.key ? 'active' : '' %>" href="<%= item.href %>"
-         <%= currentPage === item.key ? 'aria-current="page"' : '' %>>
+         <%- currentPage === item.key ? 'aria-current="page"' : '' %>>
         <span class="am-navrow-icon" aria-hidden="true">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><%- icons[item.icon] %></svg>

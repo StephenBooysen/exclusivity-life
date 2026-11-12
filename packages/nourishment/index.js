@@ -1,7 +1,7 @@
 /**
  * @fileoverview Me Intermittent Fast — entry point.
  * Boots the Express app assembled in backend/app.js (native JS backend,
- * JSON-file storage via me-platform-core, static frontend in
+ * JSON-file storage via nooblyjs-core, static frontend in
  * ./public — no React, no build step).
  */
 

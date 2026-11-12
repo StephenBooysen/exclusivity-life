@@ -1,7 +1,7 @@
 'use strict';
 
 /**
- * @fileoverview me-platform-core bootstrap. The only module in the app that
+ * @fileoverview nooblyjs-core bootstrap. The only module in the app that
  * requires the framework — every other module receives services by injection,
  * which is what keeps the migration in .docs §25 to a single-file change.
  */
@@ -11,7 +11,7 @@ const config = require('../config');
 let platform = null;
 
 /**
- * Initializes the me-platform-core service registry once per process and
+ * Initializes the nooblyjs-core service registry once per process and
  * returns the services this app depends on. The registry resolves
  * cross-service dependencies (scheduling -> working, dataservice -> filing,
  * authservice -> dataservice) automatically, so callers only ask for the
@@ -21,10 +21,10 @@ let platform = null;
 function initPlatform(app) {
   if (platform) return platform;
 
-  // me-platform-core's entry point exports an already-constructed
+  // nooblyjs-core's entry point exports an already-constructed
   // ServiceRegistry instance, not a namespace object — there is no
   // `.serviceRegistry` to reach for.
-  const serviceRegistry = require('me-platform-core');
+  const serviceRegistry = require('nooblyjs-core');
   const EventEmitter = require('node:events');
   const eventEmitter = new EventEmitter();
   // Services fan out to every listener on this bus; the default cap of 10

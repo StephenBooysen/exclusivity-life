@@ -5,7 +5,7 @@ application, men pass a short interview before they join, and women join free on
 
 Part of the same suite as [me-money-manager](../me-money-manager) and
 [me-intermittent-fast](../me-intermittent-fast) — same stack, same conventions: native
-JavaScript, Express, JSON-file storage through `me-platform-core`, a plain HTML/CSS/ES-module
+JavaScript, Express, JSON-file storage through `nooblyjs-core`, a plain HTML/CSS/ES-module
 frontend, no build step, no framework.
 
 Product and technical detail live in [`.docs`](./.docs):
@@ -22,7 +22,7 @@ npm run dev
 Then open http://localhost:9401 (or `PORT=xxxx npm run dev`). `npm run kill` frees the port if a
 previous run is still holding it.
 
-`me-platform-core` is a local sibling dependency (`../me-platform-core/`), so that repo must be
+`nooblyjs-core` is a local sibling dependency (`../../../nooblyjs-core/`), so that repo must be
 checked out next to this one for `npm install` to resolve.
 
 On first boot an admin account is seeded so the review queue is reachable:

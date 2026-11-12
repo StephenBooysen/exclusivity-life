@@ -11,7 +11,7 @@
 
 'use strict';
 
-const Dataservicefiles = require('me-platform-core/src/dataservice/providers/dataservicefiles');
+const Dataservicefiles = require('nooblyjs-core/src/dataservice/providers/dataservicefiles');
 const { computeCalendar, computeStreak, computeCompletion } = require('../services/historyService');
 
 const STREAK_SNAPSHOT_CONTAINER = 'streak_snapshots';

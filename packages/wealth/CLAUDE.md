@@ -16,13 +16,13 @@ npm run kill     # scripts/kill-port.js — force-kills whatever is listening on
 
 There is no test suite (`npm test` is a stub that exits 1) and no lint/build step — the frontend is plain ES modules served as-is, no bundler.
 
-`digital-technologies-core` is a **local sibling dependency** (`"../me-platform-core/"` in package.json) — that repo must be checked out next to this one for `npm install` to resolve.
+`nooblyjs-core` is a **local sibling dependency** (`"../../../nooblyjs-core/"` in package.json) — that repo must be checked out next to this one for `npm install` to resolve.
 
 ## Architecture
 
 ### Backend shape
 `index.js` → `backend/app.js#createApp()` wires everything:
-- `backend/services/platform.js` initializes the `digital-technologies-core` service registry once per process, exposing `logger`, `cache`, `dataService` (file-backed), `queue`, and `scheduler`.
+- `backend/services/platform.js` initializes the `nooblyjs-core` service registry once per process, exposing `logger`, `cache`, `dataService` (file-backed), `queue`, and `scheduler`.
 - `backend/services/store.js` is a thin CRUD wrapper (`list/get/create/update/remove`) over the raw `dataService` — every domain service takes this `store` rather than talking to `dataService` directly.
 - `backend/services/cacheVersion.js` implements a generation-counter cache: any write calls `versionedCache.bump()`, and expensive computations (e.g. projections) call `versionedCache.remember(key, compute)` which keys itself off the current version — no pattern-delete needed, a bump just orphans the previous generation.
 - Each domain has a paired `backend/services/<x>Service.js` (business logic) + `backend/routes/<x>.js` (thin Express handlers), instantiated in `app.js` and wired together in `backend/routes/index.js`. Routes destructure only the services they need from the shared `services` bag.

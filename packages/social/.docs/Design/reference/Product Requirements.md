@@ -35,7 +35,7 @@ Cachet is an invitation-grade dating platform for two curated audiences: profess
 
 The product's entire value proposition is **the bar at the door**. Every other feature — the daily curated introductions, the match-gated messaging, the verification badges — exists to make that bar visible and credible to members who could get a date anywhere. Volume is explicitly not the goal; a member who receives five introductions a day and takes two of them seriously is the target behaviour.
 
-Cachet ships as a mobile-first progressive web app on the existing `me-platform-core` stack: a native JavaScript Express backend, no build step, JSON-file persistence, and the platform's caching, queueing, scheduling, filing, searching and auth services. This keeps v1 a single-process application that runs with `npm run dev` and no external infrastructure, while leaving a documented one-line path to MongoDB, Redis and S3 when volume demands it (see the Architecture document, §21).
+Cachet ships as a mobile-first progressive web app on the existing `nooblyjs-core` stack: a native JavaScript Express backend, no build step, JSON-file persistence, and the platform's caching, queueing, scheduling, filing, searching and auth services. This keeps v1 a single-process application that runs with `npm run dev` and no external infrastructure, while leaving a documented one-line path to MongoDB, Redis and S3 when volume demands it (see the Architecture document, §21).
 
 ### Value proposition by side
 

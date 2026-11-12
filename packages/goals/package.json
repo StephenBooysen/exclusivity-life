@@ -25,18 +25,20 @@
     "chart.js": "^4.2.1",
     "cors": "^2.8.5",
     "date-fns": "^2.29.3",
-    "digital-technologies-core": "file:../me-platform-core",
     "ejs": "^3.1.10",
     "express": "^4.21.2",
     "express-ejs-layouts": "^2.5.1",
     "node-fetch": "^2.7.0",
+    "nooblyjs-core": "file:../../../nooblyjs-core",
     "sqlite3": "^5.1.6",
     "uuid": "^9.0.0"
   },
   "devDependencies": {
     "eslint": "^8.36.0",
     "jest": "^29.5.0",
+    "jest-environment-jsdom": "^30.5.2",
     "nodemon": "^3.0.0",
-    "prettier": "^2.8.4"
+    "prettier": "^2.8.4",
+    "supertest": "^7.3.2"
   }
 }
