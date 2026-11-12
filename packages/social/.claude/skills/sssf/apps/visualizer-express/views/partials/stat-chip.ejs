@@ -1,0 +1,9 @@
+<%#
+  kind:    "cost" | "tokens" | "runtime" | "read" | "written"
+  value:   raw — cost in dollars, tokens as a count, runtime in milliseconds
+  compact: bare value, no pill chrome — for tight spots like waterfall blocks
+%>
+<% const _compact = typeof compact !== "undefined" && compact; %>
+<span class="stat<%= _compact ? " compact" : "" %><%= typeof extraClass !== "undefined" ? " " + extraClass : "" %>" title="<%= STAT_TITLES[kind] %>"
+  ><%- icon(STAT_ICONS[kind], { size: _compact ? 17 : 19, strokeWidth: 2, className: "stat-icon" }) %><span class="stat-value"><%= statText(kind, value) %></span></span
+>

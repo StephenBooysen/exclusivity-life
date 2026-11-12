@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
+  <!--
+    The registration mark, struck four times.
+
+    In this system every framed object carries four `+` marks just outside its
+    corners — they are what says "a drawing of the thing" rather than a filled
+    card. Reduced to an icon, the marks alone carry it: they survive 16px in a
+    way a hairline frame does not, and nothing else in the system looks like
+    them. Square, steel, no radius, no fill — the same three rules as every
+    other object.
+
+    Content sits inside the central 80% so the maskable crop cannot clip a mark.
+  -->
+  <rect width="128" height="128" fill="#0e1113"/>
+
+  <!-- The implied object the marks register. -->
+  <rect x="36" y="36" width="56" height="56" fill="none"
+        stroke="#8fb3d6" stroke-width="3" opacity="0.3"/>
+
+  <!-- Weighted for the favicon: at 16px the four marks have to survive as four
+       distinct strokes, so they are thicker and set further apart than the
+       6px offset the CSS uses on screen. -->
+  <g stroke="#8fb3d6" stroke-width="11" stroke-linecap="butt">
+    <path d="M36 18v36M18 36h36"/>
+    <path d="M92 18v36M74 36h36"/>
+    <path d="M36 74v36M18 92h36"/>
+    <path d="M92 74v36M74 92h36"/>
+  </g>
+</svg>

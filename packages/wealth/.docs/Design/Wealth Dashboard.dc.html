@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+
+<helmet>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { margin: 0; background: #EAE7E0; font-family: 'Manrope', sans-serif; -webkit-font-smoothing: antialiased; }
+    * { box-sizing: border-box; }
+    ::-webkit-scrollbar { display: none; }
+    a { color: #1F6F5C; text-decoration: none; }
+    a:hover { color: #164F42; }
+  </style>
+</helmet>
+
+<div style="min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 40px 20px;">
+  <div style="position: relative; width: 402px; height: 874px; background: #0C0D0C; border-radius: 54px; padding: 12px; box-shadow: 0 40px 80px -20px rgba(0,0,0,0.35), 0 10px 30px -10px rgba(0,0,0,0.25);">
+    <div style="width: 100%; height: 100%; background: #F7F5F0; border-radius: 42px; overflow: hidden; position: relative; display: flex; flex-direction: column;">
+
+      <div style="flex-shrink: 0; height: 48px; display: flex; align-items: center; justify-content: space-between; padding: 0 28px; background: #F7F5F0;">
+        <div style="font-size: 15px; font-weight: 700; color: #1C2321; letter-spacing: -0.2px;">9:41</div>
+        <div style="display: flex; align-items: center; gap: 6px;">
+          <svg width="18" height="12" viewBox="0 0 18 12" fill="none"><rect x="0" y="7" width="3" height="5" rx="0.5" fill="#1C2321"/><rect x="5" y="4.5" width="3" height="7.5" rx="0.5" fill="#1C2321"/><rect x="10" y="2" width="3" height="10" rx="0.5" fill="#1C2321"/><rect x="15" y="0" width="3" height="12" rx="0.5" fill="#1C2321"/></svg>
+          <svg width="24" height="12" viewBox="0 0 24 12" fill="none"><rect x="0.5" y="0.5" width="21" height="11" rx="2.5" stroke="#1C2321"/><rect x="2" y="2" width="17" height="8" rx="1.5" fill="#1C2321"/><rect x="22.5" y="4" width="1.5" height="4" rx="0.75" fill="#1C2321"/></svg>
+        </div>
+      </div>
+
+      <div style="flex-shrink: 0; padding: 4px 24px 16px; display: flex; align-items: center; justify-content: space-between;">
+        <div>
+          <div style="font-size: 13px; color: #8A8578; font-weight: 500;">Good morning</div>
+          <div style="font-size: 20px; color: #1C2321; font-weight: 800; letter-spacing: -0.3px;">Sarah Naidoo</div>
+        </div>
+        <div style="width: 40px; height: 40px; border-radius: 50%; background: #1F6F5C; color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 14px;">SN</div>
+      </div>
+
+      <div style="flex: 1; overflow-y: auto; padding: 0 24px 24px;">
+
+        <!-- HOME -->
+        <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+          <div style="background: linear-gradient(135deg, #1F6F5C 0%, #16463A 100%); border-radius: 24px; padding: 24px; color: #fff; margin-bottom: 20px;">
+            <div style="font-size: 13px; color: #C9E4DB; font-weight: 500; margin-bottom: 6px;">Total Net Worth</div>
+            <div style="font-size: 34px; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 10px;">R1,154,160</div>
+            <div style="display: flex; align-items: center; gap: 6px; margin-bottom: 16px;">
+              <span style="background: rgba(255,255,255,0.18); color: #A8E6C9; font-size: 12px; font-weight: 700; padding: 3px 8px; border-radius: 20px;">▲ 2.4%</span>
+              <span style="font-size: 12px; color: #C9E4DB;">this month</span>
+            </div>
+            <svg width="100%" height="48" viewBox="0 0 320 48" preserveAspectRatio="none" style="display: block;">
+              <path d="M0,38 L32,34 L64,36 L96,26 L128,28 L160,18 L192,22 L224,12 L256,16 L288,6 L320,10" fill="none" stroke="#A8E6C9" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+
+          <div style="font-size: 15px; font-weight: 700; color: #1C2321; margin-bottom: 12px;">Where It Sits</div>
+          <div style="background: #fff; border-radius: 18px; border: 1px solid #EDEAE2; padding: 4px 16px; margin-bottom: 20px;">
+            <div style="display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid #F2F0EA;"><div style="font-size: 14px; color: #1C2321;">Cash & savings</div><div style="font-size: 14px; font-weight: 700; color: #1C2321;">R182,400</div></div>
+            <div style="display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid #F2F0EA;"><div style="font-size: 14px; color: #1C2321;">Investments & retirement</div><div style="font-size: 14px; font-weight: 700; color: #1C2321;">R412,600</div></div>
+            <div style="display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid #F2F0EA;"><div style="font-size: 14px; color: #1C2321;">Property equity</div><div style="font-size: 14px; font-weight: 700; color: #1C2321;">R610,000</div></div>
+            <div style="display: flex; justify-content: space-between; padding: 12px 0;"><div style="font-size: 14px; color: #C4622D;">Other debt</div><div style="font-size: 14px; font-weight: 700; color: #C4622D;">−R50,840</div></div>
+          </div>
+
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+            <div style="font-size: 15px; font-weight: 700; color: #1C2321;">Your Accounts</div>
+            <div onClick="{{ setTabAccounts }}" style="font-size: 12px; color: #1F6F5C; font-weight: 600; cursor: pointer;">See all</div>
+          </div>
+          <div style="display: flex; gap: 12px; overflow-x: auto; margin: 0 -24px; padding: 0 24px 4px; margin-bottom: 24px;">
+            <div style="flex-shrink: 0; width: 168px; background: #fff; border-radius: 18px; padding: 16px; border: 1px solid #EDEAE2;">
+              <div style="font-size: 11px; color: #8A8578; font-weight: 600; margin-bottom: 8px;">CREDIT CARD</div>
+              <div style="font-size: 17px; font-weight: 800; color: #1C2321; margin-bottom: 10px;">R12,340</div>
+              <div style="height: 5px; background: #EDEAE2; border-radius: 3px; overflow: hidden; margin-bottom: 6px;"><div style="width: 25%; height: 100%; background: #C4622D;"></div></div>
+              <div style="font-size: 11px; color: #8A8578;">of R50,000 limit</div>
+            </div>
+            <div style="flex-shrink: 0; width: 168px; background: #fff; border-radius: 18px; padding: 16px; border: 1px solid #EDEAE2;">
+              <div style="font-size: 11px; color: #8A8578; font-weight: 600; margin-bottom: 8px;">HOME LOAN</div>
+              <div style="font-size: 17px; font-weight: 800; color: #1C2321; margin-bottom: 10px;">R1,240,000</div>
+              <div style="height: 5px; background: #EDEAE2; border-radius: 3px; overflow: hidden; margin-bottom: 6px;"><div style="width: 78%; height: 100%; background: #1F6F5C;"></div></div>
+              <div style="font-size: 11px; color: #8A8578;">R14,200 / month</div>
+            </div>
+            <div style="flex-shrink: 0; width: 168px; background: #fff; border-radius: 18px; padding: 16px; border: 1px solid #EDEAE2;">
+              <div style="font-size: 11px; color: #8A8578; font-weight: 600; margin-bottom: 8px;">SAVINGS</div>
+              <div style="font-size: 17px; font-weight: 800; color: #1C2321; margin-bottom: 10px;">R182,400</div>
+              <div style="height: 5px; background: #EDEAE2; border-radius: 3px; overflow: hidden; margin-bottom: 6px;"><div style="width: 60%; height: 100%; background: #3F8F6F;"></div></div>
+              <div style="font-size: 11px; color: #8A8578;">8.1% p.a.</div>
+            </div>
+          </div>
+
+          <div style="font-size: 15px; font-weight: 700; color: #1C2321; margin-bottom: 12px;">Upcoming Debit Orders</div>
+          <div style="background: #fff; border-radius: 18px; border: 1px solid #EDEAE2; margin-bottom: 24px;">
+            <div style="display: flex; align-items: center; gap: 12px; padding: 14px 16px; border-bottom: 1px solid #F2F0EA;">
+              <div style="width: 8px; height: 8px; border-radius: 50%; background: #1F6F5C; flex-shrink: 0;"></div>
+              <div style="flex: 1;"><div style="font-size: 14px; font-weight: 600; color: #1C2321;">Home Loan Repayment</div><div style="font-size: 12px; color: #8A8578;">In 3 days · 1st</div></div>
+              <div style="font-size: 14px; font-weight: 700; color: #1C2321;">R14,200</div>
+            </div>
+            <div style="display: flex; align-items: center; gap: 12px; padding: 14px 16px; border-bottom: 1px solid #F2F0EA;">
+              <div style="width: 8px; height: 8px; border-radius: 50%; background: #C4622D; flex-shrink: 0;"></div>
+              <div style="flex: 1;"><div style="font-size: 14px; font-weight: 600; color: #1C2321;">Car Insurance</div><div style="font-size: 12px; color: #8A8578;">In 5 days · 5th</div></div>
+              <div style="font-size: 14px; font-weight: 700; color: #1C2321;">R1,150</div>
+            </div>
+            <div style="display: flex; align-items: center; gap: 12px; padding: 14px 16px;">
+              <div style="width: 8px; height: 8px; border-radius: 50%; background: #8A8578; flex-shrink: 0;"></div>
+              <div style="flex: 1;"><div style="font-size: 14px; font-weight: 600; color: #1C2321;">Fibre Internet</div><div style="font-size: 12px; color: #8A8578;">In 7 days · 7th</div></div>
+              <div style="font-size: 14px; font-weight: 700; color: #1C2321;">R899</div>
+            </div>
+          </div>
+
+          <div style="font-size: 15px; font-weight: 700; color: #1C2321; margin-bottom: 12px;">This Month's Spending</div>
+          <div style="background: #fff; border-radius: 18px; border: 1px solid #EDEAE2; padding: 18px;">
+            <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 10px;">
+              <div style="font-size: 20px; font-weight: 800; color: #1C2321;">R18,240</div>
+              <div style="font-size: 13px; color: #8A8578;">of R22,000 budget</div>
+            </div>
+            <div style="height: 8px; background: #EDEAE2; border-radius: 4px; overflow: hidden;"><div style="width: 83%; height: 100%; background: #1F6F5C;"></div></div>
+          </div>
+        </sc-if>
+
+        <!-- ACCOUNTS -->
+        <sc-if value="{{ isAccounts }}" hint-placeholder-val="{{ false }}">
+          <div style="font-size: 22px; font-weight: 800; color: #1C2321; margin-bottom: 4px;">Accounts</div>
+          <div style="font-size: 13px; color: #8A8578; margin-bottom: 20px;">4 linked accounts</div>
+
+          <div style="font-size: 12px; font-weight: 700; color: #8A8578; letter-spacing: 0.5px; margin-bottom: 8px;">CREDIT CARDS</div>
+          <div style="background: #fff; border-radius: 18px; border: 1px solid #EDEAE2; padding: 16px; margin-bottom: 16px;">
+            <div onClick="{{ toggleCC }}" style="display: flex; align-items: center; gap: 12px; cursor: pointer;">
+              <div style="width: 40px; height: 40px; border-radius: 12px; background: #FBEDE3; display: flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 700; color: #C4622D; flex-shrink: 0;">DC</div>
+              <div style="flex: 1;"><div style="font-size: 14px; font-weight: 700; color: #1C2321;">Discovery Card</div><div style="font-size: 12px; color: #8A8578;">•••• 4471</div></div>
+              <div style="text-align: right;"><div style="font-size: 15px; font-weight: 700; color: #1C2321;">{{ ccBalanceDisplay }}</div><div style="font-size: 11px; color: #8A8578;">owing</div></div>
+            </div>
+            <sc-if value="{{ ccExpanded }}" hint-placeholder-val="{{ false }}">
+              <div style="margin-top: 14px; padding-top: 14px; border-top: 1px solid #F2F0EA;">
+                <sc-if value="{{ editCC }}" hint-placeholder-val="{{ false }}">
+                  <div style="display: flex; gap: 10px; margin-bottom: 10px;">
+                    <div style="flex: 1;"><div style="font-size: 11px; color: #8A8578; margin-bottom: 4px;">Balance owing</div><input type="number" value="{{ ccBalanceInput }}" onChange="{{ updateCCBalance }}" style="width: 100%; border: 1px solid #EDEAE2; border-radius: 10px; padding: 8px 10px; font-size: 13px; font-weight: 700; color: #1C2321; font-family: inherit;"/></div>
+                    <div style="flex: 1;"><div style="font-size: 11px; color: #8A8578; margin-bottom: 4px;">Interest rate %</div><input type="number" value="{{ ccRateInput }}" onChange="{{ updateCCRate }}" style="width: 100%; border: 1px solid #EDEAE2; border-radius: 10px; padding: 8px 10px; font-size: 13px; font-weight: 700; color: #1C2321; font-family: inherit;"/></div>
+                  </div>
+                  <div onClick="{{ saveEdit }}" style="text-align: center; background: #1F6F5C; color: #fff; font-size: 13px; font-weight: 700; padding: 10px; border-radius: 10px; cursor: pointer;">Save</div>
+                </sc-if>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px;">
+                  <div><div style="font-size: 11px; color: #8A8578;">Credit limit</div><div style="font-size: 13px; font-weight: 700; color: #1C2321;">R50,000</div></div>
+                  <div><div style="font-size: 11px; color: #8A8578;">Interest rate</div><div style="font-size: 13px; font-weight: 700; color: #1C2321;">{{ ccRateDisplay }}</div></div>
+                  <div><div style="font-size: 11px; color: #8A8578;">Min. payment</div><div style="font-size: 13px; font-weight: 700; color: #1C2321;">R620</div></div>
+                  <div><div style="font-size: 11px; color: #8A8578;">Due date</div><div style="font-size: 13px; font-weight: 700; color: #1C2321;">5th monthly</div></div>
+                </div>
+                <div onClick="{{ openEditCC }}" style="text-align: center; font-size: 13px; font-weight: 700; color: #1F6F5C; border: 1px solid #1F6F5C; border-radius: 10px; padding: 9px; cursor: pointer;">Update balance & rate</div>
+              </div>
+            </sc-if>
+          </div>
+
+          <div style="font-size: 12px; font-weight: 700; color: #8A8578; letter-spacing: 0.5px; margin-bottom: 8px;">LOANS</div>
+          <div style="background: #fff; border-radius: 18px; border: 1px solid #EDEAE2; padding: 16px; margin-bottom: 16px;">
+            <div onClick="{{ togglePL }}" style="display: flex; align-items: center; gap: 12px; cursor: pointer;">
+              <div style="width: 40px; height: 40px; border-radius: 12px; background: #EAF1EE; display: flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 700; color: #1F6F5C; flex-shrink: 0;">SB</div>
+              <div style="flex: 1;"><div style="font-size: 14px; font-weight: 700; color: #1C2321;">Personal Loan</div><div style="font-size: 12px; color: #8A8578;">Standard Bank</div></div>
+              <div style="text-align: right;"><div style="font-size: 15px; font-weight: 700; color: #1C2321;">{{ plBalanceDisplay }}</div><div style="font-size: 11px; color: #8A8578;">remaining</div></div>
+            </div>
+            <sc-if value="{{ plExpanded }}" hint-placeholder-val="{{ false }}">
+              <div style="margin-top: 14px; padding-top: 14px; border-top: 1px solid #F2F0EA;">
+                <sc-if value="{{ editPL }}" hint-placeholder-val="{{ false }}">
+                  <div style="display: flex; gap: 10px; margin-bottom: 10px;">
+                    <div style="flex: 1;"><div style="font-size: 11px; color: #8A8578; margin-bottom: 4px;">Balance remaining</div><input type="number" value="{{ plBalanceInput }}" onChange="{{ updatePLBalance }}" style="width: 100%; border: 1px solid #EDEAE2; border-radius: 10px; padding: 8px 10px; font-size: 13px; font-weight: 700; color: #1C2321; font-family: inherit;"/></div>
+                    <div style="flex: 1;"><div style="font-size: 11px; color: #8A8578; margin-bottom: 4px;">Interest rate %</div><input type="number" value="{{ plRateInput }}" onChange="{{ updatePLRate }}" style="width: 100%; border: 1px solid #EDEAE2; border-radius: 10px; padding: 8px 10px; font-size: 13px; font-weight: 700; color: #1C2321; font-family: inherit;"/></div>
+                  </div>
+                  <div onClick="{{ saveEdit }}" style="text-align: center; background: #1F6F5C; color: #fff; font-size: 13px; font-weight: 700; padding: 10px; border-radius: 10px; cursor: pointer;">Save</div>
+                </sc-if>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px;">
+                  <div><div style="font-size: 11px; color: #8A8578;">Original amount</div><div style="font-size: 13px; font-weight: 700; color: #1C2321;">R60,000</div></div>
+                  <div><div style="font-size: 11px; color: #8A8578;">Interest rate</div><div style="font-size: 13px; font-weight: 700; color: #1C2321;">{{ plRateDisplay }}</div></div>
+                  <div><div style="font-size: 11px; color: #8A8578;">Installment</div><div style="font-size: 13px; font-weight: 700; color: #1C2321;">R2,340 / mo</div></div>
+                  <div><div style="font-size: 11px; color: #8A8578;">Remaining term</div><div style="font-size: 13px; font-weight: 700; color: #1C2321;">22 months</div></div>
+                </div>
+                <div onClick="{{ openEditPL }}" style="text-align: center; font-size: 13px; font-weight: 700; color: #1F6F5C; border: 1px solid #1F6F5C; border-radius: 10px; padding: 9px; cursor: pointer;">Update balance & rate</div>
+              </div>
+            </sc-if>
+          </div>
+
+          <div style="font-size: 12px; font-weight: 700; color: #8A8578; letter-spacing: 0.5px; margin-bottom: 8px;">HOME LOAN</div>
+          <div style="background: #fff; border-radius: 18px; border: 1px solid #EDEAE2; padding: 16px; margin-bottom: 16px;">
+            <div onClick="{{ toggleHL }}" style="display: flex; align-items: center; gap: 12px; cursor: pointer;">
+              <div style="width: 40px; height: 40px; border-radius: 12px; background: #EAF1EE; display: flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 700; color: #1F6F5C; flex-shrink: 0;">AB</div>
+              <div style="flex: 1;"><div style="font-size: 14px; font-weight: 700; color: #1C2321;">Home Loan</div><div style="font-size: 12px; color: #8A8578;">Absa · Variable rate · 42% equity</div></div>
+              <div style="text-align: right;"><div style="font-size: 15px; font-weight: 700; color: #1C2321;">{{ hlBalanceDisplay }}</div><div style="font-size: 11px; color: #8A8578;">remaining</div></div>
+            </div>
+            <sc-if value="{{ hlExpanded }}" hint-placeholder-val="{{ false }}">
+              <div style="margin-top: 14px; padding-top: 14px; border-top: 1px solid #F2F0EA;">
+                <sc-if value="{{ editHL }}" hint-placeholder-val="{{ false }}">
+                  <div style="display: flex; gap: 10px; margin-bottom: 10px;">
+                    <div style="flex: 1;"><div style="font-size: 11px; color: #8A8578; margin-bottom: 4px;">Balance remaining</div><input type="number" value="{{ hlBalanceInput }}" onChange="{{ updateHLBalance }}" style="width: 100%; border: 1px solid #EDEAE2; border-radius: 10px; padding: 8px 10px; font-size: 13px; font-weight: 700; color: #1C2321; font-family: inherit;"/></div>
+                    <div style="flex: 1;"><div style="font-size: 11px; color: #8A8578; margin-bottom: 4px;">Interest rate %</div><input type="number" value="{{ hlRateInput }}" onChange="{{ updateHLRate }}" style="width: 100%; border: 1px solid #EDEAE2; border-radius: 10px; padding: 8px 10px; font-size: 13px; font-weight: 700; color: #1C2321; font-family: inherit;"/></div>
+                  </div>
+                  <div onClick="{{ saveEdit }}" style="text-align: center; background: #1F6F5C; color: #fff; font-size: 13px; font-weight: 700; padding: 10px; border-radius: 10px; cursor: pointer;">Save</div>
+                </sc-if>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px;">
+                  <div><div style="font-size: 11px; color: #8A8578;">Original amount</div><div style="font-size: 13px; font-weight: 700; color: #1C2321;">R1,600,000</div></div>
+                  <div><div style="font-size: 11px; color: #8A8578;">Interest rate</div><div style="font-size: 13px; font-weight: 700; color: #1C2321;">{{ hlRateDisplay }}</div></div>
+                  <div><div style="font-size: 11px; color: #8A8578;">Installment</div><div style="font-size: 13px; font-weight: 700; color: #1C2321;">R14,200 / mo</div></div>
+                  <div><div style="font-size: 11px; color: #8A8578;">Payoff (current)</div><div style="font-size: 13px; font-weight: 700; color: #1C2321;">Feb 2042 · age 55</div></div>
+                </div>
+                <div style="background: #FBEDE3; border-radius: 12px; padding: 12px 14px; font-size: 12px; color: #C4622D; line-height: 1.5; margin-bottom: 12px;">+ R2,000/mo extra → settle 2038, save ~R210,000 interest</div>
+                <div onClick="{{ openEditHL }}" style="text-align: center; font-size: 13px; font-weight: 700; color: #1F6F5C; border: 1px solid #1F6F5C; border-radius: 10px; padding: 9px; cursor: pointer;">Update balance & rate</div>
+              </div>
+            </sc-if>
+          </div>
+
+          <div style="font-size: 12px; font-weight: 700; color: #8A8578; letter-spacing: 0.5px; margin-bottom: 8px;">SAVINGS</div>
+          <div style="background: #fff; border-radius: 18px; border: 1px solid #EDEAE2; padding: 16px;">
+            <div onClick="{{ toggleSA }}" style="display: flex; align-items: center; gap: 12px; cursor: pointer;">
+              <div style="width: 40px; height: 40px; border-radius: 12px; background: #EAF1EE; display: flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 700; color: #3F8F6F; flex-shrink: 0;">SA</div>
+              <div style="flex: 1;"><div style="font-size: 14px; font-weight: 700; color: #1C2321;">Savings Account</div><div style="font-size: 12px; color: #8A8578;">32-Day Notice</div></div>
+              <div style="text-align: right;"><div style="font-size: 15px; font-weight: 700; color: #1C2321;">{{ saBalanceDisplay }}</div><div style="font-size: 11px; color: #8A8578;">balance</div></div>
+            </div>
+            <sc-if value="{{ saExpanded }}" hint-placeholder-val="{{ false }}">
+              <div style="margin-top: 14px; padding-top: 14px; border-top: 1px solid #F2F0EA;">
+                <sc-if value="{{ editSA }}" hint-placeholder-val="{{ false }}">
+                  <div style="display: flex; gap: 10px; margin-bottom: 10px;">
+                    <div style="flex: 1;"><div style="font-size: 11px; color: #8A8578; margin-bottom: 4px;">Balance</div><input type="number" value="{{ saBalanceInput }}" onChange="{{ updateSABalance }}" style="width: 100%; border: 1px solid #EDEAE2; border-radius: 10px; padding: 8px 10px; font-size: 13px; font-weight: 700; color: #1C2321; font-family: inherit;"/></div>
+                    <div style="flex: 1;"><div style="font-size: 11px; color: #8A8578; margin-bottom: 4px;">Interest rate %</div><input type="number" value="{{ saRateInput }}" onChange="{{ updateSARate }}" style="width: 100%; border: 1px solid #EDEAE2; border-radius: 10px; padding: 8px 10px; font-size: 13px; font-weight: 700; color: #1C2321; font-family: inherit;"/></div>
+                  </div>
+                  <div onClick="{{ saveEdit }}" style="text-align: center; background: #1F6F5C; color: #fff; font-size: 13px; font-weight: 700; padding: 10px; border-radius: 10px; cursor: pointer;">Save</div>
+                </sc-if>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px;">
+                  <div><div style="font-size: 11px; color: #8A8578;">Interest rate</div><div style="font-size: 13px; font-weight: 700; color: #1C2321;">{{ saRateDisplay }}</div></div>
+                  <div><div style="font-size: 11px; color: #8A8578;">Linked goal</div><div style="font-size: 13px; font-weight: 700; color: #1C2321;">Emergency fund</div></div>
+                </div>
+                <div onClick="{{ openEditSA }}" style="text-align: center; font-size: 13px; font-weight: 700; color: #1F6F5C; border: 1px solid #1F6F5C; border-radius: 10px; padding: 9px; cursor: pointer;">Update balance & rate</div>
+              </div>
+            </sc-if>
+          </div>
+        </sc-if>
+
+        <!-- EXPENSES -->
+        <sc-if value="{{ isExpenses }}" hint-placeholder-val="{{ false }}">
+          <div style="font-size: 22px; font-weight: 800; color: #1C2321; margin-bottom: 16px;">Cash Flow</div>
+
+          <div style="background: #fff; border-radius: 18px; border: 1px solid #EDEAE2; padding: 18px; margin-bottom: 16px;">
+            <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 10px;">
+              <div style="font-size: 12px; color: #8A8578;">Income</div>
+              <div style="font-size: 15px; font-weight: 700; color: #1C2321;">R58,000</div>
+            </div>
+            <div style="height: 9px; border-radius: 5px; overflow: hidden; display: flex; margin-bottom: 10px;">
+              <div style="width: 54%; background: #1F6F5C;"></div>
+              <div style="width: 26%; background: #D6924F;"></div>
+              <div style="width: 20%; background: #EDEAE2;"></div>
+            </div>
+            <div style="display: flex; gap: 14px; font-size: 11px; color: #8A8578; flex-wrap: wrap;">
+              <div style="display: flex; align-items: center; gap: 5px;"><div style="width:7px;height:7px;border-radius:50%;background:#1F6F5C;"></div>Debit orders R31,240</div>
+              <div style="display: flex; align-items: center; gap: 5px;"><div style="width:7px;height:7px;border-radius:50%;background:#D6924F;"></div>Spent R14,860</div>
+              <div style="display: flex; align-items: center; gap: 5px;"><div style="width:7px;height:7px;border-radius:50%;background:#C9C6BC;"></div>Left R11,900</div>
+            </div>
+          </div>
+
+          <div style="display: flex; background: #EDEAE2; border-radius: 14px; padding: 4px; margin-bottom: 20px;">
+            <div onClick="{{ setSubOrders }}" style="{{ ordersTabStyle }}">Debit Orders</div>
+            <div onClick="{{ setSubSpending }}" style="{{ spendingTabStyle }}">Spending</div>
+          </div>
+
+          <sc-if value="{{ isOrders }}" hint-placeholder-val="{{ true }}">
+            <div style="background: #fff; border-radius: 18px; border: 1px solid #EDEAE2; padding: 4px 0 4px; margin-bottom: 16px;">
+              <div style="display: flex; align-items: center; gap: 12px; padding: 12px 16px; border-bottom: 1px solid #F2F0EA;"><div style="flex:1;"><div style="font-size: 14px; font-weight: 600; color: #1C2321;">Home Loan Repayment</div><div style="font-size: 12px; color: #8A8578;">Monthly · 1st</div></div><div style="font-size: 14px; font-weight: 700; color: #1C2321;">R14,200</div></div>
+              <div style="display: flex; align-items: center; gap: 12px; padding: 12px 16px; border-bottom: 1px solid #F2F0EA;"><div style="flex:1;"><div style="font-size: 14px; font-weight: 600; color: #1C2321;">Personal Loan</div><div style="font-size: 12px; color: #8A8578;">Monthly · 1st</div></div><div style="font-size: 14px; font-weight: 700; color: #1C2321;">R2,340</div></div>
+              <div style="display: flex; align-items: center; gap: 12px; padding: 12px 16px; border-bottom: 1px solid #F2F0EA;"><div style="flex:1;"><div style="font-size: 14px; font-weight: 600; color: #1C2321;">Medical Aid</div><div style="font-size: 12px; color: #8A8578;">Monthly · 1st</div></div><div style="font-size: 14px; font-weight: 700; color: #1C2321;">R3,680</div></div>
+              <div style="display: flex; align-items: center; gap: 12px; padding: 12px 16px; border-bottom: 1px solid #F2F0EA;"><div style="flex:1;"><div style="font-size: 14px; font-weight: 600; color: #1C2321;">Car Insurance</div><div style="font-size: 12px; color: #8A8578;">Monthly · 5th</div></div><div style="font-size: 14px; font-weight: 700; color: #1C2321;">R1,150</div></div>
+              <div style="display: flex; align-items: center; gap: 12px; padding: 12px 16px; border-bottom: 1px solid #F2F0EA;"><div style="flex:1;"><div style="font-size: 14px; font-weight: 600; color: #1C2321;">Fibre Internet</div><div style="font-size: 12px; color: #8A8578;">Monthly · 7th</div></div><div style="font-size: 14px; font-weight: 700; color: #1C2321;">R899</div></div>
+              <div style="display: flex; align-items: center; gap: 12px; padding: 12px 16px; border-bottom: 1px solid #F2F0EA;"><div style="flex:1;"><div style="font-size: 14px; font-weight: 600; color: #1C2321;">Cellphone Contract</div><div style="font-size: 12px; color: #8A8578;">Monthly · 15th</div></div><div style="font-size: 14px; font-weight: 700; color: #1C2321;">R649</div></div>
+              <div style="display: flex; align-items: center; gap: 12px; padding: 12px 16px;"><div style="flex:1;"><div style="font-size: 14px; font-weight: 600; color: #1C2321;">Gym Membership</div><div style="font-size: 12px; color: #8A8578;">Monthly · 25th</div></div><div style="font-size: 14px; font-weight: 700; color: #1C2321;">R450</div></div>
+            </div>
+            <div style="background: #1C2321; border-radius: 18px; padding: 16px 18px; display: flex; justify-content: space-between; align-items: center;">
+              <div style="font-size: 13px; color: #C9C6BC; font-weight: 600;">Total monthly commitments</div>
+              <div style="font-size: 17px; color: #fff; font-weight: 800;">R23,368</div>
+            </div>
+          </sc-if>
+
+          <sc-if value="{{ isSpending }}" hint-placeholder-val="{{ false }}">
+            <div style="background: #fff; border-radius: 18px; border: 1px solid #EDEAE2; padding: 20px; margin-bottom: 16px; display: flex; align-items: center; gap: 20px;">
+              <div style="width: 110px; height: 110px; border-radius: 50%; flex-shrink: 0; background: conic-gradient(#1F6F5C 0% 34%, #3F8F6F 34% 49%, #C4622D 49% 62%, #D6924F 62% 79%, #A8A398 79% 90%, #D8D4C8 90% 100%); display: flex; align-items: center; justify-content: center;">
+                <div style="width: 68px; height: 68px; border-radius: 50%; background: #fff; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                  <div style="font-size: 14px; font-weight: 800; color: #1C2321;">{{ expensesTotalDisplay }}</div>
+                  <div style="font-size: 9px; color: #8A8578;">this month</div>
+                </div>
+              </div>
+              <div style="flex: 1; display: flex; flex-direction: column; gap: 8px;">
+                <div style="display: flex; align-items: center; gap: 8px;"><div style="width: 8px; height: 8px; border-radius: 2px; background: #1F6F5C;"></div><div style="font-size: 12px; color: #1C2321; flex: 1;">Groceries</div><div style="font-size: 12px; font-weight: 700; color: #1C2321;">34%</div></div>
+                <div style="display: flex; align-items: center; gap: 8px;"><div style="width: 8px; height: 8px; border-radius: 2px; background: #3F8F6F;"></div><div style="font-size: 12px; color: #1C2321; flex: 1;">Shopping</div><div style="font-size: 12px; font-weight: 700; color: #1C2321;">17%</div></div>
+                <div style="display: flex; align-items: center; gap: 8px;"><div style="width: 8px; height: 8px; border-radius: 2px; background: #C4622D;"></div><div style="font-size: 12px; color: #1C2321; flex: 1;">Dining Out</div><div style="font-size: 12px; font-weight: 700; color: #1C2321;">13%</div></div>
+              </div>
+            </div>
+
+            <sc-if value="{{ showAddExpense }}" hint-placeholder-val="{{ false }}">
+              <div style="background: #fff; border-radius: 18px; border: 1px solid #1F6F5C; padding: 16px; margin-bottom: 16px;">
+                <div style="font-size: 13px; font-weight: 700; color: #1C2321; margin-bottom: 10px;">Log an expense</div>
+                <input placeholder="Description (e.g. Petrol)" value="{{ newExpName }}" onChange="{{ setNewExpName }}" style="width: 100%; border: 1px solid #EDEAE2; border-radius: 10px; padding: 10px 12px; font-size: 13px; margin-bottom: 8px; font-family: inherit; color: #1C2321;"/>
+                <input type="number" placeholder="Amount (R)" value="{{ newExpAmount }}" onChange="{{ setNewExpAmount }}" style="width: 100%; border: 1px solid #EDEAE2; border-radius: 10px; padding: 10px 12px; font-size: 13px; margin-bottom: 12px; font-family: inherit; color: #1C2321;"/>
+                <div style="display: flex; gap: 10px;">
+                  <div onClick="{{ cancelAddExpense }}" style="flex: 1; text-align: center; font-size: 13px; font-weight: 700; color: #8A8578; border: 1px solid #EDEAE2; border-radius: 10px; padding: 10px; cursor: pointer;">Cancel</div>
+                  <div onClick="{{ submitAddExpense }}" style="flex: 1; text-align: center; font-size: 13px; font-weight: 700; color: #fff; background: #1F6F5C; border-radius: 10px; padding: 10px; cursor: pointer;">Add</div>
+                </div>
+              </div>
+            </sc-if>
+
+            <div style="background: #fff; border-radius: 18px; border: 1px solid #EDEAE2; margin-bottom: 16px;">
+              <sc-for list="{{ expensesList }}" as="exp" hint-placeholder-count="6">
+                <div style="display: flex; align-items: center; gap: 12px; padding: 14px 16px; border-bottom: 1px solid #F2F0EA;"><div style="width:8px;height:8px;border-radius:2px;background:{{ exp.color }};"></div><div style="flex:1; font-size: 14px; font-weight: 600; color: #1C2321;">{{ exp.name }}</div><div style="font-size: 14px; font-weight: 700; color: #1C2321;">{{ exp.amountDisplay }}</div></div>
+              </sc-for>
+            </div>
+            <div onClick="{{ openAddExpense }}" style="text-align: center; font-size: 14px; font-weight: 700; color: #fff; background: #1F6F5C; border-radius: 14px; padding: 14px; cursor: pointer;">+ Log an Expense</div>
+          </sc-if>
+        </sc-if>
+
+        <!-- WEALTH -->
+        <sc-if value="{{ isWealth }}" hint-placeholder-val="{{ false }}">
+          <div style="font-size: 22px; font-weight: 800; color: #1C2321; margin-bottom: 16px;">Wealth</div>
+          <div style="display: flex; background: #EDEAE2; border-radius: 14px; padding: 4px; margin-bottom: 20px;">
+            <div onClick="{{ setWealthRetirement }}" style="{{ retirementTabStyle }}">Retirement</div>
+            <div onClick="{{ setWealthProjection }}" style="{{ projectionTabStyle }}">Projection</div>
+          </div>
+
+          <sc-if value="{{ isRetirementView }}" hint-placeholder-val="{{ true }}">
+            <div style="background: linear-gradient(135deg, #2B2A26 0%, #1C2321 100%); border-radius: 20px; padding: 20px; color: #fff; margin-bottom: 16px;">
+              <div style="font-size: 12px; color: #C9C6BC; font-weight: 600; margin-bottom: 6px;">Allan Gray Retirement Annuity</div>
+              <div style="font-size: 28px; font-weight: 800; margin-bottom: 12px;">R412,600</div>
+              <div style="display: flex; gap: 12px;">
+                <div style="flex:1;"><div style="font-size: 11px; color: #C9C6BC;">Monthly contribution</div><div style="font-size: 14px; font-weight: 700;">R6,500</div></div>
+                <div style="flex:1;"><div style="font-size: 11px; color: #C9C6BC;">Years to retirement</div><div style="font-size: 14px; font-weight: 700;">30</div></div>
+              </div>
+            </div>
+            <div style="background: #fff; border-radius: 18px; border: 1px solid #EDEAE2; padding: 18px; margin-bottom: 16px;">
+              <div style="display: flex; justify-content: space-between; margin-bottom: 8px;"><div style="font-size: 13px; font-weight: 600; color: #1C2321;">Tax-year contributions</div><div style="font-size: 13px; color: #8A8578;">R42,000 / R350,000</div></div>
+              <div style="height: 8px; background: #EDEAE2; border-radius: 4px; overflow: hidden;"><div style="width: 12%; height: 100%; background: #1F6F5C;"></div></div>
+            </div>
+            <div style="background: #fff; border-radius: 18px; border: 1px solid #EDEAE2; padding: 18px;">
+              <div style="font-size: 13px; font-weight: 700; color: #1C2321; margin-bottom: 10px;">Projected at retirement (65)</div>
+              <div style="display: flex; justify-content: space-between; padding: 6px 0;"><div style="font-size: 13px; color: #8A8578;">Conservative (5%)</div><div style="font-size: 13px; font-weight: 700; color: #1C2321;">R3,830,000</div></div>
+              <div style="display: flex; justify-content: space-between; padding: 6px 0;"><div style="font-size: 13px; color: #8A8578;">Moderate (7%)</div><div style="font-size: 13px; font-weight: 700; color: #1C2321;">R7,100,000</div></div>
+              <div style="display: flex; justify-content: space-between; padding: 6px 0;"><div style="font-size: 13px; color: #8A8578;">Optimistic (9%)</div><div style="font-size: 13px; font-weight: 700; color: #1C2321;">R12,200,000</div></div>
+            </div>
+          </sc-if>
+
+          <sc-if value="{{ isProjectionView }}" hint-placeholder-val="{{ false }}">
+            <div style="font-size: 13px; color: #8A8578; margin-bottom: 14px;">Net worth projection, age 35 to 90</div>
+            <div style="display: flex; gap: 8px; margin-bottom: 16px;">
+              <div onClick="{{ setScenarioConservative }}" style="{{ consChipStyle }}">Conservative</div>
+              <div onClick="{{ setScenarioModerate }}" style="{{ modChipStyle }}">Moderate</div>
+              <div onClick="{{ setScenarioOptimistic }}" style="{{ optChipStyle }}">Optimistic</div>
+            </div>
+            <div style="background: #fff; border-radius: 18px; border: 1px solid #EDEAE2; padding: 16px; margin-bottom: 16px;">
+              <svg width="100%" height="200" viewBox="0 0 328 200" preserveAspectRatio="none">
+                <line x1="0" y1="176" x2="328" y2="176" stroke="#F2F0EA" stroke-width="1"/>
+                <line x1="0" y1="20" x2="328" y2="20" stroke="#F2F0EA" stroke-width="1"/>
+                <path d="M0,176 L29.8,172 L59.6,167.5 L89.5,162.4 L119.3,156.7 L149.1,150.4 L178.9,143.5 L208.7,142 L238.5,142.6 L268.4,145.1 L298.2,148.7 L328,153.6" fill="none" stroke="#C9C6BC" stroke-width="{{ consWidth }}" opacity="{{ consOpacity }}" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M0,176 L29.8,169.8 L59.6,161.8 L89.5,151.7 L119.3,139 L149.1,123.2 L178.9,103.8 L208.7,98.9 L238.5,97.7 L268.4,100.1 L298.2,106.2 L328,115.9" fill="none" stroke="#1F6F5C" stroke-width="{{ modWidth }}" opacity="{{ modOpacity }}" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M0,176 L29.8,167.2 L59.6,154.8 L89.5,137.8 L119.3,114.7 L149.1,83.1 L178.9,41.9 L208.7,29.7 L238.5,22.4 L268.4,21.2 L298.2,26.1 L328,37" fill="none" stroke="#D6924F" stroke-width="{{ optWidth }}" opacity="{{ optOpacity }}" stroke-linecap="round" stroke-linejoin="round"/>
+                <line x1="178.9" y1="14" x2="178.9" y2="186" stroke="#EDEAE2" stroke-width="1" stroke-dasharray="3,3"/>
+              </svg>
+              <div style="display: flex; justify-content: space-between; font-size: 10px; color: #8A8578; margin-top: 4px;"><span>35</span><span>Retire · 65</span><span>90</span></div>
+            </div>
+
+            <sc-if value="{{ isConservative }}" hint-placeholder-val="{{ false }}">
+              <div style="background: #fff; border-radius: 18px; border: 1px solid #EDEAE2; padding: 18px; display: flex; gap: 12px; margin-bottom: 16px;">
+                <div style="flex:1;"><div style="font-size: 11px; color: #8A8578;">At retirement (65)</div><div style="font-size: 17px; font-weight: 800; color: #1C2321;">R3,830,000</div></div>
+                <div style="flex:1;"><div style="font-size: 11px; color: #8A8578;">At age 90</div><div style="font-size: 17px; font-weight: 800; color: #1C2321;">R3,000,000</div></div>
+              </div>
+            </sc-if>
+            <sc-if value="{{ isModerate }}" hint-placeholder-val="{{ true }}">
+              <div style="background: #fff; border-radius: 18px; border: 1px solid #EDEAE2; padding: 18px; display: flex; gap: 12px; margin-bottom: 16px;">
+                <div style="flex:1;"><div style="font-size: 11px; color: #8A8578;">At retirement (65)</div><div style="font-size: 17px; font-weight: 800; color: #1C2321;">R7,100,000</div></div>
+                <div style="flex:1;"><div style="font-size: 11px; color: #8A8578;">At age 90</div><div style="font-size: 17px; font-weight: 800; color: #1C2321;">R6,100,000</div></div>
+              </div>
+            </sc-if>
+            <sc-if value="{{ isOptimistic }}" hint-placeholder-val="{{ false }}">
+              <div style="background: #fff; border-radius: 18px; border: 1px solid #EDEAE2; padding: 18px; display: flex; gap: 12px; margin-bottom: 16px;">
+                <div style="flex:1;"><div style="font-size: 11px; color: #8A8578;">At retirement (65)</div><div style="font-size: 17px; font-weight: 800; color: #1C2321;">R12,200,000</div></div>
+                <div style="flex:1;"><div style="font-size: 11px; color: #8A8578;">At age 90</div><div style="font-size: 17px; font-weight: 800; color: #1C2321;">R12,600,000</div></div>
+              </div>
+            </sc-if>
+
+            <div style="background: #fff; border-radius: 18px; border: 1px solid #EDEAE2; padding: 4px 16px;">
+              <div style="display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid #F2F0EA;"><div style="font-size: 13px; color: #8A8578;">Other debt cleared</div><div style="font-size: 13px; font-weight: 700; color: #1C2321;">Age 46</div></div>
+              <div style="display: flex; justify-content: space-between; padding: 12px 0;"><div style="font-size: 13px; color: #8A8578;">Home loan settled</div><div style="font-size: 13px; font-weight: 700; color: #1C2321;">Age 55</div></div>
+            </div>
+          </sc-if>
+        </sc-if>
+
+        <!-- SETTINGS -->
+        <sc-if value="{{ isSettings }}" hint-placeholder-val="{{ false }}">
+          <div style="font-size: 22px; font-weight: 800; color: #1C2321; margin-bottom: 20px;">Settings</div>
+          <div style="background: #fff; border-radius: 18px; border: 1px solid #EDEAE2; padding: 18px; display: flex; align-items: center; gap: 14px; margin-bottom: 20px;">
+            <div style="width: 52px; height: 52px; border-radius: 50%; background: #1F6F5C; color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 17px; flex-shrink: 0;">SN</div>
+            <div style="flex: 1;"><div style="font-size: 15px; font-weight: 700; color: #1C2321;">Sarah Naidoo</div><div style="font-size: 12px; color: #8A8578;">sarah.naidoo@email.com</div></div>
+            <div style="font-size: 12px; font-weight: 600; color: #1F6F5C; border: 1px solid #1F6F5C; padding: 6px 12px; border-radius: 20px;">Edit</div>
+          </div>
+
+          <div style="font-size: 12px; font-weight: 700; color: #8A8578; letter-spacing: 0.5px; margin-bottom: 8px;">PREFERENCES</div>
+          <div style="background: #fff; border-radius: 18px; border: 1px solid #EDEAE2; margin-bottom: 20px;">
+            <div style="display: flex; align-items: center; justify-content: space-between; padding: 14px 16px; border-bottom: 1px solid #F2F0EA;"><div style="font-size: 14px; color: #1C2321; font-weight: 600;">Currency</div><div style="font-size: 14px; color: #8A8578;">ZAR (R)</div></div>
+            <div style="display: flex; align-items: center; justify-content: space-between; padding: 14px 16px; border-bottom: 1px solid #F2F0EA;"><div style="font-size: 14px; color: #1C2321; font-weight: 600;">Retirement age target</div><div style="font-size: 14px; color: #8A8578;">65</div></div>
+            <div onClick="{{ togglePush }}" style="display: flex; align-items: center; justify-content: space-between; padding: 14px 16px; border-bottom: 1px solid #F2F0EA; cursor: pointer;">
+              <div style="font-size: 14px; color: #1C2321; font-weight: 600;">Push notifications</div>
+              <div style="{{ pushTrackStyle }}"><div style="{{ pushKnobStyle }}"></div></div>
+            </div>
+            <div onClick="{{ toggleEmail }}" style="display: flex; align-items: center; justify-content: space-between; padding: 14px 16px; cursor: pointer;">
+              <div style="font-size: 14px; color: #1C2321; font-weight: 600;">Email summaries</div>
+              <div style="{{ emailTrackStyle }}"><div style="{{ emailKnobStyle }}"></div></div>
+            </div>
+          </div>
+
+          <div style="font-size: 12px; font-weight: 700; color: #8A8578; letter-spacing: 0.5px; margin-bottom: 8px;">LINKED ACCOUNTS</div>
+          <div style="background: #fff; border-radius: 18px; border: 1px solid #EDEAE2; margin-bottom: 20px;">
+            <div style="display: flex; align-items: center; gap: 12px; padding: 12px 16px; border-bottom: 1px solid #F2F0EA;"><div style="width: 8px; height: 8px; border-radius: 50%; background: #3F8F6F;"></div><div style="flex: 1; font-size: 14px; color: #1C2321;">Discovery Bank</div></div>
+            <div style="display: flex; align-items: center; gap: 12px; padding: 12px 16px; border-bottom: 1px solid #F2F0EA;"><div style="width: 8px; height: 8px; border-radius: 50%; background: #3F8F6F;"></div><div style="flex: 1; font-size: 14px; color: #1C2321;">Standard Bank</div></div>
+            <div style="display: flex; align-items: center; gap: 12px; padding: 12px 16px; border-bottom: 1px solid #F2F0EA;"><div style="width: 8px; height: 8px; border-radius: 50%; background: #3F8F6F;"></div><div style="flex: 1; font-size: 14px; color: #1C2321;">Absa</div></div>
+            <div style="display: flex; align-items: center; gap: 12px; padding: 12px 16px;"><div style="width: 8px; height: 8px; border-radius: 50%; background: #3F8F6F;"></div><div style="flex: 1; font-size: 14px; color: #1C2321;">Allan Gray</div></div>
+          </div>
+
+          <div style="text-align: center; font-size: 14px; font-weight: 600; color: #B4494A; padding: 14px;">Log Out</div>
+        </sc-if>
+
+      </div>
+
+      <div style="flex-shrink: 0; height: 76px; background: #fff; border-top: 1px solid #EDEAE2; display: flex; align-items: center; padding: 0 8px 14px;">
+        <div onClick="{{ setTabHome }}" style="flex: 1; display: flex; flex-direction: column; align-items: center; gap: 4px; cursor: pointer;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="{{ navHomeColor }}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11.5L12 4l9 7.5"/><path d="M5 10v9a1 1 0 001 1h4v-6h4v6h4a1 1 0 001-1v-9"/></svg>
+          <div style="font-size: 10px; font-weight: 700; color: {{ navHomeColor }};">Home</div>
+        </div>
+        <div onClick="{{ setTabAccounts }}" style="flex: 1; display: flex; flex-direction: column; align-items: center; gap: 4px; cursor: pointer;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="{{ navAccountsColor }}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5.5" width="19" height="13" rx="2"/><line x1="2.5" y1="9.5" x2="21.5" y2="9.5"/></svg>
+          <div style="font-size: 10px; font-weight: 700; color: {{ navAccountsColor }};">Accounts</div>
+        </div>
+        <div onClick="{{ setTabExpenses }}" style="flex: 1; display: flex; flex-direction: column; align-items: center; gap: 4px; cursor: pointer;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="{{ navExpensesColor }}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2V3z"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="9" y1="12" x2="15" y2="12"/></svg>
+          <div style="font-size: 10px; font-weight: 700; color: {{ navExpensesColor }};">Cash Flow</div>
+        </div>
+        <div onClick="{{ setTabWealth }}" style="flex: 1; display: flex; flex-direction: column; align-items: center; gap: 4px; cursor: pointer;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="{{ navWealthColor }}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg>
+          <div style="font-size: 10px; font-weight: 700; color: {{ navWealthColor }};">Wealth</div>
+        </div>
+        <div onClick="{{ setTabSettings }}" style="flex: 1; display: flex; flex-direction: column; align-items: center; gap: 4px; cursor: pointer;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="{{ navSettingsColor }}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 00.3 1.9l.1.1a2 2 0 11-2.8 2.8l-.1-.1a1.7 1.7 0 00-1.9-.3 1.7 1.7 0 00-1 1.5V21a2 2 0 01-4 0v-.1a1.7 1.7 0 00-1-1.6 1.7 1.7 0 00-1.9.3l-.1.1a2 2 0 11-2.8-2.8l.1-.1a1.7 1.7 0 00.3-1.9 1.7 1.7 0 00-1.5-1H3a2 2 0 010-4h.1a1.7 1.7 0 001.5-1 1.7 1.7 0 00-.3-1.9l-.1-.1a2 2 0 112.8-2.8l.1.1a1.7 1.7 0 001.9.3H9a1.7 1.7 0 001-1.5V3a2 2 0 014 0v.1a1.7 1.7 0 001 1.5 1.7 1.7 0 001.9-.3l.1-.1a2 2 0 112.8 2.8l-.1.1a1.7 1.7 0 00-.3 1.9V9a1.7 1.7 0 001.5 1h.1a2 2 0 010 4h-.1a1.7 1.7 0 00-1.5 1z"/></svg>
+          <div style="font-size: 10px; font-weight: 700; color: {{ navSettingsColor }};">Settings</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+
+class Component extends DCLogic {
+  state = {
+    tab: 'home',
+    expenseSub: 'orders',
+    wealthSub: 'retirement',
+    scenario: 'moderate',
+    expandedAccount: null,
+    editingAccount: null,
+    push: true,
+    email: false,
+    accounts: {
+      cc: { balance: 12340, rate: 19.75 },
+      pl: { balance: 38500, rate: 14.5 },
+      hl: { balance: 1240000, rate: 11.25 },
+      sa: { balance: 182400, rate: 8.1 },
+    },
+    expenses: [
+      { id: 1, name: 'Groceries', amount: 6200, color: '#1F6F5C' },
+      { id: 2, name: 'Shopping', amount: 3100, color: '#D6924F' },
+      { id: 3, name: 'Dining Out', amount: 2400, color: '#C4622D' },
+      { id: 4, name: 'Transport', amount: 2800, color: '#3F8F6F' },
+      { id: 5, name: 'Utilities', amount: 1940, color: '#A8A398' },
+      { id: 6, name: 'Other', amount: 1800, color: '#D8D4C8' },
+    ],
+    showAddExpense: false,
+    newExpName: '',
+    newExpAmount: '',
+  };
+
+  fmt(n) {
+    return 'R' + Math.round(n).toLocaleString('en-US');
+  }
+
+  chipStyle(active, color) {
+    return active
+      ? `flex:1;text-align:center;padding:8px 6px;border-radius:20px;font-size:12px;font-weight:700;color:#fff;background:${color};cursor:pointer;`
+      : `flex:1;text-align:center;padding:8px 6px;border-radius:20px;font-size:12px;font-weight:600;color:#8A8578;background:#fff;border:1px solid #EDEAE2;cursor:pointer;`;
+  }
+
+  segStyle(active) {
+    return active
+      ? `flex:1;text-align:center;padding:10px 0;border-radius:10px;font-size:13px;font-weight:700;color:#1C2321;background:#fff;cursor:pointer;`
+      : `flex:1;text-align:center;padding:10px 0;border-radius:10px;font-size:13px;font-weight:600;color:#8A8578;cursor:pointer;`;
+  }
+
+  toggleTrackStyle(on) {
+    return `width:44px;height:26px;border-radius:14px;background:${on ? '#1F6F5C' : '#EDEAE2'};position:relative;transition:background 0.2s;`;
+  }
+  toggleKnobStyle(on) {
+    return `width:20px;height:20px;border-radius:50%;background:#fff;position:absolute;top:3px;left:${on ? '21px' : '3px'};box-shadow:0 1px 3px rgba(0,0,0,0.2);transition:left 0.2s;`;
+  }
+
+  renderVals() {
+    const s = this.state;
+    return {
+      isHome: s.tab === 'home',
+      isAccounts: s.tab === 'accounts',
+      isExpenses: s.tab === 'expenses',
+      isWealth: s.tab === 'wealth',
+      isSettings: s.tab === 'settings',
+      setTabHome: () => this.setState({ tab: 'home' }),
+      setTabAccounts: () => this.setState({ tab: 'accounts' }),
+      setTabExpenses: () => this.setState({ tab: 'expenses' }),
+      setTabWealth: () => this.setState({ tab: 'wealth' }),
+      setTabSettings: () => this.setState({ tab: 'settings' }),
+      navHomeColor: s.tab === 'home' ? '#1F6F5C' : '#B3AFA4',
+      navAccountsColor: s.tab === 'accounts' ? '#1F6F5C' : '#B3AFA4',
+      navExpensesColor: s.tab === 'expenses' ? '#1F6F5C' : '#B3AFA4',
+      navWealthColor: s.tab === 'wealth' ? '#1F6F5C' : '#B3AFA4',
+      navSettingsColor: s.tab === 'settings' ? '#1F6F5C' : '#B3AFA4',
+
+      ccExpanded: s.expandedAccount === 'cc',
+      plExpanded: s.expandedAccount === 'pl',
+      hlExpanded: s.expandedAccount === 'hl',
+      saExpanded: s.expandedAccount === 'sa',
+      toggleCC: () => this.setState({ expandedAccount: s.expandedAccount === 'cc' ? null : 'cc' }),
+      togglePL: () => this.setState({ expandedAccount: s.expandedAccount === 'pl' ? null : 'pl' }),
+      toggleHL: () => this.setState({ expandedAccount: s.expandedAccount === 'hl' ? null : 'hl' }),
+      toggleSA: () => this.setState({ expandedAccount: s.expandedAccount === 'sa' ? null : 'sa' }),
+
+      ccBalanceDisplay: this.fmt(s.accounts.cc.balance),
+      plBalanceDisplay: this.fmt(s.accounts.pl.balance),
+      hlBalanceDisplay: this.fmt(s.accounts.hl.balance),
+      saBalanceDisplay: this.fmt(s.accounts.sa.balance),
+      ccRateDisplay: s.accounts.cc.rate + '% p.a.',
+      plRateDisplay: s.accounts.pl.rate + '% p.a.',
+      hlRateDisplay: s.accounts.hl.rate + '% p.a.',
+      saRateDisplay: s.accounts.sa.rate + '% p.a.',
+
+      editCC: s.editingAccount === 'cc',
+      editPL: s.editingAccount === 'pl',
+      editHL: s.editingAccount === 'hl',
+      editSA: s.editingAccount === 'sa',
+      openEditCC: (e) => { e.stopPropagation(); this.setState({ editingAccount: 'cc' }); },
+      openEditPL: (e) => { e.stopPropagation(); this.setState({ editingAccount: 'pl' }); },
+      openEditHL: (e) => { e.stopPropagation(); this.setState({ editingAccount: 'hl' }); },
+      openEditSA: (e) => { e.stopPropagation(); this.setState({ editingAccount: 'sa' }); },
+      saveEdit: (e) => { e.stopPropagation(); this.setState({ editingAccount: null }); },
+      ccBalanceInput: s.accounts.cc.balance,
+      ccRateInput: s.accounts.cc.rate,
+      plBalanceInput: s.accounts.pl.balance,
+      plRateInput: s.accounts.pl.rate,
+      hlBalanceInput: s.accounts.hl.balance,
+      hlRateInput: s.accounts.hl.rate,
+      saBalanceInput: s.accounts.sa.balance,
+      saRateInput: s.accounts.sa.rate,
+      updateCCBalance: (e) => this.setState({ accounts: { ...s.accounts, cc: { ...s.accounts.cc, balance: parseFloat(e.target.value) || 0 } } }),
+      updateCCRate: (e) => this.setState({ accounts: { ...s.accounts, cc: { ...s.accounts.cc, rate: parseFloat(e.target.value) || 0 } } }),
+      updatePLBalance: (e) => this.setState({ accounts: { ...s.accounts, pl: { ...s.accounts.pl, balance: parseFloat(e.target.value) || 0 } } }),
+      updatePLRate: (e) => this.setState({ accounts: { ...s.accounts, pl: { ...s.accounts.pl, rate: parseFloat(e.target.value) || 0 } } }),
+      updateHLBalance: (e) => this.setState({ accounts: { ...s.accounts, hl: { ...s.accounts.hl, balance: parseFloat(e.target.value) || 0 } } }),
+      updateHLRate: (e) => this.setState({ accounts: { ...s.accounts, hl: { ...s.accounts.hl, rate: parseFloat(e.target.value) || 0 } } }),
+      updateSABalance: (e) => this.setState({ accounts: { ...s.accounts, sa: { ...s.accounts.sa, balance: parseFloat(e.target.value) || 0 } } }),
+      updateSARate: (e) => this.setState({ accounts: { ...s.accounts, sa: { ...s.accounts.sa, rate: parseFloat(e.target.value) || 0 } } }),
+
+      expensesList: s.expenses.map(x => ({ ...x, amountDisplay: this.fmt(x.amount) })),
+      expensesTotalDisplay: this.fmt(s.expenses.reduce((a, x) => a + x.amount, 0)),
+      showAddExpense: s.showAddExpense,
+      openAddExpense: () => this.setState({ showAddExpense: true }),
+      cancelAddExpense: () => this.setState({ showAddExpense: false, newExpName: '', newExpAmount: '' }),
+      newExpName: s.newExpName,
+      newExpAmount: s.newExpAmount,
+      setNewExpName: (e) => this.setState({ newExpName: e.target.value }),
+      setNewExpAmount: (e) => this.setState({ newExpAmount: e.target.value }),
+      submitAddExpense: () => {
+        const amt = parseFloat(s.newExpAmount) || 0;
+        if (!s.newExpName.trim() || amt <= 0) return;
+        this.setState({
+          expenses: [...s.expenses, { id: Date.now(), name: s.newExpName.trim(), amount: amt, color: '#8A8578' }],
+          showAddExpense: false,
+          newExpName: '',
+          newExpAmount: '',
+        });
+      },
+
+      isOrders: s.expenseSub === 'orders',
+      isSpending: s.expenseSub === 'spending',
+      setSubOrders: () => this.setState({ expenseSub: 'orders' }),
+      setSubSpending: () => this.setState({ expenseSub: 'spending' }),
+      ordersTabStyle: this.segStyle(s.expenseSub === 'orders'),
+      spendingTabStyle: this.segStyle(s.expenseSub === 'spending'),
+
+      isRetirementView: s.wealthSub === 'retirement',
+      isProjectionView: s.wealthSub === 'projection',
+      setWealthRetirement: () => this.setState({ wealthSub: 'retirement' }),
+      setWealthProjection: () => this.setState({ wealthSub: 'projection' }),
+      retirementTabStyle: this.segStyle(s.wealthSub === 'retirement'),
+      projectionTabStyle: this.segStyle(s.wealthSub === 'projection'),
+
+      isConservative: s.scenario === 'conservative',
+      isModerate: s.scenario === 'moderate',
+      isOptimistic: s.scenario === 'optimistic',
+      setScenarioConservative: () => this.setState({ scenario: 'conservative' }),
+      setScenarioModerate: () => this.setState({ scenario: 'moderate' }),
+      setScenarioOptimistic: () => this.setState({ scenario: 'optimistic' }),
+      consChipStyle: this.chipStyle(s.scenario === 'conservative', '#8A8578'),
+      modChipStyle: this.chipStyle(s.scenario === 'moderate', '#1F6F5C'),
+      optChipStyle: this.chipStyle(s.scenario === 'optimistic', '#D6924F'),
+      consOpacity: s.scenario === 'conservative' ? 1 : 0.25,
+      modOpacity: s.scenario === 'moderate' ? 1 : 0.25,
+      optOpacity: s.scenario === 'optimistic' ? 1 : 0.25,
+      consWidth: s.scenario === 'conservative' ? 3 : 2,
+      modWidth: s.scenario === 'moderate' ? 3 : 2,
+      optWidth: s.scenario === 'optimistic' ? 3 : 2,
+
+      togglePush: () => this.setState({ push: !s.push }),
+      toggleEmail: () => this.setState({ email: !s.email }),
+      pushTrackStyle: this.toggleTrackStyle(s.push),
+      pushKnobStyle: this.toggleKnobStyle(s.push),
+      emailTrackStyle: this.toggleTrackStyle(s.email),
+      emailKnobStyle: this.toggleKnobStyle(s.email),
+    };
+  }
+}
+
+</script>
+</body>
+</html>

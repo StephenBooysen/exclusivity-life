@@ -1,0 +1,52 @@
+<h1 class="screen-title">Habits</h1>
+
+<section class="am-section">
+  <h6>Today</h6>
+  <div id="habits-today"><div class="am-empty">Loading…</div></div>
+</section>
+
+<section class="am-section">
+  <h6>This week</h6>
+  <div id="habits-week" style="display:flex;flex-direction:column;gap:10px"></div>
+</section>
+
+<section class="am-section">
+  <h6>Consistency, last 14 days</h6>
+  <div class="am-trend" id="habits-trend" aria-hidden="true"></div>
+</section>
+
+<button type="button" class="btn btn-secondary btn-block" id="habit-new">
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="8"/><path d="M12 8v8M8 12h8"/></svg>
+  New habit
+</button>
+
+<div class="modal-overlay hidden" id="habit-modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <div class="modal-title">New habit</div>
+      <button type="button" class="modal-close" id="habit-modal-close" aria-label="Close">&times;</button>
+    </div>
+    <form id="habit-form">
+      <div class="form-group">
+        <label class="form-label" for="habit-name">Name</label>
+        <input class="form-input" id="habit-name" required>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="habit-category">Focus area</label>
+        <input class="form-input" id="habit-category" placeholder="e.g. Health &amp; Fitness">
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="habit-frequency">Frequency</label>
+        <select class="form-select" id="habit-frequency">
+          <option value="daily" selected>Daily</option>
+          <option value="weekdays">Weekdays</option>
+          <option value="weekends">Weekends</option>
+        </select>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" id="habit-cancel">Cancel</button>
+        <button type="submit" class="btn btn-primary">Save habit</button>
+      </div>
+    </form>
+  </div>
+</div>

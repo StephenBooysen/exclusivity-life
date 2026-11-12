@@ -1,0 +1,4 @@
+<%# status: "success" | "fail" | "running" | "queued" %>
+<span class="chip <%= status %>"
+  ><%- icon(STATUS_ICONS[status] || "circle", { size: 18, strokeWidth: 2.5, className: "chip-icon" }) %><%= status %></span
+>

@@ -1,0 +1,6 @@
+<%# phases: Phase[] — one dot each, ordered by seq %>
+<% const _ordered = [...phases].sort((a, b) => (a.seq || 0) - (b.seq || 0)); %>
+<span class="dots">
+  <% _ordered.forEach((p) => { %><span class="d <%= p.status %>" title="<%= p.name %> — <%= p.status %>"><%= PHASE_DOT_GLYPH[p.status || ""] || "○" %></span><% }); %>
+  <% if (!_ordered.length) { %><span class="faint">—</span><% } %>
+</span>

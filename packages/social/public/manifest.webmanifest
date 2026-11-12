@@ -1,0 +1,20 @@
+{
+  "name": "Exclusivity",
+  "short_name": "Exclusivity",
+  "description": "A vetted membership club for people who have stopped looking on ordinary apps.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0a0c0d",
+  "theme_color": "#0e1113",
+  "categories": ["social", "lifestyle"],
+  "icons": [
+    {
+      "src": "/icons/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

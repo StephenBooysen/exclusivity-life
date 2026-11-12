@@ -1,0 +1,88 @@
+<%#
+  wf:    the buildWaterfall() view model
+  adwId: for the phase links
+  Blocks are anchors, not buttons: selecting a phase is a real URL, so deep
+  links, middle-click and browser history all work without any script.
+%>
+<div class="waterfall">
+  <div class="row axis-row">
+    <div class="label"></div>
+    <div class="track">
+      <% if (wf.zonePct) { %>
+        <span class="zone-head" style="width:<%= wf.zonePct %>%">request</span>
+      <% } %>
+      <% wf.ticks.forEach((t) => { %><span class="axis-label" style="left:<%= t.pct %>%"><%= t.label %></span><% }); %>
+    </div>
+  </div>
+
+  <% wf.lanes.forEach((lane) => { %>
+    <div class="row lane kind-<%= lane.kind %>">
+      <div class="label">
+        <span class="lane-name" style="color:<%= lane.color %>">
+          <%- icon(KIND_ICONS[lane.kind], { size: 22, strokeWidth: 2, className: "lane-icon" }) %>
+          <%= lane.label %>
+        </span>
+        <% if (lane.model) { %>
+          <span class="lane-meta lane-model" title="<%= lane.model %>">
+            <% if (modelIcon(lane.model)) { %><img class="model-icon" src="<%= modelIcon(lane.model) %>" alt="" /><% } %>
+            <%= modelName(lane.model) %>
+          </span>
+        <% } %>
+        <% if (lane.context) { %>
+          <span
+            class="lane-ctx"
+            title="<%= fmtNumber(lane.context.used) %> / <%= fmtNumber(lane.context.window) %> tokens used · <%= fmtNumber(lane.context.remaining) %> remaining"
+          >
+            <span class="ctx-head">
+              <span class="ctx-label">Context</span>
+              <span class="ctx-pct"><%= lane.context.label %></span>
+            </span>
+            <span class="ctx-bar">
+              <span class="ctx-fill" style="<%= lane.ctxFillStyle %>"></span>
+            </span>
+          </span>
+        <% } %>
+        <% lane.metaLines.forEach((line) => { %><span class="lane-meta"><%= line %></span><% }); %>
+      </div>
+
+      <div class="track">
+        <% if (wf.zonePct) { %><span class="zone-divider" style="left:<%= wf.zonePct %>%"></span><% } %>
+        <% wf.ticks.forEach((t) => { %><span class="gridline" style="left:<%= t.pct %>%"></span><% }); %>
+
+        <% lane.blocks.forEach((b) => { %>
+          <a
+            class="block <%= b.phase.status %><%= b.selected ? " selected" : "" %>"
+            style="<%= b.style %>"
+            href="<%= b.selected ? "/s/" + encodeURIComponent(adwId) : "/s/" + encodeURIComponent(adwId) + "/p/" + encodeURIComponent(b.phase.phase_id) %>"
+            title="<%= b.phase.name %> — <%= b.phase.status %><%= b.phase.description ? "\n" + b.phase.description : "" %>"
+          >
+            <span class="b-top">
+              <span class="b-status <%= b.phase.status %>"><%= b.glyph %></span>
+              <span class="b-name"><%= b.phase.name %></span>
+              <% if (b.hasDuration) { %>
+                <%- include("stat-chip", { kind: "runtime", value: b.durationMs, compact: true, extraClass: "b-dur" }) %>
+              <% } %>
+            </span>
+            <span class="b-desc"><%= b.phase.description %></span>
+            <% b.toolTicks.forEach((tick) => { %><span class="tool-tick<%= tick.ok ? "" : " err" %>" style="left:<%= tick.x %>%"></span><% }); %>
+          </a>
+        <% }); %>
+
+        <% lane.queued.forEach((q) => { %>
+          <a
+            class="block queued<%= q.selected ? " selected" : "" %>"
+            style="<%= q.style %>"
+            href="<%= q.selected ? "/s/" + encodeURIComponent(adwId) : "/s/" + encodeURIComponent(adwId) + "/p/" + encodeURIComponent(q.phase.phase_id) %>"
+            title="<%= q.phase.name %> — queued"
+          >
+            <span class="b-top">
+              <span class="b-status queued">○</span>
+              <span class="b-name"><%= q.phase.name %></span>
+            </span>
+            <span class="b-desc">queued</span>
+          </a>
+        <% }); %>
+      </div>
+    </div>
+  <% }); %>
+</div>

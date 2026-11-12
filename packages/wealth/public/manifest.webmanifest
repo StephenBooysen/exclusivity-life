@@ -1,0 +1,13 @@
+{
+  "name": "Me Money Manager",
+  "short_name": "Money Manager",
+  "description": "Daily wealth and finance manager — debt, cash flow, retirement, and a 90-year projection.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#0f1c19",
+  "theme_color": "#0f1c19",
+  "icons": [
+    { "src": "/icons/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}

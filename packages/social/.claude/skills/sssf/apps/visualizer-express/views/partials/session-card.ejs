@@ -1,0 +1,65 @@
+<%#
+  session: SessionSummary (phases + agents embedded)
+  events:  that session's events, for the per-agent dot timeline
+  nowMs:   the render clock — a running card measures against it
+%>
+<%
+  const tl = buildCardTimeline({ session, events, nowMs });
+  const durationMs = sessionDurationMs(session, nowMs);
+%>
+<div class="card <%= session.status %>" data-adw-id="<%= session.adw_id %>">
+  <%# A stretched link rather than an <a> wrapping the button: nesting a
+      button inside an anchor is invalid, and the overlay keeps the whole
+      card clickable while leaving the archive control its own hit area. %>
+  <a class="card-link" href="/s/<%= encodeURIComponent(session.adw_id) %>"
+     aria-label="Open run <%= session.adw_id %>"></a>
+  <button
+    class="card-archive"
+    type="button"
+    title="Archive — remove this run from review"
+    aria-label="Archive run"
+    data-archive="<%= session.adw_id %>"
+  >
+    ×
+  </button>
+  <span class="card-id"><%= session.adw_id %></span>
+  <span class="card-adw" title="<%= session.adw_name || "" %>"><%= session.adw_name || "—" %></span>
+  <span class="card-req" title="<%= session.request || "" %>"><%= session.request %></span>
+
+  <% if (!tl.empty && tl.rows.length) { %>
+    <div class="tl">
+      <div class="tl-axis">
+        <span class="tl-gutter"></span>
+        <span class="tl-scale">
+          <% tl.ticks.forEach((t) => { %><span class="tl-tick<%= t.edge ? " edge" : "" %>" style="left:<%= t.pct %>%"><%= t.label %></span><% }); %>
+        </span>
+      </div>
+      <% tl.visibleRows.forEach((row) => { %>
+        <div class="tl-row">
+          <span class="tl-agent" style="color:<%= row.color %>" title="<%= row.title %>"><%= row.owner %></span>
+          <span class="tl-track">
+            <% row.dots.forEach((dot) => { %><span class="tl-dot<%= dot.latest ? " latest" : "" %>" style="left:<%= dot.xPct %>%;background:<%= dot.color %>" title="<%= dot.title %>"></span><% }); %>
+          </span>
+        </div>
+      <% }); %>
+      <% if (tl.hiddenRowCount) { %>
+        <div class="tl-more dim">+<%= tl.hiddenRowCount %> more agents</div>
+      <% } %>
+    </div>
+  <% } else { %>
+    <div class="tl tl-empty faint">no agent activity yet</div>
+  <% } %>
+
+  <div class="card-foot">
+    <span class="foot-status">
+      <%- include("status-chip", { status: session.status || "fail" }) %>
+      <%- include("phase-dots", { phases: session.phases || [] }) %>
+    </span>
+    <span class="dim"><%= fmtDate(session.started_at) %></span>
+  </div>
+  <div class="card-stats">
+    <%- include("stat-chip", { kind: "cost", value: session.total_cost }) %>
+    <%- include("stat-chip", { kind: "runtime", value: durationMs }) %>
+    <%- include("stat-chip", { kind: "tokens", value: session.total_tokens }) %>
+  </div>
+</div>

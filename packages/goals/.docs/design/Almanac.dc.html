@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/broadsheet-96142d60-3bfa-4c0f-b742-2bb47edda4fa/styles.css">
+  <script src="_ds/broadsheet-96142d60-3bfa-4c0f-b742-2bb47edda4fa/_ds_bundle.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --font-heading:"Inter",system-ui,sans-serif; --font-heading-weight:600; --font-body:"Inter",system-ui,sans-serif;
+      --color-bg:#f7f5f0; --color-surface:#ffffff;
+      --color-accent:#1f6e52; --color-accent-100:#e3efe9; --color-accent-200:#c3ddd1; --color-accent-300:#9cc7b5;
+      --color-accent-400:#6fa98f; --color-accent-500:#3d8865; --color-accent-600:#185940; --color-accent-700:#123f2e;
+      --color-accent-800:#0c2c20; --color-accent-900:#081d15;
+      --color-accent-2:#c97a3a; --color-accent-2-100:#fbeee0; --color-accent-2-200:#f5d9b8; --color-accent-2-300:#eab883;
+      --color-accent-2-400:#dd9a5c; --color-accent-2-500:#c97a3a; --color-accent-2-600:#a8632c; --color-accent-2-700:#824b21;
+      --color-accent-2-800:#5e3618; --color-accent-2-900:#3c220f;
+    }
+    body{margin:0;background:var(--color-neutral-300)}
+    .am-scrim{position:absolute;inset:0;background:color-mix(in srgb, var(--color-neutral-900) 45%, transparent);opacity:0;pointer-events:none;transition:opacity 180ms ease;z-index:10}
+    .am-scrim.open{opacity:1;pointer-events:auto}
+    .am-drawer{position:absolute;top:0;bottom:0;left:0;width:78%;max-width:300px;background:var(--color-surface);box-shadow:var(--shadow-lg);transform:translateX(-100%);transition:transform 180ms ease;display:flex;flex-direction:column;padding:var(--space-4) var(--space-3);gap:2px;overflow-y:auto;z-index:11}
+    .am-drawer.open{transform:translateX(0)}
+    .am-sheet{position:absolute;left:0;right:0;bottom:0;background:var(--color-bg);box-shadow:var(--shadow-lg);border-radius:16px 16px 0 0;transform:translateY(100%);transition:transform 200ms ease;max-height:80%;display:flex;flex-direction:column;z-index:9}
+    .am-sheet.open{transform:translateY(0)}
+    .am-navrow{display:flex;align-items:center;gap:10px;padding:9px 10px;border-radius:var(--radius-md);cursor:pointer;border:none;background:transparent;width:100%;font-family:var(--font-body);text-align:left}
+    .am-check{width:22px;height:22px;border-radius:50%;border:1.5px solid var(--color-divider);flex:none;display:flex;align-items:center;justify-content:center;cursor:pointer;background:var(--color-bg)}
+    .am-check.done{background:var(--color-accent);border-color:var(--color-accent)}
+    .am-bar{height:6px;border-radius:3px;background:var(--color-neutral-200);overflow:hidden}
+    .am-bar>div{height:100%;background:var(--color-accent);border-radius:3px}
+    .am-dot{width:9px;height:9px;border-radius:50%}
+  </style>
+</helmet>
+<div style="min-height:100vh;display:flex;align-items:flex-start;justify-content:center;padding:36px 16px;font-family:var(--font-body);color:var(--color-text)">
+  <div style="position:relative;width:402px;min-height:860px;background:var(--color-bg);border-radius:34px;box-shadow:var(--shadow-lg);overflow:hidden;border:1px solid color-mix(in srgb, var(--color-neutral-900) 10%, transparent)">
+
+    <div style="display:flex;align-items:center;gap:var(--space-2);padding:var(--space-3) var(--space-4);position:sticky;top:0;background:var(--color-bg);z-index:5">
+      <button type="button" aria-label="Open menu" onclick="{{ toggleDrawer }}" style="width:36px;height:36px;border-radius:var(--radius-md);border:none;background:transparent;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--color-text)">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+      <div style="font-family:var(--font-heading);font-weight:600;font-size:18px;letter-spacing:-0.01em;margin-right:auto">{{ screenTitle }}</div>
+      <div style="font-size:11px;color:color-mix(in srgb, var(--color-text) 55%, transparent);letter-spacing:0.04em">{{ todayLabel }}</div>
+    </div>
+
+    <div style="padding:0 var(--space-4) 100px;overflow-y:auto;height:calc(860px - 58px)">
+
+      <sc-if value="{{ isDashboard }}" hint-placeholder-val="{{ true }}">
+        <div style="padding-top:var(--space-1)">
+          <div style="font-size:12px;color:color-mix(in srgb, var(--color-text) 55%, transparent);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:2px">Good morning</div>
+          <h1 style="font-size:26px;margin:0 0 var(--space-4)">Here's today.</h1>
+
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-2);margin-bottom:var(--space-6)">
+            <div class="card elev-sm" style="gap:2px"><div class="card-kicker">Progress</div><div class="card-title" style="font-size:24px">{{ todayProgressPct }}%</div></div>
+            <div class="card elev-sm" style="gap:2px"><div class="card-kicker">Focus</div><div class="card-title" style="font-size:24px">{{ focusDoneCount }}/{{ focusTotalCount }}</div></div>
+            <div class="card elev-sm" style="gap:2px"><div class="card-kicker">Habits</div><div class="card-title" style="font-size:24px">{{ habitsDoneCount }}/{{ habitsTotalCount }}</div></div>
+            <div class="card elev-sm" style="gap:2px"><div class="card-kicker">Active goals</div><div class="card-title" style="font-size:24px">{{ activeGoalsCount }}</div></div>
+          </div>
+
+          <div style="margin-bottom:var(--space-6)">
+            <h6 style="margin-bottom:var(--space-2)">Today's focus</h6>
+            <div style="display:flex;flex-direction:column;gap:var(--space-2)">
+              <sc-for list="{{ todaysFocus }}" as="item" hint-placeholder-count="3">
+                <div style="display:flex;align-items:center;gap:var(--space-3);padding:8px 0">
+                  <button type="button" class="am-check {{ item.checkClass }}" onclick="{{ item.toggle }}" aria-label="Mark done">
+                    <sc-if value="{{ item.done }}" hint-placeholder-val="{{ false }}">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--color-bg)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg>
+                    </sc-if>
+                  </button>
+                  <div style="flex:1;min-width:0">
+                    <div style="font-size:15px;font-family:var(--font-heading);font-weight:600;{{ item.textStyle }}">{{ item.title }}</div>
+                    <div style="font-size:11px;color:color-mix(in srgb, var(--color-text) 50%, transparent);margin-top:1px">{{ item.area }}</div>
+                  </div>
+                  <span class="tag {{ item.priorityTag }}">{{ item.priority }}</span>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+
+          <div style="margin-bottom:var(--space-6)">
+            <h6 style="margin-bottom:var(--space-2)">Today's habits</h6>
+            <div style="display:flex;flex-direction:column;gap:2px">
+              <sc-for list="{{ habitsList }}" as="item" hint-placeholder-count="6">
+                <div style="display:flex;align-items:center;gap:var(--space-3);padding:8px 0;border-bottom:1px solid color-mix(in srgb, var(--color-text) 6%, transparent)">
+                  <button type="button" class="am-check {{ item.checkClass }}" onclick="{{ item.toggle }}" aria-label="Mark done">
+                    <sc-if value="{{ item.doneToday }}" hint-placeholder-val="{{ false }}">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--color-bg)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg>
+                    </sc-if>
+                  </button>
+                  <div style="flex:1;font-size:14px">{{ item.name }}</div>
+                  <div style="display:flex;align-items:center;gap:4px;font-size:12.5px;color:var(--color-accent-700)">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3c1 3-2 4-2 7a4 4 0 008 0c0-2-1-3-1-3 1 3-1 5-3 5a3 3 0 01-3-3c0-2 1-3 1-6z"/></svg>{{ item.streak }}
+                  </div>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+
+          <div style="margin-bottom:var(--space-6)">
+            <h6 style="margin-bottom:var(--space-2)">This week's goals</h6>
+            <div style="display:flex;flex-direction:column;gap:var(--space-3)">
+              <sc-for list="{{ weekGoals }}" as="item" hint-placeholder-count="3">
+                <div>
+                  <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:5px">
+                    <span style="font-size:14px">{{ item.title }}</span>
+                    <span style="font-size:12px;color:color-mix(in srgb, var(--color-text) 55%, transparent)">{{ item.progress }}%</span>
+                  </div>
+                  <div class="am-bar"><div style="width:{{ item.progress }}%"></div></div>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+
+          <div class="card elev-sm" style="margin-bottom:var(--space-3)">
+            <div class="card-kicker">Annual goals</div>
+            <div style="display:flex;flex-direction:column;gap:8px;margin-top:2px">
+              <sc-for list="{{ annualGoals }}" as="item" hint-placeholder-count="3">
+                <div>
+                  <div style="font-size:11px;margin-bottom:3px;color:color-mix(in srgb, var(--color-text) 65%, transparent)">{{ item.title }}</div>
+                  <div class="am-bar" style="height:4px"><div style="width:{{ item.progress }}%"></div></div>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+
+          <div style="margin-bottom:var(--space-6)">
+            <h6 style="margin-bottom:var(--space-2)">Focus areas</h6>
+            <div style="display:flex;flex-direction:column;gap:7px">
+              <sc-for list="{{ focusStatus }}" as="item" hint-placeholder-count="4">
+                <div style="display:flex;align-items:center;gap:8px;font-size:13px">
+                  <span class="am-dot" style="background:{{ item.color }}"></span>
+                  <span style="flex:1">{{ item.area }}</span>
+                  <span style="font-size:11.5px;color:color-mix(in srgb, var(--color-text) 55%, transparent)">{{ item.level }}</span>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+
+          <div style="display:flex;gap:var(--space-2);margin-bottom:var(--space-6);flex-wrap:wrap">
+            <button type="button" class="btn btn-secondary"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="8"/><path d="M12 8v8M8 12h8"/></svg>Priority</button>
+            <button type="button" class="btn btn-secondary"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 19s-7-4.35-7-9.5A4.5 4.5 0 0112 6a4.5 4.5 0 017 3.5C19 14.65 12 19 12 19z"/></svg>Log mood</button>
+            <button type="button" class="btn btn-secondary"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="M8 12l3 3 5-6"/></svg>Log habit</button>
+          </div>
+
+          <div style="padding:var(--space-4) 0 var(--space-2);border-top:1px solid var(--color-divider)">
+            <p style="font-family:var(--font-heading);font-style:italic;font-size:16px;line-height:1.5;margin:0 0 6px">"{{ dailyQuote.text }}"</p>
+            <div style="font-size:12px;color:color-mix(in srgb, var(--color-text) 55%, transparent)">— {{ dailyQuote.author }}</div>
+          </div>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ isGoals }}" hint-placeholder-val="{{ false }}">
+        <div style="padding-top:var(--space-1)">
+          <h1 style="font-size:26px;margin:0 0 var(--space-3)">Goals</h1>
+          <div class="seg" role="radiogroup" aria-label="Tier" style="margin-bottom:var(--space-4)">
+            <label class="seg-opt"><input type="radio" name="tier" checked="{{ tabAnnual }}" onchange="{{ setTabAnnual }}"/>Annual</label>
+            <label class="seg-opt"><input type="radio" name="tier" checked="{{ tabMonthly }}" onchange="{{ setTabMonthly }}"/>Monthly</label>
+            <label class="seg-opt"><input type="radio" name="tier" checked="{{ tabWeekly }}" onchange="{{ setTabWeekly }}"/>Weekly</label>
+          </div>
+
+          <div style="display:flex;flex-direction:column;gap:var(--space-3);margin-bottom:var(--space-4)">
+            <sc-for list="{{ filteredGoals }}" as="item" hint-placeholder-count="3">
+              <div class="card elev-sm" onclick="{{ item.toggleExpand }}" style="cursor:pointer">
+                <sc-if value="{{ item.parentLabel }}" hint-placeholder-val="{{ false }}">
+                  <div style="font-size:11px;color:color-mix(in srgb, var(--color-text) 50%, transparent)">↳ {{ item.parentLabel }}</div>
+                </sc-if>
+                <div style="display:flex;justify-content:space-between;gap:var(--space-2)">
+                  <div class="card-title">{{ item.title }}</div>
+                  <span class="tag {{ item.priorityTag }}" style="flex:none;height:fit-content">{{ item.priority }}</span>
+                </div>
+                <div class="am-bar"><div style="width:{{ item.progress }}%"></div></div>
+                <div class="card-meta">
+                  <span>{{ item.progress }}% complete</span><span>·</span><span>Due {{ item.target }}</span><span>·</span><span>{{ item.area }}</span>
+                </div>
+
+                <sc-if value="{{ item.isExpanded }}" hint-placeholder-val="{{ false }}">
+                  <div style="border-top:1px solid var(--color-divider);margin-top:4px;padding-top:var(--space-2);display:flex;flex-direction:column;gap:8px">
+                    <div style="font-size:12.5px"><span style="color:color-mix(in srgb, var(--color-text) 55%, transparent)">Success criteria — </span>{{ item.criteria }}</div>
+                    <sc-if value="{{ item.hasNotes }}" hint-placeholder-val="{{ false }}">
+                      <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-2)">
+                        <div>
+                          <div style="font-size:10.5px;text-transform:uppercase;letter-spacing:0.06em;color:var(--color-accent-700);margin-bottom:3px">What worked</div>
+                          <p style="font-size:12.5px;margin:0;opacity:0.85">{{ item.worked }}</p>
+                        </div>
+                        <div>
+                          <div style="font-size:10.5px;text-transform:uppercase;letter-spacing:0.06em;color:var(--color-accent-2-700);margin-bottom:3px">What didn't</div>
+                          <p style="font-size:12.5px;margin:0;opacity:0.85">{{ item.didnt }}</p>
+                        </div>
+                      </div>
+                    </sc-if>
+                  </div>
+                </sc-if>
+              </div>
+            </sc-for>
+          </div>
+          <button type="button" class="btn btn-secondary btn-block"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="8"/><path d="M12 8v8M8 12h8"/></svg>New {{ activeTierLabel }} goal</button>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ isHabits }}" hint-placeholder-val="{{ false }}">
+        <div style="padding-top:var(--space-1)">
+          <h1 style="font-size:26px;margin:0 0 var(--space-4)">Habits</h1>
+
+          <h6 style="margin-bottom:var(--space-2)">Today</h6>
+          <div style="display:flex;flex-direction:column;gap:2px;margin-bottom:var(--space-6)">
+            <sc-for list="{{ habitsList }}" as="item" hint-placeholder-count="6">
+              <div style="display:flex;align-items:center;gap:var(--space-3);padding:9px 0;border-bottom:1px solid color-mix(in srgb, var(--color-text) 6%, transparent)">
+                <button type="button" class="am-check {{ item.checkClass }}" onclick="{{ item.toggle }}" aria-label="Mark done">
+                  <sc-if value="{{ item.doneToday }}" hint-placeholder-val="{{ false }}">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--color-bg)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg>
+                  </sc-if>
+                </button>
+                <div style="flex:1;min-width:0">
+                  <div style="font-size:14.5px">{{ item.name }}</div>
+                  <div style="font-size:11px;color:color-mix(in srgb, var(--color-text) 50%, transparent)">{{ item.area }}</div>
+                </div>
+                <div style="display:flex;align-items:center;gap:4px;font-size:12.5px;color:var(--color-accent-700);flex:none">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3c1 3-2 4-2 7a4 4 0 008 0c0-2-1-3-1-3 1 3-1 5-3 5a3 3 0 01-3-3c0-2 1-3 1-6z"/></svg>{{ item.streak }}
+                </div>
+              </div>
+            </sc-for>
+          </div>
+
+          <h6 style="margin-bottom:var(--space-2)">This week</h6>
+          <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:var(--space-6)">
+            <div style="display:grid;grid-template-columns:1fr repeat(7,20px);gap:6px;align-items:center">
+              <span></span>
+              <sc-for list="{{ weekDayLabels }}" as="d" hint-placeholder-count="7">
+                <span style="font-size:10px;text-align:center;color:color-mix(in srgb, var(--color-text) 50%, transparent)">{{ d }}</span>
+              </sc-for>
+            </div>
+            <sc-for list="{{ habitsList }}" as="item" hint-placeholder-count="6">
+              <div style="display:grid;grid-template-columns:1fr repeat(7,20px);gap:6px;align-items:center">
+                <span style="font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ item.name }}</span>
+                <sc-for list="{{ item.weekCells }}" as="cell" hint-placeholder-count="7">
+                  <span class="am-dot" style="width:14px;height:14px;margin:0 auto;background:{{ cell.color }}"></span>
+                </sc-for>
+              </div>
+            </sc-for>
+          </div>
+
+          <h6 style="margin-bottom:var(--space-2)">Consistency, last 14 days</h6>
+          <div style="display:flex;align-items:flex-end;gap:4px;height:56px;margin-bottom:var(--space-6)">
+            <sc-for list="{{ trendBars }}" as="bar" hint-placeholder-count="14">
+              <div style="flex:1;height:{{ bar.h }}%;background:var(--color-accent-300);border-radius:2px"></div>
+            </sc-for>
+          </div>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ isOther }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;flex-direction:column;align-items:center;text-align:center;padding:80px 12px 0;gap:var(--space-3)">
+          <div style="width:48px;height:48px;border-radius:50%;background:var(--color-neutral-200);display:flex;align-items:center;justify-content:center">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="8"/><path d="M12 16v-1.5M12 13a2 2 0 10-2-2"/></svg>
+          </div>
+          <h3 style="margin:0">{{ otherLabel }}</h3>
+          <p class="text-muted" style="max-width:26ch;margin:0">Not part of this design pass — Dashboard, Goals and Habits are built out first.</p>
+          <button type="button" class="btn btn-ghost" onclick="{{ goDashboard }}">Back to Dashboard</button>
+        </div>
+      </sc-if>
+    </div>
+
+    <button type="button" aria-label="Open AI guide" onclick="{{ toggleAI }}" style="position:absolute;right:var(--space-4);bottom:var(--space-4);width:52px;height:52px;border-radius:50%;background:var(--color-accent);color:var(--color-bg);border:none;box-shadow:var(--shadow-md);display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:6">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/></svg>
+    </button>
+
+    <div class="am-scrim {{ drawerOpenClass }}" onclick="{{ toggleDrawer }}"></div>
+    <nav class="am-drawer {{ drawerOpenClass }}">
+      <div style="font-family:var(--font-heading);font-weight:600;font-size:17px;padding:var(--space-2) var(--space-2) var(--space-3)">Almanac</div>
+      <sc-for list="{{ navItems }}" as="item" hint-placeholder-count="9">
+        <button type="button" class="am-navrow" onclick="{{ item.go }}" style="background:{{ item.bg }};color:{{ item.fg }};font-weight:{{ item.weight }}">
+          <span style="width:26px;height:26px;border-radius:7px;display:flex;align-items:center;justify-content:center;background:{{ item.iconBg }};color:{{ item.fg }};flex:none" dangerouslySetInnerHTML="{{ item.iconHtml }}"></span>
+          <span style="font-size:14px">{{ item.label }}</span>
+        </button>
+      </sc-for>
+    </nav>
+
+    <div class="am-sheet {{ aiOpenClass }}">
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:var(--space-3) var(--space-4);border-bottom:1px solid var(--color-divider)">
+        <div style="font-family:var(--font-heading);font-weight:600;font-size:15px">AI Guide</div>
+        <button type="button" aria-label="Close" onclick="{{ toggleAI }}" style="border:none;background:transparent;cursor:pointer;color:var(--color-text)">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+        </button>
+      </div>
+      <div style="padding:var(--space-4);display:flex;flex-direction:column;gap:var(--space-3);overflow-y:auto">
+        <div style="background:var(--color-surface);border-radius:var(--radius-lg);padding:10px 12px;font-size:13.5px;max-width:88%">You're 35% into "Run 80 miles in August" with the long run done for this week. Want to plan the next three days?</div>
+        <div style="background:var(--color-accent-100);border-radius:var(--radius-lg);padding:10px 12px;font-size:13.5px;max-width:88%;align-self:flex-end;color:var(--color-accent-800)">Yes — keep it easy, I'm still sore.</div>
+        <div style="background:var(--color-surface);border-radius:var(--radius-lg);padding:10px 12px;font-size:13.5px;max-width:88%">Understood. Two short recovery runs and a rest day, then reassess Thursday.</div>
+      </div>
+      <div style="display:flex;gap:var(--space-2);padding:var(--space-3) var(--space-4);border-top:1px solid var(--color-divider)">
+        <input class="input" placeholder="Ask about your goals, habits, or progress…"/>
+        <button type="button" class="btn btn-primary btn-icon" aria-label="Send"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M3 20l18-8L3 4v6l12 2-12 2z"/></svg></button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+const NAV = [
+  ['dashboard','Dashboard','home'],
+  ['goals','Goals','target'],
+  ['focus','Focus Areas','compass'],
+  ['habits','Habits','check'],
+  ['mood','How You Feel','heart'],
+  ['reflection','Reflection','book'],
+  ['wisdom','Wisdom Library','quote'],
+  ['ai','AI Guide','sparkle'],
+  ['settings','Settings','sliders'],
+];
+const TITLES = Object.fromEntries(NAV.map(n => [n[0], n[1]]));
+const ICONS = {
+  home: '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 11L12 5l7 6"/><path d="M7 10v8h4v-5h2v5h4v-8"/></svg>',
+  target: '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3.2" fill="currentColor" stroke="none"/></svg>',
+  compass: '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="8"/><path d="M15 9l-2 5-5 2 2-5z" fill="currentColor" stroke="none"/></svg>',
+  check: '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg>',
+  heart: '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19s-7-4.35-7-9.5A4.5 4.5 0 0112 6a4.5 4.5 0 017 3.5C19 14.65 12 19 12 19z"/></svg>',
+  book: '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M4 5h7v14H4zM13 5h7v14h-7z"/><path d="M11 5v14"/></svg>',
+  quote: '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M6 8c-2 0-3 1.5-3 4s1 4 3 4M15 8c-2 0-3 1.5-3 4s1 4 3 4"/></svg>',
+  sparkle: '<svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/></svg>',
+  sliders: '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M4 7h6M14 7h6M4 12h10M18 12h2M4 17h2M10 17h10"/><circle cx="12" cy="7" r="2" fill="currentColor" stroke="none"/><circle cx="16" cy="12" r="2" fill="currentColor" stroke="none"/><circle cx="8" cy="17" r="2" fill="currentColor" stroke="none"/></svg>',
+};
+const GOALS = [
+  {id:'g1',tier:'annual',parent:null,title:'Run a marathon',area:'Health & Fitness',priority:'high',progress:42,target:'Nov 8',criteria:'Finish under 4:30:00',worked:'Sticking to the Tue/Thu/Sat running rhythm — three months without missing a scheduled run.',didnt:'Skipped strength work most weeks; it shows on the long runs.'},
+  {id:'g2',tier:'annual',parent:null,title:'Deepen family relationships',area:'Family',priority:'medium',progress:61,target:'Dec 31',criteria:'A standing weekly touchpoint with each parent and sibling',worked:'Sunday dinners are now a fixture — nobody has to be asked twice.',didnt:'Calls with my brother still happen on his schedule, not a shared one.'},
+  {id:'g3',tier:'annual',parent:null,title:'Launch independent consulting practice',area:'Career',priority:'high',progress:28,target:'Jan 15',criteria:'First paying client signed',worked:'Positioning finally feels clear after three rewrites.',didnt:'Kept treating the website as a prerequisite instead of just calling people.'},
+  {id:'g4',tier:'monthly',parent:'g1',title:'Run 80 miles in August',area:'Health & Fitness',priority:'high',progress:35,target:'Aug 31',criteria:'Log 80 miles across the month',worked:'',didnt:''},
+  {id:'g5',tier:'monthly',parent:'g2',title:'Keep the Sunday dinner streak',area:'Family',priority:'medium',progress:75,target:'Aug 31',criteria:'4 for 4 Sundays this month',worked:'',didnt:''},
+  {id:'g6',tier:'monthly',parent:'g3',title:'Finish site + pricing page',area:'Career',priority:'high',progress:50,target:'Aug 20',criteria:'Live site with three package tiers',worked:'',didnt:''},
+  {id:'g7',tier:'weekly',parent:'g4',title:'Long run — 14 miles Saturday',area:'Health & Fitness',priority:'medium',progress:100,target:'Aug 2',criteria:'Complete without walking breaks',worked:'',didnt:''},
+  {id:'g8',tier:'weekly',parent:'g5',title:'Book the table, call Mom first',area:'Family',priority:'low',progress:60,target:'Aug 2',criteria:'Reservation confirmed by Friday',worked:'',didnt:''},
+  {id:'g9',tier:'weekly',parent:'g6',title:'Draft homepage copy',area:'Career',priority:'high',progress:20,target:'Aug 3',criteria:'Three sections drafted',worked:'',didnt:''},
+];
+const HABITS_SEED = [
+  {id:'h1',name:'Morning pages',area:'Personal Development',streak:12,doneToday:true, week:[1,1,1,1,1,0,1]},
+  {id:'h2',name:'Strength training',area:'Health & Fitness',streak:5,doneToday:true, week:[1,0,1,0,1,0,1]},
+  {id:'h3',name:'No phone after 9pm',area:'Health & Fitness',streak:3,doneToday:false, week:[1,1,0,1,0,0,1]},
+  {id:'h4',name:'Read 20 minutes',area:'Personal Development',streak:27,doneToday:false, week:[1,1,1,1,1,1,0]},
+  {id:'h5',name:'Stretch',area:'Health & Fitness',streak:8,doneToday:true, week:[1,1,1,0,1,1,1]},
+  {id:'h6',name:'Gratitude note',area:'Spirituality',streak:45,doneToday:false, week:[1,1,1,1,1,1,1]},
+];
+const TREND = [40,55,35,60,70,50,80,65,90,75,60,85,70,95];
+const FOCUS_STATUS = [
+  {area:'Health & Fitness', level:'On track', color:'var(--color-accent)'},
+  {area:'Career', level:'On track', color:'var(--color-accent)'},
+  {area:'Friends', level:'Quiet for 3 weeks', color:'var(--color-accent-2)'},
+  {area:'Hobbies', level:'No entries this month', color:'var(--color-accent-2)'},
+];
+const PRIORITY_TAG = {high:'tag-accent-2', medium:'tag-accent', low:'tag-neutral'};
+
+class Component extends DCLogic {
+  state = {
+    screen: 'dashboard',
+    drawerOpen: false,
+    aiOpen: false,
+    goalsTab: 'annual',
+    expandedGoalId: null,
+    focusDone: {g7:false, g8:true, g9:false},
+    habits: HABITS_SEED,
+  };
+
+  setScreen = (s) => this.setState({ screen: s, drawerOpen: false });
+  toggleDrawer = () => this.setState(st => ({ drawerOpen: !st.drawerOpen }));
+  toggleAI = () => this.setState(st => ({ aiOpen: !st.aiOpen }));
+  setTab = (t) => this.setState({ goalsTab: t });
+  toggleExpand = (id) => this.setState(st => ({ expandedGoalId: st.expandedGoalId === id ? null : id }));
+  toggleFocus = (id) => this.setState(st => ({ focusDone: { ...st.focusDone, [id]: !st.focusDone[id] } }));
+  toggleHabit = (id) => this.setState(st => ({ habits: st.habits.map(h => h.id === id ? { ...h, doneToday: !h.doneToday } : h) }));
+
+  renderVals() {
+    const st = this.state;
+    const byId = Object.fromEntries(GOALS.map(g => [g.id, g]));
+
+    const navItems = NAV.map(([key, label, icon]) => {
+      const active = st.screen === key;
+      return {
+        label, go: () => this.setScreen(key), iconHtml: { __html: ICONS[icon] },
+        bg: active ? 'var(--color-accent-100)' : 'transparent',
+        fg: active ? 'var(--color-accent-800)' : 'var(--color-text)',
+        iconBg: active ? 'var(--color-accent-200)' : 'var(--color-neutral-200)',
+        weight: active ? 600 : 400,
+      };
+    });
+
+    const todaysFocus = ['g7','g8','g9'].map(id => {
+      const g = byId[id]; const done = !!st.focusDone[id];
+      return { title: g.title, area: g.area, priority: g.priority, priorityTag: PRIORITY_TAG[g.priority],
+        done, checkClass: done ? 'done' : '', toggle: () => this.toggleFocus(id),
+        textStyle: done ? 'opacity:0.5;text-decoration:line-through' : '' };
+    });
+
+    const weekGoals = GOALS.filter(g => g.tier === 'monthly').map(g => ({ title: g.title, progress: g.progress }));
+    const annualGoals = GOALS.filter(g => g.tier === 'annual').map(g => ({ title: g.title, progress: g.progress }));
+
+    const filteredGoals = GOALS.filter(g => g.tier === st.goalsTab).map(g => ({
+      ...g, priorityTag: PRIORITY_TAG[g.priority],
+      parentLabel: g.parent ? byId[g.parent].title : null,
+      isExpanded: st.expandedGoalId === g.id,
+      hasNotes: !!(g.worked || g.didnt),
+      toggleExpand: () => this.toggleExpand(g.id),
+    }));
+
+    const habitsList = st.habits.map(h => ({
+      ...h, checkClass: h.doneToday ? 'done' : '', toggle: () => this.toggleHabit(h.id),
+      weekCells: h.week.map(v => ({ color: v ? 'var(--color-accent)' : 'var(--color-neutral-200)' })),
+    }));
+
+    const active = st.habits.filter(h => h.streak > 0);
+    const longest = active.reduce((a, b) => b.streak > a.streak ? b : a, active[0] || { streak: 0, name: '—' });
+    const habitsDoneCount = st.habits.filter(h => h.doneToday).length;
+    const focusDoneCount = Object.values(st.focusDone).filter(Boolean).length;
+    const todayProgressPct = Math.round(((habitsDoneCount + focusDoneCount) / (st.habits.length + 3)) * 100);
+
+    return {
+      todayLabel: 'Tue, Aug 1',
+      screenTitle: TITLES[st.screen] || 'Almanac',
+      isDashboard: st.screen === 'dashboard', isGoals: st.screen === 'goals', isHabits: st.screen === 'habits',
+      isOther: !['dashboard','goals','habits'].includes(st.screen),
+      otherLabel: TITLES[st.screen] || '—',
+      goDashboard: () => this.setScreen('dashboard'),
+      navItems, toggleDrawer: this.toggleDrawer, drawerOpenClass: st.drawerOpen ? 'open' : '',
+      toggleAI: this.toggleAI, aiOpenClass: st.aiOpen ? 'open' : '',
+      todaysFocus, weekGoals, annualGoals, focusStatus: FOCUS_STATUS,
+      todayProgressPct, focusDoneCount, focusTotalCount: 3, habitsDoneCount, habitsTotalCount: st.habits.length,
+      activeGoalsCount: GOALS.filter(g => g.progress < 100).length,
+      longestHabitName: longest.name, longestStreak: longest.streak,
+      dailyQuote: { text: 'We are what we repeatedly do. Excellence, then, is not an act, but a habit.', author: 'Will Durant' },
+      tabAnnual: st.goalsTab === 'annual', tabMonthly: st.goalsTab === 'monthly', tabWeekly: st.goalsTab === 'weekly',
+      setTabAnnual: () => this.setTab('annual'), setTabMonthly: () => this.setTab('monthly'), setTabWeekly: () => this.setTab('weekly'),
+      activeTierLabel: st.goalsTab, filteredGoals,
+      habitsList, weekDayLabels: ['M','T','W','T','F','S','S'],
+      trendBars: TREND.map(h => ({ h })),
+    };
+  }
+}
+</script>
+</body>
+</html>

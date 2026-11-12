@@ -1,0 +1,28 @@
+<%#
+  The polled fragment for the L2 trace: run strip, waterfall, and the phase
+  panel when one is selected. The island swaps this whole block.
+%>
+<% if (session) { %>
+  <div class="run-strip">
+    <span class="request" title="<%= session.request || "" %>"><%= session.request %></span>
+    <%- include("../partials/status-chip", { status: session.status || "fail" }) %>
+    <span class="dim">started <%= fmtDate(session.started_at) %></span>
+    <span class="run-stats">
+      <%- include("../partials/stat-chip", { kind: "cost", value: session.total_cost }) %>
+      <%- include("../partials/stat-chip", { kind: "runtime", value: sessionDurationMs(session, nowMs) }) %>
+      <%- include("../partials/stat-chip", { kind: "tokens", value: session.total_tokens }) %>
+      <%- include("../partials/stat-chip", { kind: "read", value: usage.read }) %>
+      <%- include("../partials/stat-chip", { kind: "written", value: usage.written }) %>
+    </span>
+  </div>
+<% } %>
+
+<% if (wf && wf.lanes.length) { %>
+  <%- include("../partials/waterfall", { wf, adwId }) %>
+<% } else { %>
+  <div class="empty-state">no phases recorded for this session</div>
+<% } %>
+
+<% if (detail) { %>
+  <%- include("../partials/phase-detail", { d: detail, adwId, prompts }) %>
+<% } %>

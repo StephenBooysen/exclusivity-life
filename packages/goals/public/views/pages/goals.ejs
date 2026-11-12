@@ -1,0 +1,55 @@
+<h1 class="screen-title">Goals</h1>
+
+<div class="seg seg-block" role="radiogroup" aria-label="Goal tier" style="margin-bottom:var(--space-4)">
+  <label class="seg-opt"><input type="radio" name="tier" value="annual" checked>Annual</label>
+  <label class="seg-opt"><input type="radio" name="tier" value="monthly">Monthly</label>
+  <label class="seg-opt"><input type="radio" name="tier" value="weekly">Weekly</label>
+</div>
+
+<div id="goal-list" style="display:flex;flex-direction:column;gap:var(--space-3);margin-bottom:var(--space-4)">
+  <div class="am-empty">Loading…</div>
+</div>
+
+<button type="button" class="btn btn-secondary btn-block" id="goal-new">
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="8"/><path d="M12 8v8M8 12h8"/></svg>
+  <span id="goal-new-label">New annual goal</span>
+</button>
+
+<div class="modal-overlay hidden" id="goal-modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <div class="modal-title" id="goal-modal-title">New goal</div>
+      <button type="button" class="modal-close" id="goal-modal-close" aria-label="Close">&times;</button>
+    </div>
+    <form id="goal-form">
+      <div class="form-group">
+        <label class="form-label" for="goal-title">Title</label>
+        <input class="form-input" id="goal-title" required>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="goal-criteria">Success criteria</label>
+        <input class="form-input" id="goal-criteria" placeholder="How you will know it is done">
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="goal-priority">Priority</label>
+        <select class="form-select" id="goal-priority">
+          <option value="high">High</option>
+          <option value="medium" selected>Medium</option>
+          <option value="low">Low</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="goal-area">Focus area</label>
+        <select class="form-select" id="goal-area"><option value="">None</option></select>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="goal-target">Target date</label>
+        <input class="form-input" id="goal-target" type="date">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" id="goal-cancel">Cancel</button>
+        <button type="submit" class="btn btn-primary">Save goal</button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title><%= title || 'Architect My Life' %></title>
+    <meta name="description" content="Personal goal management, habit tracking, and self-reflection">
+    <meta name="theme-color" content="#f7f5f0">
+
+    <!-- PWA -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Architect My Life">
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+
+    <link rel="stylesheet" href="/css/theme.css">
+    <link rel="stylesheet" href="/css/legacy.css">
+
+    <!-- Icon font for the five screens still awaiting a design pass. The
+         designed screens use inline SVG; drop this when the rest follow. -->
+    <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/2.6.0/uicons-regular-rounded/css/uicons-regular-rounded.css">
+</head>
+<body>
+<% const page = currentPage || 'dashboard'; %>
+
+<header class="am-topbar">
+  <div class="am-topbar-inner">
+    <div>
+      <div class="am-topbar-greeting" id="am-greeting">Hello</div>
+      <div class="am-topbar-name" id="am-username">&nbsp;</div>
+    </div>
+    <div class="am-avatar" id="am-avatar" aria-hidden="true"></div>
+  </div>
+</header>
+
+<main class="am-content" id="main-content">
+    <%- body %>
+</main>
+
+<button type="button" class="am-fab" id="am-ai-toggle" aria-label="Open AI guide" aria-expanded="false">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/></svg>
+</button>
+
+<div class="am-scrim" id="am-scrim"></div>
+
+<div class="am-sheet" id="am-sheet" role="dialog" aria-label="AI Guide" aria-modal="false">
+  <%- include('../partials/ai-sheet') %>
+</div>
+
+<%- include('../partials/tabbar', { currentPage: page }) %>
+
+<script>
+  window.APP_CONFIG = { currentPage: '<%= page %>', apiBase: '/api' };
+</script>
+<script src="/js/main.js"></script>
+<script src="/js/components/shared.js"></script>
+<script src="/js/shell.js"></script>
+<script src="/js/am-util.js"></script>
+<% if (['dashboard'].includes(page)) { %><script src="/js/screens/dashboard.js"></script><% } %>
+<% if (['goals'].includes(page)) { %><script src="/js/screens/goals.js"></script><% } %>
+<% if (['habits'].includes(page)) { %><script src="/js/screens/habits.js"></script><% } %>
+<% if (['feelings'].includes(page)) { %><script src="/js/components/feelings.js"></script><% } %>
+<% if (['wisdom'].includes(page)) { %><script src="/js/components/wisdom.js"></script><% } %>
+<% if (['focus-areas'].includes(page)) { %><script src="/js/components/focus-areas.js"></script><% } %>
+
+<%- script %>
+</body>
+</html>

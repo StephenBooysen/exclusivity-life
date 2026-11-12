@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en-ZA">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Exclusivity</title>
+  <meta name="description" content="A vetted membership club for people who have stopped looking on ordinary apps." />
+  <meta name="theme-color" content="#0e1113" />
+  <link rel="manifest" href="/manifest.webmanifest" />
+  <link rel="icon" href="/icons/icon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="/icons/icon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <!--
+    No global top bar: in this system every screen draws its own header, the way
+    the mockups do. The device's own status bar is the only thing above them.
+  -->
+  <div id="app">
+    <!--
+      Offline is stated, never hidden: the shell still opens from cache, but
+      what is on screen may be stale and a send will not leave the device.
+    -->
+    <div class="offline" id="offline" hidden role="status">Offline · showing what was last loaded</div>
+
+    <main id="view-root" aria-live="polite"></main>
+
+    <nav class="tabbar" id="tabbar" hidden aria-label="Main">
+      <button class="tab" data-route="discover" type="button">Intros</button>
+      <button class="tab" data-route="matches" type="button">
+        Matches
+        <span class="badge" id="tab-unread" hidden aria-hidden="true"></span>
+      </button>
+      <button class="tab" data-route="profile" type="button">
+        Account
+        <span class="badge" id="tab-notif" hidden aria-hidden="true"></span>
+      </button>
+    </nav>
+
+    <div class="sheet-backdrop" id="modal-root" hidden></div>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  </div>
+
+  <script type="module" src="/app.js"></script>
+</body>
+</html>

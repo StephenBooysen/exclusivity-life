@@ -1,0 +1,69 @@
+<%
+  // Five primary destinations on the bar; the remaining four sit behind "More".
+  const tabs = [
+    { key: 'dashboard',  label: 'Home',       href: '/dashboard',  icon: 'home' },
+    { key: 'goals',      label: 'Goals',      href: '/goals',      icon: 'target' },
+    { key: 'habits',     label: 'Habits',     href: '/habits',     icon: 'check' },
+    { key: 'reflection', label: 'Reflection', href: '/reflection', icon: 'book' }
+  ];
+  const overflow = [
+    { key: 'focus-areas', label: 'Focus Areas',    href: '/focus-areas',  icon: 'compass' },
+    { key: 'feelings',    label: 'How You Feel',   href: '/how-you-feel', icon: 'heart' },
+    { key: 'wisdom',      label: 'Wisdom Library', href: '/wisdom',       icon: 'quote' },
+    { key: 'ai-guide',    label: 'AI Guide',       href: '/ai-guide',     icon: 'sparkle' },
+    { key: 'settings',    label: 'Settings',       href: '/settings',     icon: 'sliders' }
+  ];
+  const icons = {
+    home: '<path d="M5 11L12 5l7 6"/><path d="M7 10v8h4v-5h2v5h4v-8"/>',
+    target: '<circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3.2" fill="currentColor" stroke="none"/>',
+    compass: '<circle cx="12" cy="12" r="8"/><path d="M15 9l-2 5-5 2 2-5z" fill="currentColor" stroke="none"/>',
+    check: '<rect x="4" y="4" width="16" height="16" rx="3"/><path d="M8 12.5l2.5 2.5L16 9.5"/>',
+    heart: '<path d="M12 19s-7-4.35-7-9.5A4.5 4.5 0 0112 6a4.5 4.5 0 017 3.5C19 14.65 12 19 12 19z"/>',
+    book: '<path d="M4 5h7v14H4zM13 5h7v14h-7z"/><path d="M11 5v14"/>',
+    quote: '<path d="M6 8c-2 0-3 1.5-3 4s1 4 3 4M15 8c-2 0-3 1.5-3 4s1 4 3 4"/>',
+    sparkle: '<path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z" fill="currentColor" stroke="none"/>',
+    sliders: '<path d="M4 7h6M14 7h6M4 12h10M18 12h2M4 17h2M10 17h10"/><circle cx="12" cy="7" r="2" fill="currentColor" stroke="none"/><circle cx="16" cy="12" r="2" fill="currentColor" stroke="none"/><circle cx="8" cy="17" r="2" fill="currentColor" stroke="none"/>',
+    more: '<circle cx="5" cy="12" r="1.6" fill="currentColor" stroke="none"/><circle cx="12" cy="12" r="1.6" fill="currentColor" stroke="none"/><circle cx="19" cy="12" r="1.6" fill="currentColor" stroke="none"/>'
+  };
+  const svg = (name) => '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" ' +
+    'stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + icons[name] + '</svg>';
+  const inOverflow = overflow.some((o) => o.key === currentPage);
+%>
+<nav class="am-tabbar" aria-label="Main">
+  <div class="am-tabbar-inner">
+    <% tabs.forEach(function (tab) { %>
+      <a class="am-tab <%= currentPage === tab.key ? 'active' : '' %>" href="<%= tab.href %>"
+         <%= currentPage === tab.key ? 'aria-current="page"' : '' %>>
+        <%- svg(tab.icon) %>
+        <span class="am-tab-label"><%= tab.label %></span>
+      </a>
+    <% }); %>
+    <button type="button" class="am-tab <%= inOverflow ? 'active' : '' %>" id="am-more"
+            aria-label="More destinations" aria-expanded="false" aria-controls="am-more-sheet">
+      <%- svg('more') %>
+      <span class="am-tab-label">More</span>
+    </button>
+  </div>
+</nav>
+
+<div class="am-sheet" id="am-more-sheet" role="dialog" aria-label="More destinations" aria-modal="false">
+  <div class="am-sheet-head">
+    <div class="am-sheet-title">More</div>
+    <button type="button" class="am-iconbtn" id="am-more-close" aria-label="Close" style="width:36px;height:36px;margin:0">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+           stroke-width="1.8" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+  </div>
+  <div class="am-sheet-body" style="gap:2px">
+    <% overflow.forEach(function (item) { %>
+      <a class="am-navrow <%= currentPage === item.key ? 'active' : '' %>" href="<%= item.href %>"
+         <%= currentPage === item.key ? 'aria-current="page"' : '' %>>
+        <span class="am-navrow-icon" aria-hidden="true">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+               stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><%- icons[item.icon] %></svg>
+        </span>
+        <span><%= item.label %></span>
+      </a>
+    <% }); %>
+  </div>
+</div>

@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics><meta name="design_doc_mode" content="canvas">
+<link rel="stylesheet" href="_ds/industry-2bfadc63-ef92-4633-a73a-45e29a4c616e/styles.css">
+<script src="_ds/industry-2bfadc63-ef92-4633-a73a-45e29a4c616e/_ds_bundle.js"></script>
+<style>
+:root{--color-bg:#0e1113;--color-surface:#171b1e;--color-text:#e7ebef;--color-accent:#8fb3d6;--color-accent-600:#a8c4de;--color-accent-700:#c2d6e9;--color-divider:rgba(231,235,239,.15)}
+html{background:#0a0c0d}
+body{margin:0;background:#0a0c0d;min-height:100%;color:#e7ebef;font-family:"Barlow",system-ui,sans-serif}
+a{color:#8fb3d6;text-decoration:none}a:hover{color:#c2d6e9}
+.tag-accent{background:rgba(143,179,214,.14);color:#a8c4de}
+.tag-neutral{background:rgba(231,235,239,.08);color:rgba(231,235,239,.72)}
+.tag-outline{border-color:rgba(143,179,214,.5);color:#a8c4de}
+.btn-primary{color:#0e1113}
+.ph{position:relative;background:#141c25;background-image:repeating-linear-gradient(45deg,rgba(143,179,214,.14) 0 1px,transparent 1px 10px)}
+.ph::after{content:attr(data-ph);position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);font:400 9px/1 "Barlow",sans-serif;letter-spacing:.16em;color:rgba(143,179,214,.62);text-transform:uppercase;white-space:nowrap}
+</style></helmet>
+
+<div style="padding:56px 60px 8px;background:#0a0c0d"><div style="max-width:1000px">
+<div style="font:600 11px/1 'Barlow Condensed',sans-serif;letter-spacing:.24em;color:#8fb3d6;text-transform:uppercase;margin-bottom:14px">Cachet · UI mockups · v1</div>
+<h1 style="font-size:54px;margin:0 0 18px;letter-spacing:-.02em">Membership, by review.</h1>
+<p style="font-size:15px;line-height:1.6;max-width:62ch;color:rgba(231,235,239,.66);text-wrap:pretty;margin:0 0 26px">Twelve screens across both sides of the market — mobile canvas at 390×844, Industry system inverted onto a dark ground. Copy is terse by intent: the bar at the door is the product, so each screen states a rule rather than selling one.</p>
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(231,235,239,.13);border:1px solid rgba(231,235,239,.13)">
+<div style="background:#0e1113;padding:17px 19px"><div style="font:400 10px/1 'Barlow',sans-serif;letter-spacing:.14em;color:rgba(231,235,239,.42);text-transform:uppercase;margin-bottom:9px">Assumed</div><div style="font-size:13px;line-height:1.55;color:rgba(231,235,239,.78)">Johannesburg only, hard geo-gate. ZAR, 24-hour time. Photos are duotone placeholder frames.</div></div>
+<div style="background:#0e1113;padding:17px 19px"><div style="font:400 10px/1 'Barlow',sans-serif;letter-spacing:.14em;color:rgba(231,235,239,.42);text-transform:uppercase;margin-bottom:9px">Made visible</div><div style="font-size:13px;line-height:1.55;color:rgba(231,235,239,.78)">The 48-hour decision, the interview gate, badge evidence, remaining allowance before it runs out.</div></div>
+<div style="background:#0e1113;padding:17px 19px"><div style="font:400 10px/1 'Barlow',sans-serif;letter-spacing:.14em;color:rgba(231,235,239,.42);text-transform:uppercase;margin-bottom:9px">Deliberately absent</div><div style="font-size:13px;line-height:1.55;color:rgba(231,235,239,.78)">No upsell on the Select side, no paid inbox override, no score on a face, no urgency badges.</div></div>
+</div>
+</div></div>
+
+<section style="padding:44px 60px 40px;background:#0a0c0d">
+<div style="display:flex;align-items:baseline;gap:12px;margin-bottom:6px"><span style="font:600 10px/1 'Barlow Condensed',sans-serif;letter-spacing:.16em;padding:5px 8px;background:#8fb3d6;color:#0e1113">A</span><h2 style="margin:0;font-size:26px">Marcus — applicant to paying member</h2></div>
+<p style="font-size:13px;color:rgba(231,235,239,.5);margin:0 0 30px">Signature → Elite. Nine screens: door, criteria, application, review, tiers, product.</p>
+
+<div style="display:flex;flex-wrap:wrap;gap:52px;align-items:flex-start">
+
+<div style="flex:none;display:flex;flex-direction:column;gap:11px">
+<div style="display:flex;align-items:baseline;gap:9px"><span style="font:600 10px/1 'Barlow Condensed',sans-serif;letter-spacing:.14em;padding:4px 7px;background:rgba(143,179,214,.14);color:#a8c4de">A1</span><span style="font-size:11px;color:rgba(231,235,239,.5)">The door</span></div>
+<div class="blueprint" data-screen-label="A1 Landing" style="width:390px;height:844px;background:#0e1113;display:flex;flex-direction:column;overflow:hidden">
+<i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+<div style="display:flex;justify-content:space-between;padding:14px 22px 0;font:500 11px/1 'Barlow',sans-serif;color:rgba(231,235,239,.45)"><span>21:04</span><span>5G · 84%</span></div>
+<div class="ph" data-ph="Hero · duotone" style="height:352px;margin:26px 22px 0;border:1px solid rgba(231,235,239,.14)"></div>
+<div style="padding:30px 22px 0;flex:1;display:flex;flex-direction:column">
+<div style="font:600 11px/1 'Barlow Condensed',sans-serif;letter-spacing:.34em;color:#8fb3d6;text-transform:uppercase">Cachet</div>
+<h2 style="font-size:40px;margin:16px 0 0;letter-spacing:-.02em;line-height:1.02">Membership,<br>by review.</h2>
+<p style="font-size:14px;line-height:1.6;color:rgba(231,235,239,.58);margin:14px 0 0;max-width:30ch">Both sides apply. A person decides. Johannesburg.</p>
+<div style="margin-top:auto;display:flex;flex-direction:column;gap:12px;padding-bottom:26px">
+<div style="display:flex;gap:18px;font-size:11px;color:rgba(231,235,239,.42);letter-spacing:.02em"><span>48h decision</span><span>·</span><span>Identity verified</span><span>·</span><span>No public profiles</span></div>
+<button class="btn btn-primary" style="height:52px;font-size:15px;letter-spacing:.04em">Apply for membership</button>
+<button class="btn btn-secondary" style="height:48px">Sign in</button>
+</div>
+</div>
+</div>
+</div>
+
+<div style="flex:none;display:flex;flex-direction:column;gap:11px">
+<div style="display:flex;align-items:baseline;gap:9px"><span style="font:600 10px/1 'Barlow Condensed',sans-serif;letter-spacing:.14em;padding:4px 7px;background:rgba(143,179,214,.14);color:#a8c4de">A2</span><span style="font-size:11px;color:rgba(231,235,239,.5)">Criteria, before any data (F1.2)</span></div>
+<div class="blueprint" data-screen-label="A2 Criteria" style="width:390px;height:844px;background:#0e1113;display:flex;flex-direction:column;overflow:hidden">
+<i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+<div style="display:flex;justify-content:space-between;padding:14px 22px 0;font:500 11px/1 'Barlow',sans-serif;color:rgba(231,235,239,.45)"><span>21:06</span><span>5G · 84%</span></div>
+<div style="padding:22px 22px 0;display:flex;align-items:center;gap:14px"><span style="font-size:20px;color:rgba(231,235,239,.55)">←</span><span style="font:400 10px/1 'Barlow',sans-serif;letter-spacing:.18em;color:rgba(231,235,239,.4);text-transform:uppercase">Before you begin</span></div>
+<div style="padding:26px 22px 0">
+<h2 style="font-size:31px;margin:0 0 8px;letter-spacing:-.01em">What we assess</h2>
+<p style="font-size:13.5px;line-height:1.6;color:rgba(231,235,239,.55);margin:0 0 24px">These four, in this order. Nothing hidden, nothing else.</p>
+<div style="display:flex;flex-direction:column;gap:1px;background:rgba(231,235,239,.12);border:1px solid rgba(231,235,239,.12)">
+<div style="background:#0e1113;padding:16px 16px"><div style="display:flex;gap:12px"><span style="font:400 11px/1.4 'Barlow',sans-serif;color:#8fb3d6">01</span><div><div style="font:600 16px/1.2 'Barlow Condensed',sans-serif">Identity</div><div style="font-size:12.5px;line-height:1.5;color:rgba(231,235,239,.55);margin-top:3px">A liveness selfie, matched to your photos. Held 90 days, then deleted.</div></div></div></div>
+<div style="background:#0e1113;padding:16px 16px"><div style="display:flex;gap:12px"><span style="font:400 11px/1.4 'Barlow',sans-serif;color:#8fb3d6">02</span><div><div style="font:600 16px/1.2 'Barlow Condensed',sans-serif">Photos</div><div style="font-size:12.5px;line-height:1.5;color:rgba(231,235,239,.55);margin-top:3px">Three to six. One face, unobscured. Location data stripped on upload.</div></div></div></div>
+<div style="background:#0e1113;padding:16px 16px"><div style="display:flex;gap:12px"><span style="font:400 11px/1.4 'Barlow',sans-serif;color:#8fb3d6">03</span><div><div style="font:600 16px/1.2 'Barlow Condensed',sans-serif">Standing <span class="tag tag-outline" style="margin-left:6px;transform:translateY(-2px)">Men only</span></div><div style="font-size:12.5px;line-height:1.5;color:rgba(231,235,239,.55);margin-top:3px">A twenty-minute call. <span style="color:#a8c4de">No bank statements, ever.</span></div></div></div></div>
+<div style="background:#0e1113;padding:16px 16px"><div style="display:flex;gap:12px"><span style="font:400 11px/1.4 'Barlow',sans-serif;color:#8fb3d6">04</span><div><div style="font:600 16px/1.2 'Barlow Condensed',sans-serif">A complete profile</div><div style="font-size:12.5px;line-height:1.5;color:rgba(231,235,239,.55);margin-top:3px">Read by a reviewer against a written rubric. Never scored by a model.</div></div></div></div>
+</div>
+</div>
+<div style="margin-top:auto;padding:0 22px 26px">
+<div style="border-left:2px solid #8fb3d6;padding:2px 0 2px 14px;font-size:12.5px;line-height:1.55;color:rgba(231,235,239,.6);margin-bottom:16px">A human reviews this. Decision inside 48 hours, with a reason.</div>
+<button class="btn btn-primary btn-block" style="height:52px;font-size:15px">Begin application</button>
+</div>
+</div>
+</div>
+
+<div style="flex:none;display:flex;flex-direction:column;gap:11px">
+<div style="display:flex;align-items:baseline;gap:9px"><span style="font:600 10px/1 'Barlow Condensed',sans-serif;letter-spacing:.14em;padding:4px 7px;background:rgba(143,179,214,.14);color:#a8c4de">A3</span><span style="font-size:11px;color:rgba(231,235,239,.5)">Photos + liveness (F1.4–1.5)</span></div>
+<div class="blueprint" data-screen-label="A3 Photos" style="width:390px;height:844px;background:#0e1113;display:flex;flex-direction:column;overflow:hidden">
+<i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+<div style="display:flex;justify-content:space-between;padding:14px 22px 0;font:500 11px/1 'Barlow',sans-serif;color:rgba(231,235,239,.45)"><span>21:12</span><span>5G · 83%</span></div>
+<div style="padding:22px 22px 0;display:flex;align-items:center;justify-content:space-between"><span style="font-size:20px;color:rgba(231,235,239,.55)">←</span><span style="font-size:12px;color:rgba(231,235,239,.5)">Saved</span></div>
+<div style="padding:20px 22px 0">
+<div style="display:flex;gap:5px;margin-bottom:16px">
+<span style="flex:1;height:2px;background:#8fb3d6"></span><span style="flex:1;height:2px;background:#8fb3d6"></span><span style="flex:1;height:2px;background:#8fb3d6"></span><span style="flex:1;height:2px;background:#8fb3d6"></span><span style="flex:1;height:2px;background:rgba(231,235,239,.16)"></span><span style="flex:1;height:2px;background:rgba(231,235,239,.16)"></span><span style="flex:1;height:2px;background:rgba(231,235,239,.16)"></span>
+</div>
+<div style="font:400 10px/1 'Barlow',sans-serif;letter-spacing:.18em;color:rgba(231,235,239,.4);text-transform:uppercase;margin-bottom:10px">Step 4 of 7</div>
+<h2 style="font-size:29px;margin:0 0 6px">Photographs</h2>
+<p style="font-size:13px;line-height:1.55;color:rgba(231,235,239,.55);margin:0 0 20px">Three minimum. One must show your face, unobscured.</p>
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:9px">
+<div class="ph" data-ph="1 · face" style="aspect-ratio:3/4;border:1px solid rgba(143,179,214,.4)"></div>
+<div class="ph" data-ph="2" style="aspect-ratio:3/4;border:1px solid rgba(231,235,239,.14)"></div>
+<div class="ph" data-ph="3" style="aspect-ratio:3/4;border:1px solid rgba(231,235,239,.14)"></div>
+<div style="aspect-ratio:3/4;border:1px dashed rgba(231,235,239,.22);display:grid;place-items:center;font-size:20px;color:rgba(231,235,239,.35)">+</div>
+<div style="aspect-ratio:3/4;border:1px dashed rgba(231,235,239,.22);display:grid;place-items:center;font-size:20px;color:rgba(231,235,239,.35)">+</div>
+<div style="aspect-ratio:3/4;border:1px dashed rgba(231,235,239,.22);display:grid;place-items:center;font-size:20px;color:rgba(231,235,239,.35)">+</div>
+</div>
+<div style="display:flex;justify-content:space-between;font-size:11px;color:rgba(231,235,239,.38);margin-top:10px"><span>3 of 6 uploaded</span><span>JPEG · PNG · HEIC · 12 MB</span></div>
+<div class="blueprint" style="margin-top:26px;padding:16px;display:flex;gap:14px;align-items:center">
+<i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+<div class="ph" data-ph="Selfie" style="width:62px;height:62px;flex:none;border:1px solid rgba(231,235,239,.14)"></div>
+<div><div style="font:600 15px/1.2 'Barlow Condensed',sans-serif">Liveness check</div><div style="font-size:12px;line-height:1.5;color:rgba(231,235,239,.55);margin-top:3px">A prompted pose. Matched to the photos above, then deleted at 90 days.</div></div>
+</div>
+<div style="display:flex;gap:8px;align-items:center;margin-top:18px;font-size:11.5px;color:rgba(231,235,239,.42)"><span style="color:#8fb3d6">✓</span> Location data is removed from every upload.</div>
+</div>
+<div style="margin-top:auto;padding:0 22px 26px;display:flex;gap:10px">
+<button class="btn btn-secondary" style="height:52px;flex:1">Save &amp; exit</button>
+<button class="btn btn-primary" style="height:52px;flex:2;font-size:15px">Continue</button>
+</div>
+</div>
+</div>
+
+<div style="flex:none;display:flex;flex-direction:column;gap:11px">
+<div style="display:flex;align-items:baseline;gap:9px"><span style="font:600 10px/1 'Barlow Condensed',sans-serif;letter-spacing:.14em;padding:4px 7px;background:rgba(143,179,214,.14);color:#a8c4de">A4</span><span style="font-size:11px;color:rgba(231,235,239,.5)">Under review — the interview gate (F2.3a)</span></div>
+<div class="blueprint" data-screen-label="A4 Under review" style="width:390px;height:844px;background:#0e1113;display:flex;flex-direction:column;overflow:hidden">
+<i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+<div style="display:flex;justify-content:space-between;padding:14px 22px 0;font:500 11px/1 'Barlow',sans-serif;color:rgba(231,235,239,.45)"><span>08:41</span><span>Wi-Fi · 96%</span></div>
+<div style="padding:44px 22px 0">
+<div style="font:400 10px/1 'Barlow',sans-serif;letter-spacing:.2em;color:#8fb3d6;text-transform:uppercase">Application 4172</div>
+<h2 style="font-size:34px;margin:14px 0 0;letter-spacing:-.01em">Under review</h2>
+<p style="font-size:13.5px;line-height:1.6;color:rgba(231,235,239,.55);margin:10px 0 0">Submitted 21/08 · 21:19. Decision expected by 23/08.</p>
+</div>
+<div style="padding:38px 22px 0">
+<div style="display:flex;flex-direction:column">
+<div style="display:flex;gap:16px"><div style="display:flex;flex-direction:column;align-items:center"><span style="width:9px;height:9px;background:#8fb3d6;margin-top:5px"></span><span style="width:1px;flex:1;background:rgba(231,235,239,.16)"></span></div><div style="padding-bottom:26px"><div style="font:600 15px/1.2 'Barlow Condensed',sans-serif">Submitted</div><div style="font-size:12px;color:rgba(231,235,239,.45);margin-top:2px">21/08 · 21:19</div></div></div>
+<div style="display:flex;gap:16px"><div style="display:flex;flex-direction:column;align-items:center"><span style="width:9px;height:9px;background:#8fb3d6;margin-top:5px"></span><span style="width:1px;flex:1;background:rgba(231,235,239,.16)"></span></div><div style="padding-bottom:26px"><div style="font:600 15px/1.2 'Barlow Condensed',sans-serif">Pre-screen cleared</div><div style="font-size:12px;color:rgba(231,235,239,.45);margin-top:2px">Automatic · no flags</div></div></div>
+<div style="display:flex;gap:16px"><div style="display:flex;flex-direction:column;align-items:center"><span style="width:9px;height:9px;border:1px solid #8fb3d6;margin-top:5px"></span><span style="width:1px;flex:1;background:rgba(231,235,239,.16)"></span></div><div style="padding-bottom:26px;flex:1"><div style="font:600 15px/1.2 'Barlow Condensed',sans-serif;color:#a8c4de">Introductory call</div><div style="font-size:12px;color:rgba(231,235,239,.5);margin-top:2px">Thu 23/08 · 14:30 · 20 minutes</div>
+<div class="blueprint" style="margin-top:12px;padding:13px 14px"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+<div style="font-size:12.5px;line-height:1.55;color:rgba(231,235,239,.62)">Approval is not possible until this call is recorded as passed. It is how standing is established — there are no documents to send.</div>
+<div style="display:flex;gap:8px;margin-top:12px"><button class="btn btn-secondary" style="height:40px;flex:1;font-size:13px">Reschedule</button><button class="btn btn-primary" style="height:40px;flex:1;font-size:13px">Add to calendar</button></div></div></div></div>
+<div style="display:flex;gap:16px"><div style="display:flex;flex-direction:column;align-items:center"><span style="width:9px;height:9px;border:1px solid rgba(231,235,239,.3);margin-top:5px"></span></div><div><div style="font:600 15px/1.2 'Barlow Condensed',sans-serif;color:rgba(231,235,239,.5)">Decision</div><div style="font-size:12px;color:rgba(231,235,239,.4);margin-top:2px">By email and in app</div></div></div>
+</div>
+</div>
+<div style="margin-top:auto;padding:0 22px 26px;display:flex;justify-content:space-between;font-size:12px"><a href="#">Withdraw application</a><a href="#">Safety Centre</a></div>
+</div>
+</div>
+
+<div style="flex:none;display:flex;flex-direction:column;gap:11px">
+<div style="display:flex;align-items:baseline;gap:9px"><span style="font:600 10px/1 'Barlow Condensed',sans-serif;letter-spacing:.14em;padding:4px 7px;background:rgba(143,179,214,.14);color:#a8c4de">A5</span><span style="font-size:11px;color:rgba(231,235,239,.5)">Approved · tiers (F6.1)</span></div>
+<div class="blueprint" data-screen-label="A5 Tiers" style="width:390px;height:844px;background:#0e1113;display:flex;flex-direction:column;overflow:hidden">
+<i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+<div style="display:flex;justify-content:space-between;padding:14px 22px 0;font:500 11px/1 'Barlow',sans-serif;color:rgba(231,235,239,.45)"><span>16:02</span><span>5G · 71%</span></div>
+<div style="padding:30px 22px 0">
+<div style="font:400 10px/1 'Barlow',sans-serif;letter-spacing:.2em;color:#8fb3d6;text-transform:uppercase">Approved · 23/08</div>
+<h2 style="font-size:30px;margin:12px 0 6px">Choose a membership</h2>
+<p style="font-size:13px;line-height:1.55;color:rgba(231,235,239,.5);margin:0">Tiers buy volume, filters and discretion. Nothing else.</p>
+</div>
+<div style="padding:24px 22px 0;display:flex;flex-direction:column;gap:12px">
+<div class="blueprint" style="padding:16px"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+<div style="display:flex;justify-content:space-between;align-items:baseline"><div style="font:600 19px/1 'Barlow Condensed',sans-serif">Signature</div><div style="font:600 19px/1 'Barlow Condensed',sans-serif">R899<span style="font-size:12px;color:rgba(231,235,239,.45)"> /mo</span></div></div>
+<div style="font-size:12.5px;color:rgba(231,235,239,.5);margin-top:7px">5 introductions daily · 10 likes</div></div>
+
+<div class="blueprint" style="padding:18px;border-color:#8fb3d6;background:rgba(143,179,214,.06)"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+<div style="display:flex;justify-content:space-between;align-items:baseline"><div style="display:flex;align-items:baseline;gap:9px"><span style="font:600 22px/1 'Barlow Condensed',sans-serif">Elite</span><span class="tag tag-accent">Selected</span></div><div style="font:600 22px/1 'Barlow Condensed',sans-serif;color:#a8c4de">R2 499<span style="font-size:12px;color:rgba(231,235,239,.45)"> /mo</span></div></div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:6px 14px;margin-top:14px;font-size:12.5px;color:rgba(231,235,239,.7)">
+<span>12 introductions daily</span><span>40 likes</span><span>Who liked you</span><span>Advanced filters</span><span>Travel mode</span><span>Read receipts</span><span>2 boosts / month</span><span>24h support</span></div>
+<div style="margin-top:14px;font-size:11.5px;color:rgba(231,235,239,.42)">3-month and 12-month terms available at a discount.</div></div>
+
+<div class="blueprint" style="padding:16px;opacity:.62"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+<div style="display:flex;justify-content:space-between;align-items:baseline"><div style="font:600 19px/1 'Barlow Condensed',sans-serif">Noir</div><div style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:rgba(231,235,239,.5)">Invitation</div></div>
+<div style="font-size:12.5px;color:rgba(231,235,239,.5);margin-top:7px">Issued by the house. Not available at checkout.</div></div>
+</div>
+<div style="margin-top:auto;padding:0 22px 26px">
+<div style="font-size:11.5px;line-height:1.5;color:rgba(231,235,239,.42);margin-bottom:14px">No tier buys a badge, an inbox, or a reversed decision. Cancel in two taps, effective at period end.</div>
+<button class="btn btn-primary btn-block" style="height:52px;font-size:15px">Continue · R2 499 / month</button>
+</div>
+</div>
+</div>
+
+<div style="flex:none;display:flex;flex-direction:column;gap:11px">
+<div style="display:flex;align-items:baseline;gap:9px"><span style="font:600 10px/1 'Barlow Condensed',sans-serif;letter-spacing:.14em;padding:4px 7px;background:rgba(143,179,214,.14);color:#a8c4de">A6</span><span style="font-size:11px;color:rgba(231,235,239,.5)">Daily introductions (F4.1)</span></div>
+<div class="blueprint" data-screen-label="A6 Introductions" style="width:390px;height:844px;background:#0e1113;display:flex;flex-direction:column;overflow:hidden">
+<i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+<div style="display:flex;justify-content:space-between;padding:14px 22px 0;font:500 11px/1 'Barlow',sans-serif;color:rgba(231,235,239,.45)"><span>19:38</span><span>5G · 62%</span></div>
+<div style="padding:18px 22px 14px;display:flex;justify-content:space-between;align-items:baseline">
+<div><div style="font:600 20px/1 'Barlow Condensed',sans-serif">Today</div><div style="font-size:11.5px;color:rgba(231,235,239,.45);margin-top:4px">Refreshed 06:00 · Elite</div></div>
+<div style="text-align:right"><div style="font:600 20px/1 'Barlow Condensed',sans-serif;color:#a8c4de">8<span style="color:rgba(231,235,239,.35)">/12</span></div><div style="font-size:11px;color:rgba(231,235,239,.45);margin-top:4px">remaining</div></div>
+</div>
+<div style="padding:0 22px;flex:1;display:flex;flex-direction:column">
+<div class="blueprint" style="flex:1;display:flex;flex-direction:column">
+<i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+<div class="ph" data-ph="Portrait · duotone" style="flex:1;min-height:0"></div>
+<div style="padding:16px 16px 18px;border-top:1px solid rgba(231,235,239,.13)">
+<div style="display:flex;align-items:baseline;gap:9px"><h3 style="margin:0;font-size:26px">Lerato</h3><span style="font-size:17px;color:rgba(231,235,239,.5)">29</span></div>
+<div style="font-size:13px;color:rgba(231,235,239,.62);margin-top:5px">In-house counsel · 5–15 km</div>
+<div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:12px"><span class="tag tag-accent">Identity verified</span><span class="tag tag-accent">Photo verified</span></div>
+<div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:7px"><span class="tag tag-outline">Just dating</span><span class="tag tag-outline">Girlfriend</span></div>
+<p style="font-size:13px;line-height:1.55;color:rgba(231,235,239,.58);margin:13px 0 0">“I would rather one long dinner than four short drinks.”</p>
+</div>
+</div>
+<div style="display:flex;gap:12px;padding:16px 0 10px">
+<button class="btn btn-secondary" style="height:56px;flex:1;font-size:14px">Pass</button>
+<button class="btn btn-primary" style="height:56px;flex:1;font-size:14px">Like</button>
+</div>
+<div style="font-size:11px;color:rgba(231,235,239,.35);text-align:center;padding-bottom:8px">Passes are unlimited. A like is spent from today’s 12.</div>
+</div>
+<div style="display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid rgba(231,235,239,.13)">
+<div style="height:60px;display:grid;place-items:center;font:600 10px/1 'Barlow Condensed',sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#8fb3d6;border-bottom:2px solid #8fb3d6">Intros</div>
+<div style="height:60px;display:grid;place-items:center;font:600 10px/1 'Barlow Condensed',sans-serif;letter-spacing:.16em;text-transform:uppercase;color:rgba(231,235,239,.45)">Matches</div>
+<div style="height:60px;display:grid;place-items:center;font:600 10px/1 'Barlow Condensed',sans-serif;letter-spacing:.16em;text-transform:uppercase;color:rgba(231,235,239,.45)">Account</div>
+</div>
+</div>
+</div>
+
+<div style="flex:none;display:flex;flex-direction:column;gap:11px">
+<div style="display:flex;align-items:baseline;gap:9px"><span style="font:600 10px/1 'Barlow Condensed',sans-serif;letter-spacing:.14em;padding:4px 7px;background:rgba(143,179,214,.14);color:#a8c4de">A7</span><span style="font-size:11px;color:rgba(231,235,239,.5)">Profile detail (F3)</span></div>
+<div class="blueprint" data-screen-label="A7 Profile" style="width:390px;height:844px;background:#0e1113;display:flex;flex-direction:column;overflow:hidden">
+<i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+<div class="ph" data-ph="Portrait 1 of 5 · duotone" style="height:300px;position:relative">
+<div style="position:absolute;inset:0;display:flex;justify-content:space-between;align-items:flex-start;padding:16px 18px"><span style="font-size:20px;color:#e7ebef">←</span><span style="font-size:18px;color:#e7ebef">⋯</span></div>
+<div style="position:absolute;bottom:14px;left:18px;display:flex;gap:5px"><span style="width:22px;height:2px;background:#e7ebef"></span><span style="width:22px;height:2px;background:rgba(231,235,239,.35)"></span><span style="width:22px;height:2px;background:rgba(231,235,239,.35)"></span><span style="width:22px;height:2px;background:rgba(231,235,239,.35)"></span><span style="width:22px;height:2px;background:rgba(231,235,239,.35)"></span></div>
+</div>
+<div style="padding:22px 22px 0;flex:1;overflow:hidden">
+<div style="display:flex;align-items:baseline;gap:10px"><h2 style="margin:0;font-size:32px">Lerato</h2><span style="font-size:19px;color:rgba(231,235,239,.5)">29</span></div>
+<div style="font-size:13px;color:rgba(231,235,239,.6);margin-top:6px">In-house counsel · LLB, Wits · 172 cm</div>
+<div style="font-size:13px;color:rgba(231,235,239,.6);margin-top:3px">Sandton · 5–15 km · Something serious</div>
+<div style="margin-top:20px;display:flex;flex-direction:column;gap:1px;background:rgba(231,235,239,.12);border:1px solid rgba(231,235,239,.12)">
+<div style="background:#0e1113;padding:12px 14px;display:flex;justify-content:space-between;align-items:center"><div><div style="font:600 14px/1.2 'Barlow Condensed',sans-serif">Identity verified</div><div style="font-size:11px;color:rgba(231,235,239,.45);margin-top:2px">Liveness match · 12/08</div></div><span style="color:#8fb3d6;font-size:13px">✓</span></div>
+<div style="background:#0e1113;padding:12px 14px;display:flex;justify-content:space-between;align-items:center"><div><div style="font:600 14px/1.2 'Barlow Condensed',sans-serif">Photo verified</div><div style="font-size:11px;color:rgba(231,235,239,.45);margin-top:2px">Reviewer, human · 12/08</div></div><span style="color:#8fb3d6;font-size:13px">✓</span></div>
+<div style="background:#0e1113;padding:12px 14px;display:flex;justify-content:space-between;align-items:center"><div><div style="font:600 14px/1.2 'Barlow Condensed',sans-serif;color:rgba(231,235,239,.45)">Means verified</div><div style="font-size:11px;color:rgba(231,235,239,.4);margin-top:2px">Not applicable — Select side</div></div><span style="color:rgba(231,235,239,.3);font-size:13px">—</span></div>
+</div>
+<div style="margin-top:22px"><div style="font:400 10px/1 'Barlow',sans-serif;letter-spacing:.18em;color:rgba(231,235,239,.4);text-transform:uppercase;margin-bottom:8px">A dinner I would repeat</div><p style="font-size:14px;line-height:1.6;margin:0;color:rgba(231,235,239,.8)">Anywhere with one page of menu and no music worth shouting over.</p></div>
+<div class="ph" data-ph="Portrait 2" style="height:38px;margin-top:20px;border:1px solid rgba(231,235,239,.14);border-bottom:0"></div>
+</div>
+<div style="padding:14px 22px 22px;border-top:1px solid rgba(231,235,239,.13);display:flex;gap:12px;align-items:center">
+<a href="#" style="font-size:12px;color:rgba(231,235,239,.5)">Block</a>
+<a href="#" style="font-size:12px;color:rgba(231,235,239,.5)">Report</a>
+<button class="btn btn-primary" style="height:48px;margin-left:auto;padding-inline:34px;font-size:14px">Like</button>
+</div>
+</div>
+</div>
+
+<div style="flex:none;display:flex;flex-direction:column;gap:11px">
+<div style="display:flex;align-items:baseline;gap:9px"><span style="font:600 10px/1 'Barlow Condensed',sans-serif;letter-spacing:.14em;padding:4px 7px;background:rgba(143,179,214,.14);color:#a8c4de">A8</span><span style="font-size:11px;color:rgba(231,235,239,.5)">Matches · expiry visible (F5.7)</span></div>
+<div class="blueprint" data-screen-label="A8 Matches" style="width:390px;height:844px;background:#0e1113;display:flex;flex-direction:column;overflow:hidden">
+<i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+<div style="display:flex;justify-content:space-between;padding:14px 22px 0;font:500 11px/1 'Barlow',sans-serif;color:rgba(231,235,239,.45)"><span>19:44</span><span>5G · 61%</span></div>
+<div style="padding:18px 22px 16px"><h2 style="margin:0;font-size:28px">Matches</h2><div style="font-size:11.5px;color:rgba(231,235,239,.45);margin-top:4px">Three open · one awaiting a first message</div></div>
+<div style="display:flex;flex-direction:column">
+<div class="blueprint" style="margin:0 22px 14px;padding:14px;display:flex;gap:14px;align-items:center;border-color:rgba(143,179,214,.5)"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+<div class="ph" data-ph="" style="width:56px;height:70px;flex:none;border:1px solid rgba(231,235,239,.14)"></div>
+<div style="flex:1;min-width:0"><div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font:600 17px/1.2 'Barlow Condensed',sans-serif">Lerato</span><span class="tag tag-accent">New</span></div><div style="font-size:12.5px;color:rgba(231,235,239,.55);margin-top:4px">Matched 19:41 · say something in 7 days</div></div></div>
+<div style="padding:0 22px;display:flex;flex-direction:column;gap:1px;background:rgba(231,235,239,.1)">
+<div style="background:#0e1113;padding:14px 0;display:flex;gap:14px;align-items:center"><div class="ph" data-ph="" style="width:48px;height:60px;flex:none;border:1px solid rgba(231,235,239,.12)"></div><div style="flex:1;min-width:0"><div style="display:flex;justify-content:space-between"><span style="font:600 16px/1.2 'Barlow Condensed',sans-serif">Thandi</span><span style="font-size:11px;color:rgba(231,235,239,.4)">14:20</span></div><div style="font-size:12.5px;color:rgba(231,235,239,.5);margin-top:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Thursday works. The one in Parkhurst?</div></div></div>
+<div style="background:#0e1113;padding:14px 0;display:flex;gap:14px;align-items:center"><div class="ph" data-ph="" style="width:48px;height:60px;flex:none;border:1px solid rgba(231,235,239,.12)"></div><div style="flex:1;min-width:0"><div style="display:flex;justify-content:space-between"><span style="font:600 16px/1.2 'Barlow Condensed',sans-serif">Ayanda</span><span style="font-size:11px;color:rgba(231,235,239,.4)">Mon</span></div><div style="font-size:12.5px;color:rgba(231,235,239,.5);margin-top:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Read 21:02</div></div></div>
+</div>
+</div>
+<div style="margin:34px 22px 0;padding-top:20px;border-top:1px solid rgba(231,235,239,.13)">
+<div style="font:400 10px/1 'Barlow',sans-serif;letter-spacing:.18em;color:rgba(231,235,239,.4);text-transform:uppercase;margin-bottom:10px">Liked you · 6</div>
+<div style="display:flex;gap:9px"><div class="ph" data-ph="" style="width:70px;height:88px;border:1px solid rgba(231,235,239,.12)"></div><div class="ph" data-ph="" style="width:70px;height:88px;border:1px solid rgba(231,235,239,.12)"></div><div class="ph" data-ph="" style="width:70px;height:88px;border:1px solid rgba(231,235,239,.12)"></div><div style="width:70px;height:88px;border:1px dashed rgba(231,235,239,.2);display:grid;place-items:center;font-size:11px;color:rgba(231,235,239,.45)">+3</div></div>
+</div>
+<div style="margin-top:auto;display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid rgba(231,235,239,.13)">
+<div style="height:60px;display:grid;place-items:center;font:600 10px/1 'Barlow Condensed',sans-serif;letter-spacing:.16em;text-transform:uppercase;color:rgba(231,235,239,.45)">Intros</div>
+<div style="height:60px;display:grid;place-items:center;font:600 10px/1 'Barlow Condensed',sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#8fb3d6;border-bottom:2px solid #8fb3d6">Matches</div>
+<div style="height:60px;display:grid;place-items:center;font:600 10px/1 'Barlow Condensed',sans-serif;letter-spacing:.16em;text-transform:uppercase;color:rgba(231,235,239,.45)">Account</div>
+</div>
+</div>
+</div>
+
+<div style="flex:none;display:flex;flex-direction:column;gap:11px">
+<div style="display:flex;align-items:baseline;gap:9px"><span style="font:600 10px/1 'Barlow Condensed',sans-serif;letter-spacing:.14em;padding:4px 7px;background:rgba(143,179,214,.14);color:#a8c4de">A9</span><span style="font-size:11px;color:rgba(231,235,239,.5)">Conversation (F5.2, F5.6)</span></div>
+<div class="blueprint" data-screen-label="A9 Chat" style="width:390px;height:844px;background:#0e1113;display:flex;flex-direction:column;overflow:hidden">
+<i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+<div style="display:flex;justify-content:space-between;padding:14px 22px 0;font:500 11px/1 'Barlow',sans-serif;color:rgba(231,235,239,.45)"><span>19:52</span><span>5G · 60%</span></div>
+<div style="padding:16px 20px;display:flex;align-items:center;gap:13px;border-bottom:1px solid rgba(231,235,239,.13)">
+<span style="font-size:20px;color:rgba(231,235,239,.55)">←</span>
+<div class="ph" data-ph="" style="width:34px;height:34px;flex:none;border:1px solid rgba(231,235,239,.14)"></div>
+<div style="flex:1"><div style="font:600 16px/1.1 'Barlow Condensed',sans-serif">Lerato</div><div style="font-size:11px;color:rgba(231,235,239,.42);margin-top:2px">Matched today</div></div>
+<span style="font-size:18px;color:rgba(231,235,239,.5)">⋯</span>
+</div>
+<div style="flex:1;padding:20px;display:flex;flex-direction:column;gap:12px;overflow:hidden">
+<div style="text-align:center;font-size:11px;color:rgba(231,235,239,.35);margin-bottom:4px">You matched at 19:41. Either of you can end this at any time.</div>
+<div style="align-self:flex-start;max-width:76%;border:1px solid rgba(231,235,239,.15);padding:11px 13px;font-size:13.5px;line-height:1.5">Your prompt about the one-page menu — I have a shortlist.</div>
+<div style="align-self:flex-end;max-width:76%;background:rgba(143,179,214,.16);border:1px solid rgba(143,179,214,.4);padding:11px 13px;font-size:13.5px;line-height:1.5">Then you pick. Thursday or Saturday?</div>
+<div style="align-self:flex-end;font-size:10.5px;color:rgba(231,235,239,.38)">Read 19:50</div>
+<div style="align-self:flex-start;max-width:76%;border:1px solid rgba(231,235,239,.15);padding:11px 13px;font-size:13.5px;line-height:1.5">Thursday. 19:30.</div>
+<div style="align-self:flex-start;font-size:10.5px;color:rgba(231,235,239,.3)">typing…</div>
+</div>
+<div style="padding:14px 20px 20px;border-top:1px solid rgba(231,235,239,.13)">
+<div style="display:flex;gap:10px;align-items:center"><div class="input" style="flex:1;min-height:44px;display:flex;align-items:center;color:rgba(231,235,239,.35);background:transparent">Message</div><button class="btn btn-primary" style="height:44px;padding-inline:20px">Send</button></div>
+<div style="font-size:10.5px;color:rgba(231,235,239,.32);margin-top:10px;line-height:1.5">Keep it on Cachet. Requests to move to another app, or for money, are reviewed.</div>
+</div>
+</div>
+</div>
+
+<div style="flex:none;display:flex;flex-direction:column;gap:11px">
+<div style="display:flex;align-items:baseline;gap:9px"><span style="font:600 10px/1 'Barlow Condensed',sans-serif;letter-spacing:.14em;padding:4px 7px;background:#8fb3d6;color:#0e1113">A10</span><span style="font-size:11px;color:rgba(231,235,239,.5)">New · what he is looking for (Elite filters)</span></div>
+<div class="blueprint" data-screen-label="A10 Looking for" style="width:390px;height:844px;background:#0e1113;display:flex;flex-direction:column;overflow:hidden">
+<i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+<div style="display:flex;justify-content:space-between;padding:14px 22px 0;font:500 11px/1 'Barlow',sans-serif;color:rgba(231,235,239,.45)"><span>20:04</span><span>5G · 58%</span></div>
+<div style="padding:18px 22px 0;display:flex;align-items:center;gap:14px"><span style="font-size:20px;color:rgba(231,235,239,.55)">←</span><span style="font:400 10px/1 'Barlow',sans-serif;letter-spacing:.18em;color:rgba(231,235,239,.4);text-transform:uppercase">Discovery · Elite</span></div>
+<div style="padding:22px 22px 0">
+<h2 style="font-size:29px;margin:0 0 6px">What are you looking for?</h2>
+<p style="font-size:12.5px;line-height:1.55;color:rgba(231,235,239,.55);margin:0">Your deck is built only from members who chose the same. Selecting more widens it; selecting one narrows it hard.</p>
+</div>
+<div style="padding:22px 22px 0;flex:1;display:flex;flex-direction:column;gap:18px">
+<div>
+<div style="font:400 9.5px/1 'Barlow',sans-serif;letter-spacing:.2em;color:#8fb3d6;text-transform:uppercase;margin-bottom:10px">Household</div>
+<div style="display:flex;flex-wrap:wrap;gap:8px"><span class="tag" style="border:1px solid rgba(231,235,239,.22);color:rgba(231,235,239,.7);padding:7px 13px;font-size:12.5px">Nanny</span><span class="tag" style="border:1px solid rgba(231,235,239,.22);color:rgba(231,235,239,.7);padding:7px 13px;font-size:12.5px">Au pair</span></div>
+</div>
+<div>
+<div style="font:400 9.5px/1 'Barlow',sans-serif;letter-spacing:.2em;color:#8fb3d6;text-transform:uppercase;margin-bottom:10px">Business</div>
+<div style="display:flex;flex-wrap:wrap;gap:8px"><span class="tag" style="background:#8fb3d6;color:#0e1113;padding:7px 13px;font-size:12.5px">Discrete PA ✓</span></div>
+</div>
+<div>
+<div style="font:400 9.5px/1 'Barlow',sans-serif;letter-spacing:.2em;color:#8fb3d6;text-transform:uppercase;margin-bottom:10px">Social</div>
+<div style="display:flex;flex-wrap:wrap;gap:8px"><span class="tag" style="background:#8fb3d6;color:#0e1113;padding:7px 13px;font-size:12.5px">Atmosphere model ✓</span><span class="tag" style="border:1px solid rgba(231,235,239,.22);color:rgba(231,235,239,.7);padding:7px 13px;font-size:12.5px">Model</span></div>
+</div>
+<div>
+<div style="font:400 9.5px/1 'Barlow',sans-serif;letter-spacing:.2em;color:#8fb3d6;text-transform:uppercase;margin-bottom:10px">Dating</div>
+<div style="display:flex;flex-wrap:wrap;gap:8px"><span class="tag" style="background:#8fb3d6;color:#0e1113;padding:7px 13px;font-size:12.5px">Just dating ✓</span><span class="tag" style="border:1px solid rgba(231,235,239,.22);color:rgba(231,235,239,.7);padding:7px 13px;font-size:12.5px">Friends with benefits</span><span class="tag" style="background:#8fb3d6;color:#0e1113;padding:7px 13px;font-size:12.5px">Girlfriend ✓</span><span class="tag" style="border:1px solid rgba(231,235,239,.22);color:rgba(231,235,239,.7);padding:7px 13px;font-size:12.5px">Fiancé</span></div>
+</div>
+<div class="blueprint" style="margin-top:auto;padding:14px 15px;display:flex;justify-content:space-between;align-items:center"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+<div><div style="font:600 15px/1.2 'Barlow Condensed',sans-serif">214 members match</div><div style="font-size:11px;color:rgba(231,235,239,.45);margin-top:3px">Johannesburg · 15–50 km · 24–36</div></div><span class="tag tag-accent">4 selected</span></div>
+</div>
+<div style="padding:16px 22px 24px;border-top:1px solid rgba(231,235,239,.13)">
+<div style="font-size:11px;line-height:1.5;color:rgba(231,235,239,.4);margin-bottom:12px">Interest filters are Elite and above. They change who you see — never who may message you.</div>
+<button class="btn btn-primary btn-block" style="height:50px;font-size:15px">Save preferences</button>
+</div>
+</div>
+</div>
+
+</div>
+</section>
+
+<section style="padding:20px 60px 70px;background:#0a0c0d;border-top:1px solid rgba(231,235,239,.1)">
+<div style="display:flex;align-items:baseline;gap:12px;margin:26px 0 6px"><span style="font:600 10px/1 'Barlow Condensed',sans-serif;letter-spacing:.16em;padding:5px 8px;background:#8fb3d6;color:#0e1113">B</span><h2 style="margin:0;font-size:26px">Lerato — the Select side</h2></div>
+<p style="font-size:13px;color:rgba(231,235,239,.5);margin:0 0 30px">Free, permanently. Nothing on these screens sells anything, and no man reaches her inbox without a like back.</p>
+
+<div style="display:flex;flex-wrap:wrap;gap:52px;align-items:flex-start">
+
+<div style="flex:none;display:flex;flex-direction:column;gap:11px">
+<div style="display:flex;align-items:baseline;gap:9px"><span style="font:600 10px/1 'Barlow Condensed',sans-serif;letter-spacing:.14em;padding:4px 7px;background:#8fb3d6;color:#0e1113">B0</span><span style="font-size:11px;color:rgba(231,235,239,.5)">New · registration, what she is open to</span></div>
+<div class="blueprint" data-screen-label="B0 Open to" style="width:390px;height:844px;background:#0e1113;display:flex;flex-direction:column;overflow:hidden">
+<i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+<div style="display:flex;justify-content:space-between;padding:14px 22px 0;font:500 11px/1 'Barlow',sans-serif;color:rgba(231,235,239,.45)"><span>21:22</span><span>Wi-Fi · 51%</span></div>
+<div style="padding:20px 22px 0;display:flex;align-items:center;justify-content:space-between"><span style="font-size:20px;color:rgba(231,235,239,.55)">←</span><span style="font-size:12px;color:rgba(231,235,239,.5)">Saved</span></div>
+<div style="padding:16px 22px 0">
+<div style="display:flex;gap:5px;margin-bottom:14px"><span style="flex:1;height:2px;background:#8fb3d6"></span><span style="flex:1;height:2px;background:#8fb3d6"></span><span style="flex:1;height:2px;background:#8fb3d6"></span><span style="flex:1;height:2px;background:#8fb3d6"></span><span style="flex:1;height:2px;background:#8fb3d6"></span><span style="flex:1;height:2px;background:#8fb3d6"></span><span style="flex:1;height:2px;background:rgba(231,235,239,.16)"></span></div>
+<div style="font:400 10px/1 'Barlow',sans-serif;letter-spacing:.18em;color:rgba(231,235,239,.4);text-transform:uppercase;margin-bottom:9px">Step 6 of 7</div>
+<h2 style="font-size:29px;margin:0 0 6px">What are you open to?</h2>
+<p style="font-size:12.5px;line-height:1.55;color:rgba(231,235,239,.55);margin:0 0 14px">Choose any. Only members whose interests overlap yours will see you.</p>
+</div>
+<div style="padding:0 22px;flex:1;display:flex;flex-direction:column;gap:1px;background:rgba(231,235,239,.1);border-top:1px solid rgba(231,235,239,.12)">
+<div style="background:#0e1113;padding:9px 0 4px"><span style="font:400 9.5px/1 'Barlow',sans-serif;letter-spacing:.2em;color:#8fb3d6;text-transform:uppercase">Household</span></div>
+<div style="background:#0e1113;padding:7px 0;display:flex;align-items:center;gap:12px"><span style="width:17px;height:17px;flex:none;border:1px solid rgba(231,235,239,.28)"></span><span style="font-size:14px">Nanny</span></div>
+<div style="background:#0e1113;padding:7px 0;display:flex;align-items:center;gap:12px"><span style="width:17px;height:17px;flex:none;border:1px solid rgba(231,235,239,.28)"></span><span style="font-size:14px">Au pair</span></div>
+<div style="background:#0e1113;padding:10px 0 4px"><span style="font:400 9.5px/1 'Barlow',sans-serif;letter-spacing:.2em;color:#8fb3d6;text-transform:uppercase">Business</span></div>
+<div style="background:#0e1113;padding:7px 0;display:flex;align-items:center;gap:12px"><span style="width:17px;height:17px;flex:none;border:1px solid rgba(231,235,239,.28)"></span><span style="font-size:14px">Discrete PA</span></div>
+<div style="background:#0e1113;padding:10px 0 4px"><span style="font:400 9.5px/1 'Barlow',sans-serif;letter-spacing:.2em;color:#8fb3d6;text-transform:uppercase">Social</span></div>
+<div style="background:#0e1113;padding:7px 0;display:flex;align-items:center;gap:12px"><span style="width:17px;height:17px;flex:none;background:#8fb3d6;display:grid;place-items:center;font-size:11px;color:#0e1113">✓</span><span style="font-size:14px">Atmosphere model</span></div>
+<div style="background:#0e1113;padding:7px 0;display:flex;align-items:center;gap:12px"><span style="width:17px;height:17px;flex:none;border:1px solid rgba(231,235,239,.28)"></span><span style="font-size:14px">Model</span></div>
+<div style="background:#0e1113;padding:10px 0 4px"><span style="font:400 9.5px/1 'Barlow',sans-serif;letter-spacing:.2em;color:#8fb3d6;text-transform:uppercase">Dating</span></div>
+<div style="background:#0e1113;padding:7px 0;display:flex;align-items:center;gap:12px"><span style="width:17px;height:17px;flex:none;background:#8fb3d6;display:grid;place-items:center;font-size:11px;color:#0e1113">✓</span><span style="font-size:14px">Just dating</span></div>
+<div style="background:#0e1113;padding:7px 0;display:flex;align-items:center;gap:12px"><span style="width:17px;height:17px;flex:none;border:1px solid rgba(231,235,239,.28)"></span><span style="font-size:14px">Friends with benefits</span></div>
+<div style="background:#0e1113;padding:7px 0;display:flex;align-items:center;gap:12px"><span style="width:17px;height:17px;flex:none;background:#8fb3d6;display:grid;place-items:center;font-size:11px;color:#0e1113">✓</span><span style="font-size:14px">Girlfriend</span></div>
+<div style="background:#0e1113;padding:7px 0 10px;display:flex;align-items:center;gap:12px"><span style="width:17px;height:17px;flex:none;border:1px solid rgba(231,235,239,.28)"></span><span style="font-size:14px">Fiancé</span></div>
+</div>
+<div style="padding:14px 22px 24px;border-top:1px solid rgba(231,235,239,.13)">
+<div style="font-size:11px;line-height:1.5;color:rgba(231,235,239,.4);margin-bottom:12px">Three selected. Cachet takes no part in any arrangement and no money moves between members.</div>
+<button class="btn btn-primary btn-block" style="height:50px;font-size:15px">Continue</button>
+</div>
+</div>
+</div>
+
+<div style="flex:none;display:flex;flex-direction:column;gap:11px">
+<div style="display:flex;align-items:baseline;gap:9px"><span style="font:600 10px/1 'Barlow Condensed',sans-serif;letter-spacing:.14em;padding:4px 7px;background:rgba(143,179,214,.14);color:#a8c4de">B1</span><span style="font-size:11px;color:rgba(231,235,239,.5)">Her day · liked-you first (F4.8)</span></div>
+<div class="blueprint" data-screen-label="B1 Select intros" style="width:390px;height:844px;background:#0e1113;display:flex;flex-direction:column;overflow:hidden">
+<i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+<div style="display:flex;justify-content:space-between;padding:14px 22px 0;font:500 11px/1 'Barlow',sans-serif;color:rgba(231,235,239,.45)"><span>20:15</span><span>Wi-Fi · 44%</span></div>
+<div style="padding:18px 22px 16px;display:flex;justify-content:space-between;align-items:baseline">
+<div><div style="font:600 20px/1 'Barlow Condensed',sans-serif">Today</div><div style="font-size:11.5px;color:rgba(231,235,239,.45);margin-top:4px">12 introductions · unlimited likes</div></div>
+<span class="tag tag-outline">Incognito</span>
+</div>
+<div style="padding:0 22px 18px">
+<div style="font:400 10px/1 'Barlow',sans-serif;letter-spacing:.18em;color:rgba(231,235,239,.4);text-transform:uppercase;margin-bottom:10px">Liked you · 4</div>
+<div style="display:flex;gap:9px">
+<div class="ph" data-ph="" style="width:78px;height:98px;border:1px solid rgba(231,235,239,.13)"></div>
+<div class="ph" data-ph="" style="width:78px;height:98px;border:1px solid rgba(231,235,239,.13)"></div>
+<div class="ph" data-ph="" style="width:78px;height:98px;border:1px solid rgba(231,235,239,.13)"></div>
+<div class="ph" data-ph="" style="width:78px;height:98px;border:1px solid rgba(231,235,239,.13)"></div>
+</div>
+<div style="font-size:11px;color:rgba(231,235,239,.35);margin-top:8px">Like back and the conversation opens immediately.</div>
+</div>
+<div style="padding:0 22px;flex:1;display:flex;flex-direction:column;border-top:1px solid rgba(231,235,239,.12)">
+<div style="font:400 10px/1 'Barlow',sans-serif;letter-spacing:.18em;color:rgba(231,235,239,.4);text-transform:uppercase;margin:18px 0 12px">Introduction 1 of 12</div>
+<div class="blueprint" style="flex:1;display:flex;flex-direction:column;min-height:0">
+<i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+<div class="ph" data-ph="Portrait · duotone" style="flex:1;min-height:0"></div>
+<div style="padding:15px 16px 17px;border-top:1px solid rgba(231,235,239,.13)">
+<div style="display:flex;align-items:baseline;gap:9px"><h3 style="margin:0;font-size:24px">Marcus</h3><span style="font-size:16px;color:rgba(231,235,239,.5)">42</span></div>
+<div style="font-size:13px;color:rgba(231,235,239,.6);margin-top:5px">Founder, logistics · 15–50 km</div>
+<div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:11px"><span class="tag tag-accent">Identity</span><span class="tag tag-accent">Photo</span><span class="tag tag-accent">Means</span><span class="tag tag-neutral">Professional</span></div>
+<div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:7px"><span class="tag tag-outline">Looking for: Just dating</span><span class="tag tag-outline">Girlfriend</span></div>
+</div>
+</div>
+<div style="display:flex;gap:12px;padding:14px 0 16px">
+<button class="btn btn-secondary" style="height:54px;flex:1">Pass</button>
+<button class="btn btn-primary" style="height:54px;flex:1">Like</button>
+</div>
+</div>
+<div style="display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid rgba(231,235,239,.13)">
+<div style="height:60px;display:grid;place-items:center;font:600 10px/1 'Barlow Condensed',sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#8fb3d6;border-bottom:2px solid #8fb3d6">Intros</div>
+<div style="height:60px;display:grid;place-items:center;font:600 10px/1 'Barlow Condensed',sans-serif;letter-spacing:.16em;text-transform:uppercase;color:rgba(231,235,239,.45)">Matches</div>
+<div style="height:60px;display:grid;place-items:center;font:600 10px/1 'Barlow Condensed',sans-serif;letter-spacing:.16em;text-transform:uppercase;color:rgba(231,235,239,.45)">Account</div>
+</div>
+</div>
+</div>
+
+<div style="flex:none;display:flex;flex-direction:column;gap:11px">
+<div style="display:flex;align-items:baseline;gap:9px"><span style="font:600 10px/1 'Barlow Condensed',sans-serif;letter-spacing:.14em;padding:4px 7px;background:rgba(143,179,214,.14);color:#a8c4de">B2</span><span style="font-size:11px;color:rgba(231,235,239,.5)">His badges, with evidence (F2.8)</span></div>
+<div class="blueprint" data-screen-label="B2 His profile" style="width:390px;height:844px;background:#0e1113;display:flex;flex-direction:column;overflow:hidden">
+<i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+<div class="ph" data-ph="Portrait 1 of 4 · duotone" style="height:290px;position:relative">
+<div style="position:absolute;inset:0;display:flex;justify-content:space-between;align-items:flex-start;padding:16px 18px"><span style="font-size:20px;color:#e7ebef">←</span><span style="font-size:18px;color:#e7ebef">⋯</span></div>
+</div>
+<div style="padding:22px 22px 0;flex:1;overflow:hidden">
+<div style="display:flex;align-items:baseline;gap:10px"><h2 style="margin:0;font-size:32px">Marcus</h2><span style="font-size:19px;color:rgba(231,235,239,.5)">42</span></div>
+<div style="font-size:13px;color:rgba(231,235,239,.6);margin-top:6px">Founder, logistics · MBA, GIBS · 186 cm</div>
+<div style="font-size:13px;color:rgba(231,235,239,.6);margin-top:3px">Johannesburg · 15–50 km · Something serious</div>
+<div style="margin-top:20px;display:flex;flex-direction:column;gap:1px;background:rgba(231,235,239,.12);border:1px solid rgba(231,235,239,.12)">
+<div style="background:#0e1113;padding:12px 14px;display:flex;justify-content:space-between;align-items:center"><div><div style="font:600 14px/1.2 'Barlow Condensed',sans-serif">Identity verified</div><div style="font-size:11px;color:rgba(231,235,239,.45);margin-top:2px">Liveness match · 04/08</div></div><span style="color:#8fb3d6;font-size:13px">✓</span></div>
+<div style="background:#0e1113;padding:12px 14px;display:flex;justify-content:space-between;align-items:center"><div><div style="font:600 14px/1.2 'Barlow Condensed',sans-serif">Photo verified</div><div style="font-size:11px;color:rgba(231,235,239,.45);margin-top:2px">Reviewer, human · 04/08</div></div><span style="color:#8fb3d6;font-size:13px">✓</span></div>
+<div style="background:rgba(143,179,214,.08);padding:12px 14px;display:flex;justify-content:space-between;align-items:center"><div><div style="font:600 14px/1.2 'Barlow Condensed',sans-serif;color:#c2d6e9">Means verified</div><div style="font-size:11px;color:rgba(231,235,239,.5);margin-top:2px">Interview passed · 06/08 · not a payment</div></div><span style="color:#8fb3d6;font-size:13px">✓</span></div>
+<div style="background:#0e1113;padding:12px 14px;display:flex;justify-content:space-between;align-items:center"><div><div style="font:600 14px/1.2 'Barlow Condensed',sans-serif">Professional verified</div><div style="font-size:11px;color:rgba(231,235,239,.45);margin-top:2px">Employer confirmed · 06/08</div></div><span style="color:#8fb3d6;font-size:13px">✓</span></div>
+</div>
+<div style="margin-top:20px"><div style="font:400 10px/1 'Barlow',sans-serif;letter-spacing:.18em;color:rgba(231,235,239,.4);text-transform:uppercase;margin-bottom:8px">A weekend well spent</div><p style="font-size:14px;line-height:1.6;margin:0;color:rgba(231,235,239,.8)">Out of the city by Friday seven, back Sunday late, phone in the glovebox.</p></div>
+
+</div>
+<div style="padding:14px 22px 22px;border-top:1px solid rgba(231,235,239,.13);display:flex;gap:12px;align-items:center">
+<a href="#" style="font-size:12px;color:rgba(231,235,239,.5)">Block</a>
+<a href="#" style="font-size:12px;color:rgba(231,235,239,.5)">Report</a>
+<button class="btn btn-secondary" style="height:48px;margin-left:auto;padding-inline:22px;font-size:14px">Pass</button>
+<button class="btn btn-primary" style="height:48px;padding-inline:26px;font-size:14px">Like</button>
+</div>
+</div>
+</div>
+
+<div style="flex:none;display:flex;flex-direction:column;gap:11px">
+<div style="display:flex;align-items:baseline;gap:9px"><span style="font:600 10px/1 'Barlow Condensed',sans-serif;letter-spacing:.14em;padding:4px 7px;background:rgba(143,179,214,.14);color:#a8c4de">B3</span><span style="font-size:11px;color:rgba(231,235,239,.5)">She controls contact (F5.4, F7.1)</span></div>
+<div class="blueprint" data-screen-label="B3 Her chat" style="width:390px;height:844px;background:#0e1113;display:flex;flex-direction:column;overflow:hidden">
+<i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+<div style="display:flex;justify-content:space-between;padding:14px 22px 0;font:500 11px/1 'Barlow',sans-serif;color:rgba(231,235,239,.45)"><span>20:26</span><span>Wi-Fi · 43%</span></div>
+<div style="padding:16px 20px;display:flex;align-items:center;gap:13px;border-bottom:1px solid rgba(231,235,239,.13)">
+<span style="font-size:20px;color:rgba(231,235,239,.55)">←</span>
+<div class="ph" data-ph="" style="width:34px;height:34px;flex:none;border:1px solid rgba(231,235,239,.14)"></div>
+<div style="flex:1"><div style="font:600 16px/1.1 'Barlow Condensed',sans-serif">Marcus</div><div style="font-size:11px;color:rgba(231,235,239,.42);margin-top:2px">Identity · Photo · Means</div></div>
+</div>
+<div style="flex:1;padding:20px;display:flex;flex-direction:column;gap:12px;overflow:hidden;opacity:.4">
+<div style="align-self:flex-start;max-width:76%;border:1px solid rgba(231,235,239,.15);padding:11px 13px;font-size:13.5px;line-height:1.5">Your prompt about the one-page menu — I have a shortlist.</div>
+<div style="align-self:flex-end;max-width:76%;background:rgba(143,179,214,.16);border:1px solid rgba(143,179,214,.4);padding:11px 13px;font-size:13.5px;line-height:1.5">Then you pick. Thursday or Saturday?</div>
+</div>
+<div style="position:absolute;inset:0;background:rgba(10,12,13,.72);display:flex;align-items:flex-end">
+<div style="width:100%;background:#0e1113;border-top:1px solid rgba(231,235,239,.16);padding:22px 22px 26px">
+<div style="width:38px;height:3px;background:rgba(231,235,239,.25);margin:0 auto 20px"></div>
+<div style="font:600 20px/1.15 'Barlow Condensed',sans-serif;margin-bottom:6px">This conversation</div>
+<p style="font-size:12.5px;line-height:1.55;color:rgba(231,235,239,.5);margin:0 0 18px">No one can message you unless you liked them back. Ending it is immediate and needs no reason.</p>
+<div style="display:flex;flex-direction:column;gap:1px;background:rgba(231,235,239,.12);border:1px solid rgba(231,235,239,.12)">
+<div style="background:#0e1113;padding:15px 15px;display:flex;justify-content:space-between;align-items:center"><div><div style="font-size:14px">Unmatch</div><div style="font-size:11px;color:rgba(231,235,239,.45);margin-top:2px">Closes it for both. Cannot be undone.</div></div><span style="color:rgba(231,235,239,.4)">›</span></div>
+<div style="background:#0e1113;padding:15px 15px;display:flex;justify-content:space-between;align-items:center"><div><div style="font-size:14px">Block</div><div style="font-size:11px;color:rgba(231,235,239,.45);margin-top:2px">Silent. He is never told, and never appears again.</div></div><span style="color:rgba(231,235,239,.4)">›</span></div>
+<div style="background:#0e1113;padding:15px 15px;display:flex;justify-content:space-between;align-items:center"><div><div style="font-size:14px">Report</div><div style="font-size:11px;color:rgba(231,235,239,.45);margin-top:2px">Hidden from you at once, before any decision.</div></div><span style="color:rgba(231,235,239,.4)">›</span></div>
+<div style="background:#0e1113;padding:15px 15px;display:flex;justify-content:space-between;align-items:center"><div><div style="font-size:14px">Read receipts</div><div style="font-size:11px;color:rgba(231,235,239,.45);margin-top:2px">On. Reciprocal — off means you cannot see his.</div></div><span style="color:#8fb3d6;font-size:12px">On</span></div>
+</div>
+<button class="btn btn-secondary btn-block" style="height:48px;margin-top:16px">Close</button>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+
+<p style="margin:44px 0 0;font-size:12.5px;line-height:1.6;color:rgba(231,235,239,.45);max-width:70ch">Next, if useful: the reviewer queue and admin ops dashboard (Nadia and Stephen), the Safety Centre, or settings and privacy — say which and I'll add them in this same style.</p>
+</section>
+
+</x-dc>
+</body>
+</html>

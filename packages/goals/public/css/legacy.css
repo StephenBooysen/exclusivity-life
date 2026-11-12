@@ -1,0 +1,326 @@
+/* ==========================================================================
+   Compatibility layer
+   ---------------------------------------------------------------------------
+   The design brief fully specifies Dashboard, Goals and Habits. The other five
+   screens (Focus Areas, How You Feel, Reflection, Wisdom, Settings) are real,
+   working features with no design yet — the brief stubs them as placeholders,
+   which we deliberately did NOT do, because that would delete working UI.
+
+   This file re-points their existing class vocabulary at the Almanac tokens so
+   they read as the same product. It is a bridge, not a design: when each screen
+   gets a real design pass, its rules should move into theme.css and drop out of
+   here. Component classes owned by theme.css (.btn, .card, .input, .tag …) are
+   NOT redefined here.
+   ========================================================================== */
+
+/* — page containers: the shell already supplies the column and padding — */
+.goals-container, .habits-container, .feelings-container, .wisdom-container,
+.settings-container, .focus-areas-container, .reflection-container,
+.ai-guide-container, .form-container { width: 100%; }
+
+/* — page headers — */
+.goals-header, .habits-header, .focus-areas-header {
+  display: flex; align-items: flex-start; justify-content: space-between;
+  gap: var(--space-3); margin-bottom: var(--space-4); flex-wrap: wrap;
+}
+.page-title, .settings-title, .section-title {
+  font-family: var(--font-heading); font-weight: var(--font-heading-weight);
+  letter-spacing: -0.015em; line-height: 1.12;
+}
+.page-title { font-size: 26px; margin: 0 0 var(--space-1); }
+.settings-title { font-size: 22px; margin: 0 0 var(--space-2); }
+.section-title { font-size: 16px; margin: 0 0 var(--space-2); }
+.page-subtitle { font-size: 13.5px; color: color-mix(in srgb, var(--color-text) 55%, transparent); margin: 0; }
+.page-title-group { display: flex; flex-direction: column; }
+.page-title-icon, .summary-icon, .mood-icon { color: var(--color-accent); }
+
+/* — cards — .card itself is themed; these are its legacy sub-parts — */
+.card-header { display: flex; align-items: center; justify-content: space-between; gap: var(--space-2); }
+.card-content { display: flex; flex-direction: column; gap: var(--space-2); }
+.summary-card, .monthly-card {
+  background: var(--color-surface); border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm); padding: var(--space-3);
+}
+.summary-title, .monthly-title { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-accent); }
+.summary-value { font-family: var(--font-heading); font-weight: 600; font-size: 24px; line-height: 1.2; }
+.summary-content, .monthly-content { display: flex; flex-direction: column; gap: 2px; }
+.focus-summary-cards, .monthly-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-2); margin-bottom: var(--space-4); }
+
+/* — tabs (goals, habits, reflection) rendered as the segmented control — */
+.goals-tabs, .reflection-tabs, .habit-view {
+  display: flex; width: 100%; margin-bottom: var(--space-4);
+  border: 1px solid var(--color-divider); border-radius: var(--radius-md); overflow: hidden;
+}
+.goal-tab, .reflection-tab, .habit-tab {
+  flex: 1; display: inline-flex; align-items: center; justify-content: center;
+  min-height: 40px; padding: 9px 12px; font-size: 13px; cursor: pointer;
+  background: transparent; border: none; color: var(--color-text);
+  font-family: var(--font-body);
+  transition: background var(--motion), color var(--motion);
+}
+.goal-tab + .goal-tab, .reflection-tab + .reflection-tab, .habit-tab + .habit-tab {
+  border-left: 1px solid var(--color-divider);
+}
+.goal-tab:hover, .reflection-tab:hover, .habit-tab:hover { background: color-mix(in srgb, var(--color-text) 7%, transparent); }
+.goal-tab.active, .reflection-tab.active, .habit-tab.active { background: var(--color-accent); color: var(--color-bg); }
+
+/* — goal / focus-area / habit list items — */
+.goal-item, .focus-area-item, .habit-grid > * {
+  background: var(--color-surface); border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm); padding: var(--space-3);
+}
+.goals-list, .focus-areas-list, .goal-list, .monthly-goals {
+  display: flex; flex-direction: column; gap: var(--space-3);
+}
+.goal-title, .focus-area-name {
+  font-family: var(--font-heading); font-weight: var(--font-heading-weight);
+  font-size: 17px; line-height: 1.2;
+}
+.goal-description, .focus-area-category, .focus-area-meta, .focus-area-date,
+.no-goals-text, .goal-label {
+  font-size: 12.5px; color: color-mix(in srgb, var(--color-text) 55%, transparent);
+}
+.goal-content, .focus-area-content, .focus-area-display { display: flex; flex-direction: column; gap: 6px; }
+.focus-area-actions, .focus-area-edit-actions, .form-actions {
+  display: flex; gap: var(--space-2); flex-wrap: wrap; margin-top: var(--space-2);
+}
+.focus-area-status { font-size: 11px; }
+
+/* — progress — */
+.progress-bar { height: 6px; border-radius: 3px; background: var(--color-neutral-200); overflow: hidden; }
+.progress-fill { height: 100%; background: var(--color-accent); border-radius: 3px; transition: width var(--motion); }
+.progress-text, .progress-percentage, .monthly-progress {
+  font-size: 11.5px; color: color-mix(in srgb, var(--color-text) 55%, transparent);
+}
+
+/* — settings rows — */
+.settings-section, .form-section {
+  background: var(--color-surface); border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm); padding: var(--space-3); margin-bottom: var(--space-3);
+}
+/* Rows wrap at phone width: a control that needs more room than the label
+   leaves it drops onto its own line instead of crushing the description. */
+.setting-item {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: var(--space-2) var(--space-3); flex-wrap: wrap;
+  padding: var(--space-2) 0;
+  border-bottom: 1px solid color-mix(in srgb, var(--color-text) 6%, transparent);
+}
+.setting-item:last-child { border-bottom: none; }
+.setting-label { flex: 1 1 55%; min-width: 0; }
+.setting-name { font-size: 14px; }
+.setting-description { font-size: 11.5px; color: color-mix(in srgb, var(--color-text) 55%, transparent); }
+.setting-control {
+  display: flex; align-items: center; gap: var(--space-2);
+  flex: 0 1 auto; min-width: 0; max-width: 100%; margin-left: auto;
+}
+.setting-control .form-input { min-width: 0; }
+
+/* — toggle switch — */
+.toggle-switch { position: relative; display: inline-block; width: 40px; height: 22px; flex: none; }
+.toggle-input { position: absolute; opacity: 0; width: 0; height: 0; }
+.toggle-slider {
+  position: absolute; inset: 0; cursor: pointer; border-radius: 999px;
+  background: var(--color-neutral-300); transition: background var(--motion);
+}
+.toggle-slider::before {
+  content: ""; position: absolute; width: 16px; height: 16px; left: 3px; top: 3px;
+  border-radius: 50%; background: var(--color-surface); transition: transform var(--motion);
+}
+.toggle-input:checked + .toggle-slider { background: var(--color-accent); }
+.toggle-input:checked + .toggle-slider::before { transform: translateX(18px); }
+.toggle-input:focus-visible + .toggle-slider { outline: 2px solid var(--color-accent); outline-offset: 2px; }
+
+/* — mood rating scale — */
+.rating-scale, .rating-group { display: flex; flex-wrap: wrap; gap: 6px; }
+.rating-button {
+  width: 40px; height: 40px; border-radius: var(--radius-md);
+  border: 1px solid var(--color-divider); background: var(--color-surface);
+  cursor: pointer; font-family: var(--font-heading); font-size: 14px; color: var(--color-text);
+  transition: background var(--motion), border-color var(--motion), color var(--motion);
+}
+.rating-button:hover { border-color: var(--color-accent); }
+.rating-button.active, .rating-button[aria-pressed="true"] {
+  background: var(--color-accent); border-color: var(--color-accent); color: var(--color-bg);
+}
+.rating-label { font-size: 11.5px; color: color-mix(in srgb, var(--color-text) 55%, transparent); }
+
+/* — mood scale colours: green = good, orange = low — */
+.mood-5 { color: var(--color-accent); }
+.mood-4 { color: var(--color-accent-500); }
+.mood-3 { color: var(--color-neutral-600); }
+.mood-2 { color: var(--color-accent-2-500); }
+.mood-1 { color: var(--color-accent-2-700); }
+.mood-legend { display: flex; flex-wrap: wrap; gap: var(--space-2); font-size: 11.5px; }
+.mood-legend-item { display: inline-flex; align-items: center; gap: 5px; }
+
+/* — calendar — */
+.feelings-calendar { width: 100%; }
+.calendar-header { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; margin-bottom: 4px; }
+.calendar-day-name { font-size: 10px; text-align: center; color: color-mix(in srgb, var(--color-text) 50%, transparent); }
+.calendar-body { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; }
+.calendar-body > * {
+  aspect-ratio: 1; display: flex; align-items: center; justify-content: center;
+  font-size: 12px; border-radius: var(--radius-md); background: var(--color-neutral-100);
+}
+
+/* — modal — */
+.modal-overlay, .modal {
+  position: fixed; inset: 0; z-index: 20; display: grid; place-items: center;
+  padding: var(--space-4);
+  background: color-mix(in srgb, var(--color-neutral-900) 50%, transparent);
+}
+.modal-content {
+  width: min(440px, 100%); max-height: 85vh; overflow-y: auto;
+  display: flex; flex-direction: column; gap: var(--space-3);
+  padding: var(--space-4); border-radius: var(--radius-lg);
+  background: var(--color-surface); box-shadow: var(--shadow-lg);
+}
+.modal-header { display: flex; align-items: center; justify-content: space-between; gap: var(--space-2); }
+.modal-title { font-family: var(--font-heading); font-weight: 600; font-size: 20px; }
+.modal-close { border: none; background: transparent; cursor: pointer; font-size: 20px; line-height: 1; color: var(--color-text); }
+.modal-body { font-size: 14px; }
+.modal-footer { display: flex; justify-content: flex-end; gap: var(--space-2); margin-top: var(--space-2); }
+
+/* — search — */
+.search-container { position: relative; }
+.search-input { padding-left: 32px; }
+.search-icon { position: absolute; left: 9px; top: 50%; transform: translateY(-50%); color: color-mix(in srgb, var(--color-text) 55%, transparent); }
+.search-dropdown, .search-results {
+  background: var(--color-surface); border: 1px solid var(--color-divider);
+  border-radius: var(--radius-md); box-shadow: var(--shadow-md);
+}
+
+/* — misc — */
+.toolbar-btn, .header-btn, .quick-action, .theme-btn, .ai-chat-btn, .notification-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+  min-height: 36px; padding: 6px var(--space-2); cursor: pointer;
+  background: transparent; border: 1px solid var(--color-divider);
+  border-radius: var(--radius-md); color: var(--color-text);
+  font-family: var(--font-heading); font-weight: 600; font-size: 13px;
+}
+.toolbar-btn:hover, .header-btn:hover, .quick-action:hover, .theme-btn:hover {
+  background: color-mix(in srgb, var(--color-text) 7%, transparent);
+}
+.spinner {
+  width: 22px; height: 22px; border-radius: 50%;
+  border: 2px solid var(--color-neutral-200); border-top-color: var(--color-accent);
+  animation: am-spin 700ms linear infinite;
+}
+@keyframes am-spin { to { transform: rotate(360deg); } }
+.status-indicator { display: inline-flex; align-items: center; gap: 6px; font-size: 11.5px; }
+.status-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--color-neutral-400); }
+.status-indicator.offline .status-dot { background: var(--color-accent-2); }
+.year-selector, .focus-area-select { display: inline-flex; align-items: center; gap: var(--space-2); }
+.prose { max-width: none; }
+
+/* ==========================================================================
+   Utility classes used by the legacy markup
+   ========================================================================== */
+.hidden { display: none !important; }
+.flex { display: flex; }
+.flex-1 { flex: 1; }
+.flex-wrap { flex-wrap: wrap; }
+.grid { display: grid; }
+.grid-cols-1 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
+.grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.grid-cols-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); } /* 4-up never fits phone width */
+.items-center { align-items: center; }
+.justify-between { justify-content: space-between; }
+.justify-center, .justify-content-center { justify-content: center; }
+.justify-end { justify-content: flex-end; }
+.relative { position: relative; }
+.overflow-hidden { overflow: hidden; }
+.overflow-y-auto { overflow-y: auto; }
+.text-center { text-align: center; }
+.italic { font-style: italic; }
+.underline { text-decoration: underline; }
+.cursor-pointer { cursor: pointer; }
+.w-full { width: 100%; }
+.mx-auto { margin-left: auto; margin-right: auto; }
+.max-w-md { max-width: 28rem; }
+.max-w-none { max-width: none; }
+.max-h-96 { max-height: 24rem; }
+.h-80 { height: 20rem; }
+.h-16 { height: 4rem; }
+.h-6 { height: 1.5rem; }
+.h-4 { height: 1rem; }
+.w-16 { width: 4rem; }
+.w-6 { width: 1.5rem; }
+.w-4 { width: 1rem; }
+.w-1 { width: 0.25rem; }
+.w-px { width: 1px; }
+.rounded-full { border-radius: 999px; }
+.rounded-xl, .rounded-lg { border-radius: var(--radius-lg); }
+.rounded-md { border-radius: var(--radius-md); }
+.shadow-sm { box-shadow: var(--shadow-sm); }
+.border { border: 1px solid var(--color-divider); }
+.border-b { border-bottom: 1px solid var(--color-divider); }
+.border-border, .border-gray-200, .border-gray-300, .border-blue-200 { border-color: var(--color-divider); }
+.leading-relaxed { line-height: 1.625; }
+.list-disc { list-style: disc; }
+.list-inside { list-style-position: inside; }
+.transition-colors { transition: background var(--motion), color var(--motion); }
+.duration-200 { transition-duration: 200ms; }
+
+.gap-1 { gap: var(--space-1); }
+.gap-2 { gap: var(--space-2); }
+.gap-3 { gap: var(--space-3); }
+.gap-4 { gap: var(--space-4); }
+.gap-6 { gap: var(--space-6); }
+.mb-2 { margin-bottom: var(--space-2); }
+.mb-3 { margin-bottom: var(--space-3); }
+.mb-4 { margin-bottom: var(--space-4); }
+.mb-6 { margin-bottom: var(--space-6); }
+.mb-8 { margin-bottom: var(--space-8); }
+.mt-2 { margin-top: var(--space-2); }
+.mt-3 { margin-top: var(--space-3); }
+.mt-4 { margin-top: var(--space-4); }
+.mt-6 { margin-top: var(--space-6); }
+.mt-8 { margin-top: var(--space-8); }
+.mr-2 { margin-right: var(--space-2); }
+.mr-3 { margin-right: var(--space-3); }
+.mx-2 { margin-left: var(--space-2); margin-right: var(--space-2); }
+.p-0 { padding: 0; }
+.p-1 { padding: var(--space-1); }
+.p-4 { padding: var(--space-3); }
+.p-6 { padding: var(--space-4); }
+.p-8 { padding: var(--space-6); }
+.px-4 { padding-left: var(--space-3); padding-right: var(--space-3); }
+.px-6 { padding-left: var(--space-4); padding-right: var(--space-4); }
+.py-2 { padding-top: var(--space-2); padding-bottom: var(--space-2); }
+.py-3 { padding-top: var(--space-2); padding-bottom: var(--space-2); }
+.py-12 { padding-top: var(--space-8); padding-bottom: var(--space-8); }
+.space-y-1 > * + * { margin-top: var(--space-1); }
+.space-y-2 > * + * { margin-top: var(--space-2); }
+.space-y-4 > * + * { margin-top: var(--space-3); }
+
+.text-xs { font-size: 11px; }
+.text-sm { font-size: 13px; }
+.text-lg { font-size: 16px; }
+.text-xl { font-size: 18px; }
+.text-2xl { font-size: 22px; }
+.text-3xl { font-size: 26px; }
+.font-medium { font-weight: 500; }
+.font-semibold { font-weight: 600; }
+.font-bold { font-weight: 700; font-family: var(--font-heading); }
+.text-foreground { color: var(--color-text); }
+.text-muted-foreground { color: color-mix(in srgb, var(--color-text) 55%, transparent); }
+.text-muted-foreground\/40 { color: color-mix(in srgb, var(--color-text) 40%, transparent); }
+.text-primary, .text-blue-700, .text-blue-900 { color: var(--color-accent); }
+.text-success { color: var(--color-accent-600); }
+.text-warning { color: var(--color-accent-2-600); }
+.text-error, .text-red-500 { color: var(--color-accent-2-700); }
+.text-white { color: var(--color-bg); }
+.text-gray-400 { color: var(--color-neutral-500); }
+.bg-card, .bg-white { background: var(--color-surface); }
+.bg-muted, .bg-gray-50, .bg-blue-50 { background: var(--color-neutral-100); }
+.bg-gray-300 { background: var(--color-neutral-300); }
+.bg-blue-600, .bg-green-600, .bg-purple-600 { background: var(--color-accent); color: var(--color-bg); }
+.hover\:bg-blue-100:hover { background: var(--color-accent-100); }
+.hover\:bg-blue-700:hover { background: var(--color-accent-600); }
+.hover\:underline:hover { text-decoration: underline; }
+
+@media (min-width: 640px) {
+  .md\:grid-cols-2, .lg\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}

@@ -1,0 +1,4 @@
+node_modules/
+
+# The seeded demo trace db — regenerate with `npm run seed`.
+demo/

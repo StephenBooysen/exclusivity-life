@@ -1,0 +1,71 @@
+<div class="am-hero">
+  <div class="am-hero-label">Today's progress</div>
+  <div class="am-hero-value" id="hero-progress">—</div>
+  <div class="am-hero-row">
+    <span class="am-pill" id="hero-pill">—</span>
+    <span class="am-hero-caption" id="hero-caption">so far today</span>
+  </div>
+  <div class="am-hero-bar"><div id="hero-bar" style="width:0%"></div></div>
+</div>
+
+<div class="am-sectionhead">
+  <div class="am-sectionhead-title">Today's focus</div>
+  <a class="am-sectionhead-action" href="/goals">See all</a>
+</div>
+<div class="am-listcard" id="dash-focus"><div class="am-empty">Loading…</div></div>
+
+<div class="am-sectionhead">
+  <div class="am-sectionhead-title">Today's habits</div>
+  <a class="am-sectionhead-action" href="/habits">See all</a>
+</div>
+<div class="am-listcard" id="dash-habits"><div class="am-empty">Loading…</div></div>
+
+<div class="am-sectionhead">
+  <div class="am-sectionhead-title">This week's goals</div>
+</div>
+<div class="card am-panel">
+  <div id="dash-week" style="display:flex;flex-direction:column;gap:var(--space-3)"></div>
+</div>
+
+<div class="am-sectionhead">
+  <div class="am-sectionhead-title">Annual goals</div>
+</div>
+<div class="card am-panel">
+  <div id="dash-annual" style="display:flex;flex-direction:column;gap:10px"></div>
+</div>
+
+<div class="am-sectionhead">
+  <div class="am-sectionhead-title">Focus areas</div>
+  <a class="am-sectionhead-action" href="/focus-areas">See all</a>
+</div>
+<div class="am-listcard" id="dash-areas"></div>
+
+<div class="am-sectionhead">
+  <div class="am-sectionhead-title">Quick actions</div>
+</div>
+<div class="card am-panel">
+  <div class="am-quick">
+    <a class="btn btn-secondary" href="/goals">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="8"/><path d="M12 8v8M8 12h8"/></svg>Priority
+    </a>
+    <a class="btn btn-secondary" href="/how-you-feel">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 19s-7-4.35-7-9.5A4.5 4.5 0 0112 6a4.5 4.5 0 017 3.5C19 14.65 12 19 12 19z"/></svg>Log mood
+    </a>
+    <a class="btn btn-secondary" href="/habits">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="M8 12l3 3 5-6"/></svg>Log habit
+    </a>
+  </div>
+</div>
+
+<div id="dash-quote-section" hidden>
+  <div class="am-sectionhead">
+    <div class="am-sectionhead-title">Daily wisdom</div>
+    <a class="am-sectionhead-action" href="/wisdom">See all</a>
+  </div>
+  <div class="card am-panel">
+    <div class="am-quote">
+      <p id="dash-quote-text"></p>
+      <div class="by" id="dash-quote-by"></div>
+    </div>
+  </div>
+</div>

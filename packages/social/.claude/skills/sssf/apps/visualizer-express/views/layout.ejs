@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/logo.svg" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <title><%= title %></title>
+  </head>
+  <body>
+    <div class="app">
+      <header class="topbar">
+        <nav class="crumbs">
+          <!-- Inline copy of public/logo.svg (the favicon) so the mark renders
+               crisply with no fetch; keep the two in sync. -->
+          <svg class="logo" viewBox="0 0 32 32" aria-hidden="true">
+            <rect x="4" y="6" width="17" height="5" rx="2.5" fill="#e8b64a" />
+            <rect x="8" y="13.5" width="20" height="5" rx="2.5" fill="#c89bff" />
+            <rect x="4" y="21" width="13" height="5" rx="2.5" fill="#5ad2dd" />
+          </svg>
+          <span class="brand">Super Simple Software Factory</span>
+          <span class="sep">›</span>
+          <a href="/" class="<%= adwId ? '' : 'current' %>">sessions</a>
+          <% if (adwId) { %>
+            <span class="sep">›</span>
+            <a href="/s/<%= encodeURIComponent(adwId) %>" class="<%= phaseId ? '' : 'current' %>"><%= adwId %></a>
+          <% } %>
+          <% if (adwId && phaseId) { %>
+            <span class="sep">›</span>
+            <span class="current"><%= phaseCrumb || phaseId %></span>
+          <% } %>
+        </nav>
+        <span class="live-hint" id="live-hint"
+          ><span class="live-dot"></span> <span class="live-text">live</span></span
+        >
+      </header>
+      <main><%- body %></main>
+    </div>
+    <script type="module" src="/js/<%= island %>.js"></script>
+  </body>
+</html>

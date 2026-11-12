@@ -1,0 +1,4 @@
+./application
+./screenshots
+.env
+node_modules

@@ -1,0 +1,19 @@
+<%#
+  The polled fragment for the L1 list. The island swaps this whole block, so
+  the card markup exists in exactly one place — server render and live update
+  go through the same template.
+%>
+<% if (sessions.length) { %>
+  <div class="list-head dim"><%= sessions.length %> runs</div>
+  <div class="cards">
+    <% sessions.forEach((session) => { %>
+      <%- include("../partials/session-card", {
+            session,
+            events: eventsByAdw[session.adw_id] || [],
+            nowMs,
+          }) %>
+    <% }); %>
+  </div>
+<% } else { %>
+  <div class="empty-state">no sessions yet — run an ADW to see it here</div>
+<% } %>

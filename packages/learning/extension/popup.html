@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Me Learning Hub Capture</title>
+    <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>Learning Hub</h1>
+            <span class="connection-status" id="connectionStatus">●</span>
+        </div>
+
+        <!-- Loading State -->
+        <div class="loading-overlay" id="loadingOverlay" style="display: none;">
+            <div class="spinner"></div>
+            <p>Processing...</p>
+        </div>
+
+        <!-- Main Content -->
+        <div class="content">
+            <!-- Project Selection -->
+            <div class="form-group">
+                <label for="projectSelect">Select Project:</label>
+                <select id="projectSelect">
+                    <option value="">-- Loading Projects --</option>
+                </select>
+                <small id="projectError" class="error-message" style="display: none;"></small>
+            </div>
+
+            <!-- Capture Type -->
+            <div class="form-group">
+                <label>Capture Mode:</label>
+                <div class="radio-group">
+                    <label class="radio-label">
+                        <input type="radio" name="captureType" value="full" checked>
+                        <span>Full Page</span>
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="captureType" value="selection">
+                        <span>Selected Text</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Content Metadata -->
+            <div class="metadata-section" id="metadataSection" style="display: none;">
+                <div class="metadata-item">
+                    <span class="metadata-label">Title:</span>
+                    <span id="pageTitle">-</span>
+                </div>
+                <div class="metadata-item">
+                    <span class="metadata-label">URL:</span>
+                    <span id="pageUrl" class="url-text">-</span>
+                </div>
+                <div class="metadata-item">
+                    <span class="metadata-label">Word Count:</span>
+                    <span id="wordCount">-</span>
+                </div>
+                <div class="metadata-item">
+                    <span class="metadata-label">Estimated Read Time:</span>
+                    <span id="readTime">-</span>
+                </div>
+            </div>
+
+            <!-- Options -->
+            <div class="form-group">
+                <label class="checkbox-label">
+                    <input type="checkbox" id="autoGenerateStudyPlan">
+                    <span>Auto-generate Study Plan</span>
+                    <span class="tooltip" title="Uses AI to generate a study plan for the captured content">ⓘ</span>
+                </label>
+            </div>
+
+            <!-- Duplicate Warning (hidden by default) -->
+            <div class="warning-box" id="duplicateWarning" style="display: none;">
+                <strong>⚠️ Similar content already exists</strong>
+                <p id="duplicateMessage"></p>
+                <div class="button-group">
+                    <button id="overrideButton" class="btn btn-warning">Override & Save</button>
+                    <button id="cancelButton" class="btn btn-secondary">Cancel</button>
+                </div>
+            </div>
+
+            <!-- Success Message -->
+            <div class="success-box" id="successMessage" style="display: none;">
+                <strong>✓ Content saved successfully!</strong>
+                <p id="successDetail"></p>
+            </div>
+
+            <!-- Error Message -->
+            <div class="error-box" id="errorMessage" style="display: none;">
+                <strong>✗ Error</strong>
+                <p id="errorDetail"></p>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="button-group" id="actionButtons">
+                <button id="captureButton" class="btn btn-primary">Capture & Save</button>
+                <button id="settingsButton" class="btn btn-secondary">Settings</button>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <small>v1.0.0</small>
+        </div>
+    </div>
+
+    <script src="popup.js"></script>
+</body>
+</html>

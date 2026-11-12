@@ -1,0 +1,332 @@
+<%#
+  d:       the buildPhaseDetail() view model
+  adwId:   for the close link
+  prompts: { system, user } read off disk, or null for non-agent phases
+
+  Every collapsible is a <details>. That buys three things at once: it works
+  with JavaScript disabled, its open/closed state lives in the DOM where the
+  live-poll island can preserve it across a swap, and there are no click
+  handlers to re-bind after one.
+%>
+<% const p = d.phase; %>
+<section class="detail" data-phase-id="<%= p.phase_id %>">
+  <header class="d-head">
+    <div class="d-main">
+      <span class="d-name"><%= p.name %></span>
+      <%- include("status-chip", { status: p.status || "queued" }) %>
+      <% if (d.hasDuration) { %>
+        <%- include("stat-chip", { kind: "runtime", value: d.durationMs }) %>
+      <% } %>
+    </div>
+    <div class="d-tags">
+      <span class="tag"><span class="tag-k">owner</span><span class="tag-v"><%= p.owner || "—" %></span></span>
+      <span class="tag"><span class="tag-k">kind</span><span class="tag-v"><%= p.kind || "—" %></span></span>
+      <span class="tag"><span class="tag-k">attempt</span><span class="tag-v"><%= p.attempt || 0 %>/<%= p.retries || 0 %></span></span>
+    </div>
+    <a class="close" href="/s/<%= encodeURIComponent(adwId) %>" title="close">✕</a>
+  </header>
+
+  <% if (p.error) { %><div class="error-bar d-error"><%= p.error %></div><% } %>
+
+  <div class="d-grid">
+    <div class="d-col">
+      <% if (d.requestText) { %>
+        <details class="dsec" data-key="sec:request">
+          <summary class="dsec-head">
+            <span class="chev"></span>
+            <%- icon("inbox", { size: 19, className: "dsec-icon" }) %>
+            <span class="dsec-title">request</span>
+          </summary>
+          <div class="dsec-body"><p class="d-request"><%= d.requestText %></p></div>
+        </details>
+      <% } %>
+
+      <% if (d.agentConfig) { const c = d.agentConfig; %>
+        <details class="dsec" data-key="sec:config">
+          <summary class="dsec-head">
+            <span class="chev"></span>
+            <%- icon("sliders-horizontal", { size: 19, className: "dsec-icon" }) %>
+            <span class="dsec-title">agent config</span>
+          </summary>
+          <div class="dsec-body">
+            <div class="cfg">
+              <% if (c.coding_agent) { %>
+                <div class="cfg-row">
+                  <span class="cfg-k">coding agent</span>
+                  <span class="cfg-chip"><%- icon("square-terminal", { size: 18, className: "cfg-icon" }) %><%= c.coding_agent %></span>
+                </div>
+              <% } %>
+              <% if (c.model) { %>
+                <div class="cfg-row">
+                  <span class="cfg-k">model</span>
+                  <span class="cfg-chip" title="<%= c.model %>">
+                    <% if (modelIcon(c.model)) { %><img class="cfg-model-icon" src="<%= modelIcon(c.model) %>" alt="" /><% } %>
+                    <%= modelName(c.model) %>
+                  </span>
+                </div>
+              <% } %>
+              <% if (c.thinking) { %>
+                <div class="cfg-row">
+                  <span class="cfg-k">thinking</span>
+                  <span class="cfg-chip"><%- icon("brain", { size: 18, className: "cfg-icon" }) %><%= c.thinking %></span>
+                </div>
+              <% } %>
+              <% if (c.tools !== undefined) { %>
+                <div class="cfg-row">
+                  <span class="cfg-k">tools</span>
+                  <% if (c.tools === null) { %>
+                    <span class="cfg-v">all tools</span>
+                  <% } else { %>
+                    <span class="cfg-chips"><% (c.tools || []).forEach((t) => { %><span class="cfg-chip"><%= t %></span><% }); %></span>
+                  <% } %>
+                </div>
+              <% } %>
+              <% if (c.harness_engineering !== undefined) { %>
+                <div class="cfg-row">
+                  <span class="cfg-k">harness</span>
+                  <% if (!(c.harness_engineering || []).length) { %>
+                    <span class="cfg-v dim">none</span>
+                  <% } else { %>
+                    <span class="cfg-chips"><% c.harness_engineering.forEach((h) => { %><span class="cfg-chip"><%= h %></span><% }); %></span>
+                  <% } %>
+                </div>
+              <% } %>
+              <% if (c.purpose) { %>
+                <div class="cfg-row"><span class="cfg-k">purpose</span><span class="cfg-v"><%= c.purpose %></span></div>
+              <% } %>
+              <% if (c.session_id) { %>
+                <div class="cfg-row">
+                  <span class="cfg-k">session</span>
+                  <span class="cfg-chip"><%- icon("fingerprint", { size: 18, className: "cfg-icon" }) %><%= c.session_id %></span>
+                </div>
+              <% } %>
+            </div>
+          </div>
+        </details>
+      <% } %>
+
+      <% if (p.description) { %>
+        <details class="dsec" data-key="sec:description">
+          <summary class="dsec-head">
+            <span class="chev"></span>
+            <%- icon("align-left", { size: 19, className: "dsec-icon" }) %>
+            <span class="dsec-title">description</span>
+          </summary>
+          <div class="dsec-body"><p class="d-desc"><%= p.description %></p></div>
+        </details>
+      <% } %>
+
+      <% if (p.kind === "agent") {
+           const panels = [];
+           if (prompts) {
+             for (const [id, title, text] of [["system", "system prompt", prompts.system],
+                                              ["user", "user prompt", prompts.user]]) {
+               if (text == null) continue;
+               panels.push({ id, title, text, html: renderMarkdown(text), lines: text.split("\n").length });
+             }
+           }
+      %>
+        <details class="dsec" data-key="sec:prompts">
+          <summary class="dsec-head">
+            <span class="chev"></span>
+            <%- icon("messages-square", { size: 19, className: "dsec-icon" }) %>
+            <span class="dsec-title">compiled prompts</span>
+            <span class="dsec-count dim">(<%= panels.length %>)</span>
+          </summary>
+          <div class="dsec-body">
+            <% if (!panels.length) { %>
+              <div class="faint">no compiled prompts recorded</div>
+            <% } %>
+            <% panels.forEach((panel) => { %>
+              <div class="prompt-panel">
+                <details data-key="prompt:<%= panel.id %>">
+                  <summary class="prompt-head">
+                    <span class="chev"></span>
+                    <span class="prompt-title"><%= panel.title %></span>
+                    <span class="dim"><%= panel.lines %> lines</span>
+                  </summary>
+                  <%# rendered/raw is a radio pair switched in pure CSS — no
+                      handler to lose when the fragment is swapped. %>
+                  <div class="prompt-body">
+                    <div class="prompt-tools">
+                      <input class="pv pv-rendered" type="radio" id="pv-<%= p.phase_id %>-<%= panel.id %>-r"
+                             name="pv-<%= p.phase_id %>-<%= panel.id %>" checked />
+                      <label for="pv-<%= p.phase_id %>-<%= panel.id %>-r">rendered</label>
+                      <input class="pv pv-raw" type="radio" id="pv-<%= p.phase_id %>-<%= panel.id %>-w"
+                             name="pv-<%= p.phase_id %>-<%= panel.id %>" />
+                      <label for="pv-<%= p.phase_id %>-<%= panel.id %>-w">raw</label>
+                    </div>
+                    <%# Safe: renderMarkdown escapes ALL input before emitting its own tags. %>
+                    <div class="md prompt-rendered"><%- panel.html %></div>
+                    <pre class="prompt-raw"><%= panel.text %></pre>
+                  </div>
+                </details>
+              </div>
+            <% }); %>
+          </div>
+        </details>
+      <% } %>
+
+      <details class="dsec" data-key="sec:gates">
+        <summary class="dsec-head">
+          <span class="chev"></span>
+          <%- icon("shield-check", { size: 19, className: "dsec-icon" }) %>
+          <span class="dsec-title">gates</span>
+          <span class="dsec-count dim">(<%= d.gates.length %>)</span>
+        </summary>
+        <div class="dsec-body">
+          <% if (!d.gates.length) { %><div class="faint">no gate results</div><% } %>
+          <% d.gates.forEach((g) => { const row = g.row; %>
+            <div class="gate <%= row.passed ? "pass" : "fail" %>">
+              <% if (g.checks) { %>
+                <details data-key="gate:<%= row.id %>">
+                  <summary class="gate-line gate-toggle">
+                    <span class="chev"></span>
+                    <span class="gate-mark"><%= row.passed ? "✓" : "✗" %></span>
+                    <span class="gate-name"><%= row.gate %></span>
+                    <span class="tag <%= row.passed ? "" : "tag-fail" %>">
+                      <span class="tag-k">checks</span><span class="tag-v"><%= g.checksLabel %></span>
+                    </span>
+                    <span class="tag"><span class="tag-k">attempt</span><span class="tag-v"><%= row.attempt || 0 %></span></span>
+                    <span class="dim gate-time"><%= fmtClock(row.created_at) %></span>
+                  </summary>
+                  <div class="gate-checks">
+                    <% if (!g.checks.length) { %>
+                      <div class="faint">nothing to check — the gate inspected no items</div>
+                    <% } %>
+                    <% g.checks.forEach((c) => { %>
+                      <div class="gate-check <%= c.ok ? "pass" : "fail" %>">
+                        <span class="check-mark"><%= c.ok ? "✓" : "✗" %></span>
+                        <span class="check-item"><%= c.item %></span>
+                        <%# A failed tests_pass note is "exit N" + a command-output tail:
+                            multi-line evidence gets a block, one-liners stay inline. %>
+                        <% if (c.note && !c.note.includes("\n")) { %>
+                          <span class="check-note dim"><%= c.note %></span>
+                        <% } else if (c.note) { %>
+                          <pre class="check-note-block"><%= c.note %></pre>
+                        <% } %>
+                      </div>
+                    <% }); %>
+                    <% if (!row.passed && g.violations.length) { %>
+                      <ul class="violations"><% g.violations.forEach((v) => { %><li><%= v %></li><% }); %></ul>
+                    <% } %>
+                  </div>
+                </details>
+              <% } else { %>
+                <div class="gate-line">
+                  <span class="gate-mark"><%= row.passed ? "✓" : "✗" %></span>
+                  <span class="gate-name"><%= row.gate %></span>
+                  <span class="tag"><span class="tag-k">attempt</span><span class="tag-v"><%= row.attempt || 0 %></span></span>
+                  <span class="dim gate-time"><%= fmtClock(row.created_at) %></span>
+                </div>
+                <% if (g.violations.length) { %>
+                  <ul class="violations"><% g.violations.forEach((v) => { %><li><%= v %></li><% }); %></ul>
+                <% } %>
+              <% } %>
+            </div>
+          <% }); %>
+        </div>
+      </details>
+
+      <% if (d.usage) { %>
+        <details class="dsec" data-key="sec:cost">
+          <summary class="dsec-head">
+            <span class="chev"></span>
+            <%- icon("receipt", { size: 19, className: "dsec-icon" }) %>
+            <span class="dsec-title">cost</span>
+          </summary>
+          <div class="dsec-body">
+            <table class="usage">
+              <thead><tr><th class="u-k"></th><th class="u-n">tokens</th><th class="u-c">cost</th></tr></thead>
+              <tbody>
+                <% d.usage.rows.forEach((r) => { %>
+                  <tr class="<%= r.kind ? "u-" + r.kind : "" %>" <% if (r.title) { %>title="<%= r.title %>"<% } %>>
+                    <td class="u-k"><%= r.label %></td>
+                    <td class="u-n"><%= fmtNumber(r.tokens) %></td>
+                    <td class="u-c"><%= money(r.cost) %></td>
+                  </tr>
+                <% }); %>
+              </tbody>
+            </table>
+            <% if (d.usage.partial) { %>
+              <p class="faint u-note">this run predates the per-component breakdown — only the total was recorded</p>
+            <% } %>
+          </div>
+        </details>
+      <% } %>
+
+      <details class="dsec" data-key="sec:outputs">
+        <summary class="dsec-head">
+          <span class="chev"></span>
+          <%- icon("package", { size: 19, className: "dsec-icon" }) %>
+          <span class="dsec-title">outputs</span>
+          <span class="dsec-count dim">(<%= d.outputs.length %>)</span>
+        </summary>
+        <div class="dsec-body">
+          <% if (!d.outputs.length) { %><div class="faint">no outputs</div><% } %>
+          <% d.outputs.forEach((env) => { %>
+            <div class="output">
+              <div class="output-line">
+                <span class="output-type"><%= env.output_type %></span>
+                <span class="tag"><span class="tag-k">agent</span><span class="tag-v"><%= env.agent || "—" %></span></span>
+                <span class="tag"><span class="tag-k">attempt</span><span class="tag-v"><%= env.attempt || 0 %></span></span>
+                <span class="output-valid <%= env.valid ? "pass" : "fail" %>"><%= env.valid ? "valid" : "invalid" %></span>
+              </div>
+              <%# Safe: highlightJson escapes ALL input before emitting its own spans. %>
+              <pre><%- highlightJson(env.payload_json) %></pre>
+            </div>
+          <% }); %>
+        </div>
+      </details>
+    </div>
+
+    <div class="d-col">
+      <h3><%- icon("activity", { size: 19, className: "h3-icon" }) %> events (<%= d.events.length %>)</h3>
+      <% if (!d.events.length) { %><div class="faint">no events</div><% } %>
+      <% d.events.forEach((item) => { const e = item.row; const call = item.call; %>
+        <div class="event">
+          <details data-key="event:<%= e.event_id %>">
+            <summary class="event-row">
+              <span class="e-time dim"><%= fmtClock(e.started_at) %></span>
+              <span class="e-type <%= item.typeClass %>"><%= e.type %></span>
+              <span class="e-name <%= e.type === "tool_call" && !payloadOk(e.payload_json) ? "t-red" : "" %>" title="<%= eventLabel(e) %>"><%= eventLabel(e) %></span>
+              <span class="e-extra">
+                <% if (Number.isFinite(item.durationMs)) { %>
+                  <%- include("stat-chip", { kind: "runtime", value: item.durationMs, compact: true }) %>
+                <% } %>
+                <% if (e.tokens) { %>
+                  <%- include("stat-chip", { kind: "tokens", value: e.tokens, compact: true }) %>
+                <% } %>
+              </span>
+            </summary>
+            <div class="payload-panel">
+              <% if (call) { %>
+                <div class="p-meta">
+                  <span class="p-tool"><%= call.tool %></span>
+                  <% if (call.ok === false) { %><span class="t-red">failed</span><% } %>
+                  <% if (call.duration_ms != null) { %>
+                    <%- include("stat-chip", { kind: "runtime", value: call.duration_ms, compact: true }) %>
+                  <% } %>
+                </div>
+                <h4>args</h4>
+                <pre class="p-pre"><%- highlightJsonText(JSON.stringify(call.args || {}, null, 2)) %></pre>
+                <% if (call.result_snippet) { %>
+                  <h4>result</h4>
+                  <pre class="p-pre"><%= call.result_snippet %></pre>
+                <% } %>
+              <% } else if (e.type === "tool_call" && e.payload_json) { %>
+                <div class="faint">no detail available — legacy event payload</div>
+                <pre class="p-pre"><%- highlightJson(e.payload_json) %></pre>
+              <% } else if (e.payload_json) { %>
+                <h4>payload</h4>
+                <pre class="p-pre"><%- highlightJson(e.payload_json) %></pre>
+              <% } else { %>
+                <div class="faint">no payload</div>
+              <% } %>
+            </div>
+          </details>
+        </div>
+      <% }); %>
+    </div>
+  </div>
+</section>
