@@ -1,0 +1,32 @@
+{
+  "name": "exclusivity-life",
+  "version": "1.0.0",
+  "description": "Workspace runner for the Exclusivity Life apps (goals, learning, nourishment, social, wealth)",
+  "private": true,
+  "license": "ISC",
+  "scripts": {
+    "postinstall": "npm run install:all",
+    "install:all": "npm run install:goals && npm run install:learning && npm run install:nourishment && npm run install:social && npm run install:wealth",
+    "install:goals": "npm --prefix packages/goals install --install-links=false",
+    "install:learning": "npm --prefix packages/learning install --install-links=false && npm --prefix packages/learning/electron install --install-links=false",
+    "install:nourishment": "npm --prefix packages/nourishment install --install-links=false",
+    "install:social": "npm --prefix packages/social install --install-links=false",
+    "install:wealth": "npm --prefix packages/wealth install --install-links=false",
+
+    "goals": "npm --prefix packages/goals run dev",
+    "learning": "npm --prefix packages/learning run electron:dev",
+    "nourishment": "npm --prefix packages/nourishment run dev",
+    "social": "npm --prefix packages/social run dev",
+    "wealth": "npm --prefix packages/wealth run dev",
+
+    "test": "npm run test:goals && npm run test:learning && npm run test:social",
+    "test:goals": "npm --prefix packages/goals test",
+    "test:learning": "npm --prefix packages/learning test",
+    "test:social": "npm --prefix packages/social test",
+
+    "kill:goals": "npm --prefix packages/goals run kill",
+    "kill:nourishment": "npm --prefix packages/nourishment run kill",
+    "kill:social": "npm --prefix packages/social run kill",
+    "kill:wealth": "npm --prefix packages/wealth run kill"
+  }
+}
